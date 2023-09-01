@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
 import { QuillarComponentDirective } from "./quillar.component.directive";
+import { QuillarStylesModule } from "@quillar/styles";
 
 @NgModule({
   declarations: [QuillarComponentDirective],
-  imports: [],
+  imports: [QuillarStylesModule],
   providers: [],
   exports: [QuillarComponentDirective],
 })

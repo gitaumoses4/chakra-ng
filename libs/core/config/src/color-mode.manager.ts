@@ -1,4 +1,4 @@
-import { ColorMode, StorageType } from "./color-mode.types";
+import { ColorMode, StorageType } from "./types";
 
 export const STORAGE_KEY = "quillar-color-mode";
 

@@ -5,9 +5,10 @@ import { resolveStyleConfig, SystemStyleObject, ThemingProps, toCSSVar, WithCSSV
 import { QuillarConfig } from "./quillar.config";
 import { omit } from "@chakra-ui/object-utils";
 import { BehaviorSubject, Subscription } from "rxjs";
-import { ColorMode, ColorModeUtils, ColorModeWithSystem } from "@quillar/color-mode";
+import { ColorMode, ColorModeWithSystem } from "./types";
+import { ColorModeUtils } from "./color-mode.utils";
 
-@Injectable({ providedIn: "root" })
+@Injectable()
 export class ThemeService {
   private $colorMode = new BehaviorSubject<ColorModeWithSystem>(this.getInitialColorMode());
   private $resolvedColorMode = new BehaviorSubject<ColorMode | undefined>(undefined);

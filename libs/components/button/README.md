@@ -1,7 +1,7 @@
-# core-color-mode
+# components-button
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test core-color-mode` to execute the unit tests.
+Run `nx test components-button` to execute the unit tests.

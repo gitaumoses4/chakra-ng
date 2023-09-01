@@ -1,5 +1,5 @@
 {
-  "name": "@quillar/color-mode",
+  "name": "@quillar/button",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^16.2.0",

@@ -19,6 +19,7 @@
     "@chakra-ui/styled-system": "^2.9.1",
     "@chakra-ui/theme": "^3.2.0",
     "@chakra-ui/utils": "^2.0.14",
+    "@emotion/cache": "^11.11.0",
     "@emotion/css": "^11.11.2",
     "@emotion/serialize": "^1.1.2",
     "@nx/angular": "16.7.4",

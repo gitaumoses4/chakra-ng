@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: "core-color-mode",
+  displayName: "components-button",
   preset: "../../../jest.preset.js",
-  setupFilesAfterEnv: ["<rootDir>/test-setup.ts"],
-  coverageDirectory: "../../../coverage/libs/core/color-mode",
+  setupFilesAfterEnv: ["<rootDir>/src/test-setup.ts"],
+  coverageDirectory: "../../../coverage/libs/components/button",
   transform: {
     "^.+\\.(ts|mjs|js|html)$": [
       "jest-preset-angular",

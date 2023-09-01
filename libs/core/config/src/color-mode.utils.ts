@@ -1,14 +1,11 @@
 import { Inject, Injectable } from "@angular/core";
-import { ColorMode } from "./color-mode.types";
+import { ColorMode } from "./types";
 import { DOCUMENT } from "@angular/common";
 import { fromEvent, startWith, Subscription } from "rxjs";
 
-const classNames = {
-  light: "quillar-light",
-  dark: "quillar-dark",
-};
+const classNames = { light: "quillar-light", dark: "quillar-dark" };
 
-@Injectable({ providedIn: "root" })
+@Injectable()
 export class ColorModeUtils {
   constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 

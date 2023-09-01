@@ -1,15 +1,13 @@
 import { Theme, theme as defaultTheme } from "@chakra-ui/theme";
 import { Dict } from "@chakra-ui/utils";
-import { Injectable } from "@angular/core";
-import { ColorModeManager, LocalStorageManager } from "@quillar/color-mode";
+import { ColorModeManager, LocalStorageManager } from "./color-mode.manager";
 
-@Injectable({ providedIn: "root" })
 export class QuillarConfig {
   /**
    * The element to attach the CSS custom properties to.
    * @default ":host, :root"
    */
-  cssVarsRoot = ":host, :root";
+  public cssVarsRoot = ":host, :root";
 
   /**
    * a theme. if omitted, uses the default theme provided by chakra

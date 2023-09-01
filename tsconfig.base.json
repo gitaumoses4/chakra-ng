@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@quillar/angular": ["libs/core/angular/src/index.ts"],
-      "@quillar/color-mode": ["libs/core/color-mode/src/index.ts"],
+      "@quillar/button": ["libs/components/button/src/index.ts"],
       "@quillar/config": ["libs/core/config/src/index.ts"],
       "@quillar/styles": ["libs/core/styles/src/index.ts"],
       "@quillar/system": ["libs/core/system/src/index.ts"]
