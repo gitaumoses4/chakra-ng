@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { Component } from "@angular/core";
+import { QuillarModule } from "@quillar/angular";
+import { QuillarStyles } from "@quillar/system";
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent],
-  selector: 'quillar-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  imports: [QuillarModule],
+  selector: "quillar-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = 'angular-example';
+  styles: QuillarStyles = {
+    bg: "red.800",
+  };
 }
