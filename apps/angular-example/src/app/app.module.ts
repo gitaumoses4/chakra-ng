@@ -6,17 +6,7 @@ import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    QuillarModule,
-    QuillarConfigModule.forRoot({
-      theme: {
-        config: {
-          initialColorMode: "dark",
-        },
-      },
-    }),
-  ],
+  imports: [BrowserModule, QuillarModule, QuillarConfigModule.forRoot()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

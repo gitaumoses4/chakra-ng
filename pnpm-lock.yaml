@@ -38,6 +38,9 @@ dependencies:
   '@chakra-ui/theme':
     specifier: ^3.2.0
     version: 3.2.0(@chakra-ui/styled-system@2.9.1)
+  '@chakra-ui/theme-utils':
+    specifier: ^2.0.19
+    version: 2.0.19
   '@chakra-ui/utils':
     specifier: ^2.0.14
     version: 2.0.14
@@ -2731,6 +2734,15 @@ packages:
       '@chakra-ui/shared-utils': 2.0.5
       '@chakra-ui/styled-system': 2.9.1
       color2k: 2.0.2
+    dev: false
+
+  /@chakra-ui/theme-utils@2.0.19:
+    resolution: {integrity: sha512-UQ+KvozTN86+0oA80rdQd1a++4rm4ulo+DEabkgwNpkK3yaWsucOxkDQpi2sMIMvw5X0oaWvNBZJuVyK7HdOXg==}
+    dependencies:
+      '@chakra-ui/shared-utils': 2.0.5
+      '@chakra-ui/styled-system': 2.9.1
+      '@chakra-ui/theme': 3.2.0(@chakra-ui/styled-system@2.9.1)
+      lodash.mergewith: 4.6.2
     dev: false
 
   /@chakra-ui/theme@3.2.0(@chakra-ui/styled-system@2.9.1):

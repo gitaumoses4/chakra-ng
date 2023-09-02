@@ -1,33 +1,34 @@
-import { Injectable } from "@angular/core";
-import { Theme, theme as defaultTheme } from "@chakra-ui/theme";
+import { Inject, Injectable } from "@angular/core";
+import { ChakraTheme } from "@chakra-ui/theme";
 import { Dict, filterUndefined, get, mergeWith } from "@chakra-ui/utils";
-import { resolveStyleConfig, SystemStyleObject, ThemingProps, toCSSVar, WithCSSVar } from "@chakra-ui/styled-system";
+import { resolveStyleConfig, SystemStyleObject, ThemingProps, WithCSSVar } from "@chakra-ui/styled-system";
 import { QuillarConfig } from "./quillar.config";
 import { omit } from "@chakra-ui/object-utils";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { ColorMode, ColorModeWithSystem } from "./types";
 import { ColorModeUtils } from "./color-mode.utils";
+import { THEME } from "./providers";
 
 @Injectable()
-export class ThemeService {
+export class ThemeService<Theme extends ChakraTheme = ChakraTheme> {
   private $colorMode = new BehaviorSubject<ColorModeWithSystem>(this.getInitialColorMode());
   private $resolvedColorMode = new BehaviorSubject<ColorMode | undefined>(undefined);
   private subscriptions: Subscription[] = [];
 
-  constructor(private readonly config: QuillarConfig, private readonly colorModeUtils: ColorModeUtils) {
+  constructor(
+    private readonly config: QuillarConfig,
+    private readonly colorModeUtils: ColorModeUtils,
+    @Inject(THEME) private readonly theme: WithCSSVar<Theme>,
+  ) {
     this.initialize();
   }
 
-  public getTheme(): WithCSSVar<Theme & Dict> {
-    return toCSSVar(this.config.theme || defaultTheme);
-  }
-
-  public getThemeConfig() {
-    return this.getTheme()["config"];
+  public getTheme(): WithCSSVar<Theme> {
+    return this.theme;
   }
 
   public getInitialColorMode() {
-    return this.getThemeConfig().initialColorMode;
+    return this.theme.config.initialColorMode;
   }
 
   public getStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): SystemStyleObject {
@@ -51,7 +52,7 @@ export class ThemeService {
     this.$colorMode.next(resolved);
 
     this.colorModeUtils.setClassName(resolved === "dark");
-    this.colorModeUtils.setDataSet(resolved, Boolean(this.getThemeConfig().disableTransitionOnChange));
+    this.colorModeUtils.setDataSet(resolved, Boolean(this.theme.config.disableTransitionOnChange));
 
     this.config.colorModeManager.set(resolved);
   }
@@ -98,7 +99,7 @@ export class ThemeService {
 
     this.setColorMode(this.getInitialColorMode() as ColorMode);
 
-    if (this.getThemeConfig().useSystemColorMode) {
+    if (this.theme.config.useSystemColorMode) {
       const listener = this.setColorMode.bind(this);
       this.subscriptions.push(this.colorModeUtils.addListener(listener));
     }

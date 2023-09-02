@@ -1,5 +1,3 @@
-import { Theme, theme as defaultTheme } from "@chakra-ui/theme";
-import { Dict } from "@chakra-ui/utils";
 import { ColorModeManager, LocalStorageManager } from "./color-mode.manager";
 
 export class QuillarConfig {
@@ -8,11 +6,6 @@ export class QuillarConfig {
    * @default ":host, :root"
    */
   public cssVarsRoot = ":host, :root";
-
-  /**
-   * a theme. if omitted, uses the default theme provided by chakra
-   */
-  public theme: Dict & Theme = defaultTheme;
 
   /**
    * Common z-index to use for `Portal`
