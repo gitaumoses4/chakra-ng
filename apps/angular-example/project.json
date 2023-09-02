@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "quillar",
   "sourceRoot": "apps/angular-example/src",
-  "tags": [],
+  "tags": ["scope:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

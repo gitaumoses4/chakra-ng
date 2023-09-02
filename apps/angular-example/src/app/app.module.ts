@@ -1,8 +1,7 @@
 import { NgModule } from "@angular/core";
-import { QuillarModule } from "@quillar/angular";
-import { QuillarConfigModule } from "@quillar/config";
 import { AppComponent } from "./app.component";
 import { BrowserModule } from "@angular/platform-browser";
+import { QuillarConfigModule, QuillarModule } from "@quillar/angular";
 
 @NgModule({
   declarations: [AppComponent],

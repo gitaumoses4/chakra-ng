@@ -13,8 +13,24 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "scope:angular",
+                "onlyDependOnLibsWithTags": ["scope:components", "scope:core", "scope:utils"]
+              },
+              {
+                "sourceTag": "scope:components",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:utils"]
+              },
+              {
+                "sourceTag": "scope:core",
+                "onlyDependOnLibsWithTags": ["scope:utils"]
+              },
+              {
+                "sourceTag": "scope:utils",
+                "onlyDependOnLibsWithTags": []
+              },
+              {
+                "sourceTag": "scope:app",
+                "onlyDependOnLibsWithTags": ["scope:angular"]
               }
             ]
           }

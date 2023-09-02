@@ -15,11 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@quillar/angular": ["libs/core/angular/src/index.ts"],
-      "@quillar/button": ["libs/components/button/src/index.ts"],
-      "@quillar/config": ["libs/core/config/src/index.ts"],
-      "@quillar/styles": ["libs/core/styles/src/index.ts"],
-      "@quillar/system": ["libs/core/system/src/index.ts"]
+      "@quillar/angular": ["libs/angular/src/index.ts"],
+      "@quillar/components": ["libs/components/src/index.ts"],
+      "@quillar/core": ["libs/core/src/index.ts"],
+      "@quillar/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
