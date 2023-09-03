@@ -2,7 +2,7 @@ import { Inject, Injectable, Renderer2, RendererFactory2 } from "@angular/core";
 import { Interpolation, SerializedStyles, serializeStyles } from "@emotion/serialize";
 import { DOCUMENT } from "@angular/common";
 import { CacheService } from "./cache.service";
-import { registerStyles } from "@emotion/utils";
+import { insertStyles, registerStyles } from "@emotion/utils";
 import { ThemeService } from "../theme";
 
 type Styles = Array<Interpolation<any> | TemplateStringsArray>;
@@ -31,35 +31,33 @@ export class StylesService {
     let current: SerializedStyles | undefined = serialized;
 
     while (current !== undefined) {
-      let key = `${cache.key}-${current.name}`;
-
-      if (element) {
-        const elementClassName = Array.from(element.classList).find((eClassName) => cache.registered[`${eClassName}`]);
-        if (elementClassName) {
-          key = elementClassName;
-        }
-      } else {
-        key = `${cache.key}-global`;
-      }
+      const key = `${cache.key}-${element ? current.name : "global"}`;
 
       const node = this.document.querySelector(`style[data-emotion="${key}"]`);
 
-      const sheet = new (cache.sheet.constructor as any)({
-        key,
-        nonce: cache.sheet.nonce,
-        container: cache.sheet.container,
-        speedy: (cache.sheet as any).isSpeedy,
-      });
-
-      if (node) {
-        node.innerHTML = element ? `.${key} { ${serialized.styles} }` : serialized.styles;
-      } else {
+      if (element) {
         registerStyles(cache, current, false);
-        cache.insert(element ? `.${serialized.name}` : "", serialized, sheet, false);
+        insertStyles(cache, serialized, false);
 
-        if (element) {
-          this.renderer.addClass(element, key);
-        }
+        Array.from(element.classList).forEach((eClassName) => {
+          if (cache.registered[`${eClassName}`]) {
+            this.renderer.removeClass(element, eClassName);
+          }
+        });
+        this.renderer.addClass(element, key);
+      } else {
+        const sheet = new (cache.sheet.constructor as any)({
+          key,
+          nonce: cache.sheet.nonce,
+          container: cache.sheet.container,
+          speedy: (cache.sheet as any).isSpeedy,
+        });
+
+        cache.insert("", serialized, sheet, false);
+      }
+
+      if (element && !node) {
+        this.renderer.addClass(element, key);
       }
 
       current = current.next;

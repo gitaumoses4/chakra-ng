@@ -14,11 +14,11 @@
             "depConstraints": [
               {
                 "sourceTag": "scope:angular",
-                "onlyDependOnLibsWithTags": ["scope:components", "scope:core", "scope:utils"]
+                "onlyDependOnLibsWithTags": ["scope:components", "scope:core", "scope:utils", "scope:icons"]
               },
               {
                 "sourceTag": "scope:components",
-                "onlyDependOnLibsWithTags": ["scope:core", "scope:utils"]
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:utils", "scope:icons"]
               },
               {
                 "sourceTag": "scope:core",
@@ -30,7 +30,7 @@
               },
               {
                 "sourceTag": "scope:app",
-                "onlyDependOnLibsWithTags": ["scope:angular"]
+                "onlyDependOnLibsWithTags": ["scope:angular", "scope:icons"]
               }
             ]
           }

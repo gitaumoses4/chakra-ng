@@ -18,6 +18,7 @@
       "@quillar/angular": ["libs/angular/src/index.ts"],
       "@quillar/components": ["libs/components/src/index.ts"],
       "@quillar/core": ["libs/core/src/index.ts"],
+      "@quillar/icons": ["libs/icons/src/index.ts"],
       "@quillar/utils": ["libs/utils/src/index.ts"]
     }
   },
