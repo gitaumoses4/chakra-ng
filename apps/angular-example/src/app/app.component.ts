@@ -6,9 +6,11 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  color = "blue.500";
+  background = "blue.500";
 
   public updateStyles() {
-    this.color = "white.500";
+    const colors = ["red", "blue", "green", "yellow", "purple", "pink"];
+
+    this.background = `${colors[Math.floor(Math.random() * colors.length)]}.500`;
   }
 }

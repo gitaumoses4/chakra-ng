@@ -1,17 +1,18 @@
 import { NgModule } from "@angular/core";
-import { QuillarCacheService } from "./quillar-cache.service";
-import { QuillarStylesService } from "./quillar-styles.service";
+import { CacheService } from "./cache.service";
+import { StylesService } from "./styles.service";
 import { get, runIfFn } from "@chakra-ui/utils";
 import { css } from "@chakra-ui/styled-system";
 import { Interpolation } from "@emotion/serialize";
 import { cssReset, vhPolyfill } from "./css-reset/styles";
-import { QuillarConfig, ThemeService } from "../config";
+import { QuillarConfig } from "../config";
+import { ThemeService } from "../theme";
 
 @NgModule({
-  providers: [QuillarCacheService, QuillarStylesService],
+  providers: [CacheService, StylesService],
 })
-export class QuillarStylesModule {
-  constructor(private stylesService: QuillarStylesService, private config: QuillarConfig, private themeService: ThemeService) {
+export class StylesModule {
+  constructor(private stylesService: StylesService, private config: QuillarConfig, private themeService: ThemeService) {
     this.attachGlobalStyles();
   }
 

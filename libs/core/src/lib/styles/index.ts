@@ -1,3 +1,3 @@
-export * from "./quillar-styles.module";
-export * from "./quillar-cache.service";
-export * from "./quillar-styles.service";
+export * from "./styles.module";
+export * from "./cache.service";
+export * from "./styles.service";

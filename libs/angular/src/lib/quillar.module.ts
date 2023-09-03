@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { QuillarSystemModule } from "@quillar/core";
+import { SystemModule } from "@quillar/core";
 
-const modules = [QuillarSystemModule];
+const modules = [SystemModule];
 
 @NgModule({
   imports: [CommonModule, ...modules],

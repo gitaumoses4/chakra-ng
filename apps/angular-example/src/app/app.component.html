@@ -1,2 +1,5 @@
-<div qElement [bgColor]="'red.500'" [color]="color" class="card">Hello</div>
-<button (click)="updateStyles()">Update</button>
+<div style="display: flex; gap: 5em; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+  <div style="width: 500px; text-align: center; height: 200px" qElement [bg]="background">Hello</div>
+  <q-button>Test</q-button>
+  <button (click)="updateStyles()">Update</button>
+</div>

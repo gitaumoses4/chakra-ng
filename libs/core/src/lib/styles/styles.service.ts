@@ -1,18 +1,18 @@
 import { Inject, Injectable, Renderer2, RendererFactory2 } from "@angular/core";
 import { Interpolation, SerializedStyles, serializeStyles } from "@emotion/serialize";
 import { DOCUMENT } from "@angular/common";
-import { QuillarCacheService } from "./quillar-cache.service";
-import { ThemeService } from "../config";
+import { CacheService } from "./cache.service";
 import { registerStyles } from "@emotion/utils";
+import { ThemeService } from "../theme";
 
 type Styles = Array<Interpolation<any> | TemplateStringsArray>;
 
 @Injectable()
-export class QuillarStylesService {
+export class StylesService {
   private renderer: Renderer2;
 
   constructor(
-    private readonly cacheService: QuillarCacheService,
+    private readonly cacheService: CacheService,
     private readonly rendererFactory: RendererFactory2,
     private readonly themeService: ThemeService,
     @Inject(DOCUMENT) private readonly document: Document,
@@ -31,18 +31,16 @@ export class QuillarStylesService {
     let current: SerializedStyles | undefined = serialized;
 
     while (current !== undefined) {
-      let className = current.name;
+      let key = `${cache.key}-${current.name}`;
 
       if (element) {
-        const elementClassName = Array.from(element.classList).find((eClassName) => cache.registered[`${cache.key}-${eClassName}`]);
+        const elementClassName = Array.from(element.classList).find((eClassName) => cache.registered[`${eClassName}`]);
         if (elementClassName) {
-          className = elementClassName;
+          key = elementClassName;
         }
       } else {
-        className = "global";
+        key = `${cache.key}-global`;
       }
-
-      const key = `${cache.key}-${className}`;
 
       const node = this.document.querySelector(`style[data-emotion="${key}"]`);
 
@@ -54,13 +52,13 @@ export class QuillarStylesService {
       });
 
       if (node) {
-        node.innerHTML = element ? `.${className} { ${serialized.styles} }` : serialized.styles;
+        node.innerHTML = element ? `.${key} { ${serialized.styles} }` : serialized.styles;
       } else {
         registerStyles(cache, current, false);
         cache.insert(element ? `.${serialized.name}` : "", serialized, sheet, false);
 
         if (element) {
-          this.renderer.addClass(element, className);
+          this.renderer.addClass(element, key);
         }
       }
 

@@ -1,4 +1,4 @@
-import { ColorModeManager, LocalStorageManager } from "./color-mode.manager";
+import { ColorModeManager, LocalStorageManager } from "../theme/color-mode.manager";
 
 export class QuillarConfig {
   /**

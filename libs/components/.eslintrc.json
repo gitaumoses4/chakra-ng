@@ -9,7 +9,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "quillar",
+            "prefix": "q",
             "style": "camelCase"
           }
         ],
@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "quillar",
+            "prefix": "q",
             "style": "kebab-case"
           }
         ]

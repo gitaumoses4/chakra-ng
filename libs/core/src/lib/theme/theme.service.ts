@@ -1,16 +1,17 @@
-import { Inject, Injectable } from "@angular/core";
-import { ChakraTheme } from "@chakra-ui/theme";
+import { Injectable } from "@angular/core";
 import { Dict, filterUndefined, get, mergeWith } from "@chakra-ui/utils";
-import { resolveStyleConfig, SystemStyleObject, ThemingProps, WithCSSVar } from "@chakra-ui/styled-system";
-import { QuillarConfig } from "./quillar.config";
+import { resolveStyleConfig, ThemingProps, WithCSSVar } from "@chakra-ui/styled-system";
 import { omit } from "@chakra-ui/object-utils";
 import { BehaviorSubject, Subscription } from "rxjs";
-import { ColorMode, ColorModeWithSystem } from "./types";
+import { ColorMode, ColorModeWithSystem, QuillarTheme } from "./types";
 import { ColorModeUtils } from "./color-mode.utils";
-import { THEME } from "./providers";
+import { QuillarConfig } from "../config";
+import { generateTheme, QuillarThemeConfig } from "@quillar/utils";
+import { QuillarStyles } from "../system";
 
 @Injectable()
-export class ThemeService<Theme extends ChakraTheme = ChakraTheme> {
+export class ThemeService {
+  private theme: WithCSSVar<QuillarTheme> = generateTheme(this.themeConfig);
   private $colorMode = new BehaviorSubject<ColorModeWithSystem>(this.getInitialColorMode());
   private $resolvedColorMode = new BehaviorSubject<ColorMode | undefined>(undefined);
   private subscriptions: Subscription[] = [];
@@ -18,12 +19,12 @@ export class ThemeService<Theme extends ChakraTheme = ChakraTheme> {
   constructor(
     private readonly config: QuillarConfig,
     private readonly colorModeUtils: ColorModeUtils,
-    @Inject(THEME) private readonly theme: WithCSSVar<Theme>,
+    private readonly themeConfig: QuillarThemeConfig,
   ) {
     this.initialize();
   }
 
-  public getTheme(): WithCSSVar<Theme> {
+  public getTheme(): WithCSSVar<QuillarTheme> {
     return this.theme;
   }
 
@@ -31,11 +32,11 @@ export class ThemeService<Theme extends ChakraTheme = ChakraTheme> {
     return this.theme.config.initialColorMode;
   }
 
-  public getStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): SystemStyleObject {
+  public getStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): QuillarStyles {
     return this.getStyleConfigImp(themeKey, props);
   }
 
-  public getMultiStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): Record<string, SystemStyleObject> {
+  public getMultiStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): Record<string, QuillarStyles> {
     return this.getStyleConfigImp(themeKey, props);
   }
 
