@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { QuillarStyles } from "@quillar/angular";
 
 @Component({
   selector: "app-root",
@@ -7,13 +6,9 @@ import { QuillarStyles } from "@quillar/angular";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  styles: QuillarStyles = {
-    bg: "red.800",
-  };
+  color = "blue.500";
 
   public updateStyles() {
-    this.styles = {
-      bg: "blue.800",
-    };
+    this.color = "white.500";
   }
 }

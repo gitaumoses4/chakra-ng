@@ -34,7 +34,7 @@ export class QuillarStylesService {
       let className = current.name;
 
       if (element) {
-        const elementClassName = Array.from(element.classList).find((className) => cache.registered[`${cache.key}-${className}`]);
+        const elementClassName = Array.from(element.classList).find((eClassName) => cache.registered[`${cache.key}-${eClassName}`]);
         if (elementClassName) {
           className = elementClassName;
         }

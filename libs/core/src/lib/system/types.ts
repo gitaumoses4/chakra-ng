@@ -1,6 +1,10 @@
 import { ResponsiveValue, SystemProps, SystemStyleObject } from "@chakra-ui/styled-system";
 import { CSSInterpolation } from "@emotion/css";
 
+export type MaybeRequired<T> = {
+  [P in keyof Required<T>]: Required<T>[P] | undefined;
+};
+
 export interface QuillarStyles extends SystemProps {
   /**
    * Used to truncate text at a specific number of lines
