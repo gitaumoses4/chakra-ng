@@ -1,35 +1,62 @@
 import { ThemeService } from "../theme";
-import { Component, OnChanges, OnInit } from "@angular/core";
-import { QuillarStyles } from "./types";
-import { BehaviorSubject } from "rxjs";
+import { Component, inject, Input, OnChanges, OnDestroy, OnInit } from "@angular/core";
+import { QuillarStyleObject, QuillarStyles } from "./types";
+import { BehaviorSubject, combineLatest, Subscription } from "rxjs";
+import { ResponsiveValue, ThemeTypings } from "@chakra-ui/styled-system";
 
-export function StyledComponent(component: string) {
-  @Component({ template: "", standalone: true })
-  abstract class BaseComponent implements OnChanges, OnInit {
-    public themeStyles = new BehaviorSubject<QuillarStyles>({});
-    public styles = new BehaviorSubject<QuillarStyles>({});
+@Component({ template: "", standalone: true })
+export abstract class StyledComponent<ThemeComponent extends string = any> implements OnChanges, OnInit, OnDestroy {
+  public $themeStyles = new BehaviorSubject<QuillarStyleObject>({});
+  public $customStyles = new BehaviorSubject<QuillarStyles>({});
+  public $styles = new BehaviorSubject<QuillarStyles>({});
 
-    public constructor(public readonly themeService: ThemeService) {}
+  public readonly themeService: ThemeService = inject(ThemeService);
 
-    ngOnInit() {
-      this.refreshStyles();
-    }
+  private readonly styleSubscriptions: Subscription[] = [];
 
-    ngOnChanges() {
-      this.refreshStyles();
-    }
+  @Input() public variant?: ResponsiveValue<
+    ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["variants"] : string
+  >;
+  @Input() public size?: ResponsiveValue<
+    ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["sizes"] : string
+  >;
+  @Input() public colorScheme?: ThemeTypings["colorSchemes"];
+  @Input() public orientation?: "vertical" | "horizontal";
+  @Input() public styleConfig?: Record<string, any>;
 
-    public refreshStyles() {
-      this.themeStyles.next(this.themeService.getStyleConfig(component));
-      this.styles.next(this.buildStyles(this.themeStyles.value));
-
-      console.log(this.styles.value);
-    }
-
-    public abstract buildStyles(themeStyles: QuillarStyles): QuillarStyles;
-
-    public abstract getComponentProps(): Record<string, any>;
+  /**
+   * Used to pass theme-aware style props
+   */
+  @Input() public set qStyles(styles: QuillarStyles) {
+    this.$customStyles.next(styles);
   }
 
-  return BaseComponent;
+  public get styles() {
+    return this.$styles.value;
+  }
+
+  public ngOnInit() {
+    this.styleSubscriptions.push(
+      combineLatest([this.$themeStyles, this.$customStyles]).subscribe(([themeStyles, customStyles]) => {
+        this.$styles.next({ ...customStyles, __css: this.buildStyles(themeStyles) });
+      }),
+    );
+    this.refreshStyles();
+  }
+
+  public ngOnChanges() {
+    this.refreshStyles();
+  }
+
+  public refreshStyles() {
+    this.$themeStyles.next(this.themeService.getStyleConfig(this.component(), this));
+  }
+
+  public ngOnDestroy() {
+    this.styleSubscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
+  public abstract buildStyles(themeStyles: QuillarStyleObject): QuillarStyleObject;
+
+  public abstract component(): ThemeComponent;
 }

@@ -5,9 +5,9 @@ export type MaybeRequired<T> = {
   [P in keyof Required<T>]: Required<T>[P] | undefined;
 };
 
-export type QuillarStyles = SystemStyleObject;
+export type QuillarStyleObject = SystemStyleObject;
 
-export interface QuillarInputs extends SystemProps {
+export interface QuillarStyles extends SystemProps {
   /**
    * Used to truncate text at a specific number of lines
    */
@@ -16,12 +16,12 @@ export interface QuillarInputs extends SystemProps {
    * Used for internal css management
    * @private
    */
-  __css?: QuillarStyles;
+  __css?: QuillarStyleObject;
   /**
    * Used to pass theme-aware style props.
    * NB: This is the public API for user-land
    */
-  sx?: QuillarStyles;
+  sx?: QuillarStyleObject;
   /**
    * The emotion's css style object
    */

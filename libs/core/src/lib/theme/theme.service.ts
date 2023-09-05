@@ -7,7 +7,7 @@ import { ColorMode, ColorModeWithSystem, QuillarTheme } from "./types";
 import { ColorModeUtils } from "./color-mode.utils";
 import { QuillarConfig } from "../config";
 import { generateTheme, QuillarThemeConfig } from "@quillar/utils";
-import { QuillarStyles } from "../system";
+import { QuillarStyleObject } from "../system";
 
 @Injectable()
 export class ThemeService {
@@ -32,11 +32,11 @@ export class ThemeService {
     return this.theme.config.initialColorMode;
   }
 
-  public getStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): QuillarStyles {
+  public getStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): QuillarStyleObject {
     return this.getStyleConfigImp(themeKey, props);
   }
 
-  public getMultiStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): Record<string, QuillarStyles> {
+  public getMultiStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): Record<string, QuillarStyleObject> {
     return this.getStyleConfigImp(themeKey, props);
   }
 

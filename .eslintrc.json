@@ -17,6 +17,10 @@
                 "onlyDependOnLibsWithTags": ["scope:components", "scope:core", "scope:utils", "scope:icons"]
               },
               {
+                "sourceTag": "scope:icons",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:utils"]
+              },
+              {
                 "sourceTag": "scope:components",
                 "onlyDependOnLibsWithTags": ["scope:core", "scope:utils", "scope:icons"]
               },

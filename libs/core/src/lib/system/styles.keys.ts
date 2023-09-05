@@ -1,6 +1,6 @@
-import { QuillarInputs } from "./types";
+import { QuillarStyles } from "./types";
 
-const stylesRecord: Record<keyof Required<QuillarInputs>, undefined> = {
+const stylesRecord: Record<keyof Required<QuillarStyles>, undefined> = {
   _hover: undefined,
   _active: undefined,
   _focus: undefined,
@@ -421,4 +421,4 @@ const stylesRecord: Record<keyof Required<QuillarInputs>, undefined> = {
   css: undefined,
 };
 
-export const stylesKeys = Object.keys(stylesRecord) as Array<keyof Required<QuillarInputs>>;
+export const stylesKeys = Object.keys(stylesRecord) as Array<keyof Required<QuillarStyles>>;
