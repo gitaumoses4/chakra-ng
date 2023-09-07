@@ -1,0 +1,31 @@
+{
+  "name": "storybook-addon",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/storybook-addon/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/storybook-addon",
+        "main": "packages/storybook-addon/src/index.ts",
+        "tsConfig": "packages/storybook-addon/tsconfig.json",
+        "assets": ["packages/storybook-addon/preset.js"],
+        "project": "packages/storybook-addon/package.json"
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs storybook-addon {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/storybook-addon/**/*.ts", "packages/storybook-addon/package.json"]
+      }
+    }
+  },
+  "tags": ["scope:storybook-addon"]
+}

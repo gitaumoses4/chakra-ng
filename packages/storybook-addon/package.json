@@ -1,0 +1,63 @@
+{
+  "name": "@quillar/storybook-addon",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Quillar Storybook Addon",
+  "keywords": [
+    "Quillar",
+    "Storybook",
+    "Addon",
+    "Angular"
+  ],
+  "storybook": {
+    "displayName": "Quillar Storybook Addon",
+    "supportedFrameworks": [
+      "angular"
+    ]
+  },
+  "scripts": {},
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    },
+    "./*": "./*",
+    "./manager": {
+      "types": "./src/manager.d.ts",
+      "import": "./src/manager.js",
+      "require": "./src/manager.js"
+    },
+    "./preview": {
+      "types": "./src/preview.d.ts",
+      "import": "./src/preview.js",
+      "require": "./src/preview.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "manager": [
+        "./src/manager.d.ts"
+      ],
+      "previews": [
+        "./src/preview.d.ts"
+      ]
+    }
+  },
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
+  "files": [
+    "dist",
+    "stories",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "*.js",
+    "*.d.ts"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {}
+}

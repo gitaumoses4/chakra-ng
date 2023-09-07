@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": false,
+    "sourceMap": true,
+    "declaration": true,
+    "incremental": false,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "lib": ["ES2022", "dom"],
+    "target": "ES2022"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "coverage", "src/**/*.spec.ts", "src/**/*.test.ts"]
+}

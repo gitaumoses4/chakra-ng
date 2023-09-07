@@ -35,6 +35,10 @@
               {
                 "sourceTag": "scope:app",
                 "onlyDependOnLibsWithTags": ["scope:angular", "scope:icons"]
+              },
+              {
+                "sourceTag": "scope:storybook-addon",
+                "onlyDependOnLibsWithTags": ["scope:core", "scope:utils"]
               }
             ]
           }
@@ -45,7 +49,8 @@
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
       "rules": {
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-var-requires": "off"
       }
     },
     {
