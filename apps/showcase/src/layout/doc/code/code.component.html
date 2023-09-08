@@ -1,0 +1,17 @@
+<div *ngIf="code">
+  <div>
+    <div *ngIf="fullCodeVisible">
+      <button *ngIf="code.html" (click)="changeLang('html')">HTML</button>
+      <button *ngIf="code.typescript" (click)="changeLang('typescript')">Typescript</button>
+      <button *ngIf="code.data" (click)="changeLang('data')"></button>
+    </div>
+    <button *ngIf="!hideToggleCode" (click)="toggleCode()">Toggle</button>
+    <button (click)="copyCode()">Copy</button>
+  </div>
+  <pre *ngIf="lang === 'basic'"><code #codeElement>{{code.basic}}</code></pre>
+  <pre *ngIf="lang === 'html'"><code #codeElement>{{code.html}}</code></pre>
+  <pre *ngIf="lang === 'typescript'"><code #codeElement>{{code.typescript}}</code></pre>
+  <pre *ngIf="lang === 'data'"><code #codeElement>{{code.data}}</code></pre>
+  <pre *ngIf="lang === 'scss'"><code #codeElement>{{code.scss}}</code></pre>
+  <pre *ngIf="lang === 'command'"><code #codeElement>{{code.command}}</code></pre>
+</div>

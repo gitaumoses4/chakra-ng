@@ -1,5 +1,6 @@
 import { ThemingProps } from "@chakra-ui/styled-system";
-import { ThemeExtension } from "@chakra-ui/theme-utils";
+import { DeepPartial, ThemeExtension } from "@chakra-ui/theme-utils";
+import { ChakraTheme } from "@chakra-ui/theme";
 
 export interface ThemeExtensionConfig {
   type: keyof ThemingProps;
@@ -14,3 +15,7 @@ export type ThemeExtensionProps<K extends keyof ThemingProps> = Required<Pick<Th
 export type ThemeExtensions = {
   [K in keyof ThemingProps]: (props: ThemeExtensionProps<K>) => ThemeExtension;
 };
+
+export type QuillarTheme = ChakraTheme;
+
+export type PartialQuillarTheme = DeepPartial<QuillarTheme>;

@@ -1,8 +1,7 @@
-import { Dict } from "@chakra-ui/utils";
-import { ThemeExtensionConfig } from "./types";
+import { PartialQuillarTheme, ThemeExtensionConfig } from "./types";
 
 export class QuillarThemeConfig {
-  public theme: Dict = {};
+  public theme: PartialQuillarTheme = {};
 
   public useDefaultTheme = true;
 

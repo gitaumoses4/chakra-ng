@@ -1,0 +1,24 @@
+<ul #nav *ngIf="sections && sections.length" class="doc-section-nav">
+  <li *ngFor="let section of sections; let i = index" class="navbar-item" [ngClass]="{ 'active-navbar-item': activeId === section.id }">
+    <ng-container>
+      <div class="navbar-item-content">
+        <button class="p-link" (click)="onButtonClick(section)">{{ section.header }}</button>
+      </div>
+      <ng-container>
+        <ul *ngIf="section.children">
+          <li
+            *ngFor="let child of section.children; let isFirst = first"
+            class="navbar-item"
+            [ngClass]="{ 'active-navbar-item': isActiveChildId(isFirst, activeId, child.id, section.id) }"
+          >
+            <div class="navbar-item-content">
+              <button class="p-link" (click)="onChildButtonClick(section, isFirst, child)">
+                {{ child.header }}
+              </button>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+    </ng-container>
+  </li>
+</ul>

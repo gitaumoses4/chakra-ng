@@ -3,10 +3,10 @@ import { Dict, filterUndefined, get, mergeWith } from "@chakra-ui/utils";
 import { resolveStyleConfig, ThemingProps, WithCSSVar } from "@chakra-ui/styled-system";
 import { omit } from "@chakra-ui/object-utils";
 import { BehaviorSubject, Subscription } from "rxjs";
-import { ColorMode, ColorModeWithSystem, QuillarTheme } from "./types";
+import { ColorMode, ColorModeWithSystem } from "./types";
 import { ColorModeUtils } from "./color-mode.utils";
 import { QuillarConfig } from "../config";
-import { generateTheme, QuillarThemeConfig } from "@quillar/utils";
+import { generateTheme, QuillarTheme, QuillarThemeConfig } from "@quillar/utils";
 import { QuillarStyleObject } from "../system";
 
 @Injectable()
