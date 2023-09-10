@@ -1,7 +1,7 @@
-import { DocSection } from "../types";
+import { DocSection } from "../../../types";
 import { ButtonImportDoc } from "./button-import.doc";
+import { ButtonUsageDemo } from "../../../docs/button/usage/button-usage.demo";
 import { createDocs } from "../../../layout/doc/page/createDocs";
-import { ButtonUsageDoc } from "./button-usage.doc";
 
 const sections: Array<DocSection> = [
   {
@@ -14,11 +14,12 @@ const sections: Array<DocSection> = [
     id: "usage",
     header: "Usage",
     description: "",
-    component: ButtonUsageDoc,
+    component: ButtonUsageDemo,
   },
 ];
 
 export const ButtonDocs = createDocs({
+  id: "button",
   title: "Button - Quillar UI",
   header: "Button",
   description:

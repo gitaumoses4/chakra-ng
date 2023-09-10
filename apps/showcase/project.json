@@ -7,7 +7,7 @@
   "tags": ["scope:app"],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/showcase",
@@ -17,7 +17,10 @@
         "tsConfig": "apps/showcase/tsconfig.app.json",
         "assets": ["apps/showcase/src/favicon.ico", "apps/showcase/src/assets"],
         "styles": ["apps/showcase/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/showcase/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -47,7 +50,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "showcase:build:production"

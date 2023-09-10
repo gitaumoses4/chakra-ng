@@ -40,6 +40,9 @@ export abstract class StyledComponent<ThemeComponent extends string = any> imple
       combineLatest([this.$themeStyles, this.$customStyles]).subscribe(([themeStyles, customStyles]) => {
         this.$styles.next({ ...customStyles, __css: this.buildStyles(themeStyles) });
       }),
+      this.themeService.$changes.subscribe(() => {
+        this.refreshStyles();
+      }),
     );
     this.refreshStyles();
   }

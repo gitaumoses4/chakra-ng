@@ -1,7 +1,22 @@
-import { AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { Code, ExtFile, Languages, RouteFile } from "./types";
-import { CommonModule } from "@angular/common";
-import { ThemeService } from "@quillar/core";
+import { Component, Inject, Input, OnDestroy, OnInit } from "@angular/core";
+import { Code } from "./types";
+import { CommonModule, DOCUMENT } from "@angular/common";
+import { ThemeService } from "@quillar/angular";
+import { Subscription } from "rxjs";
+import { DomSanitizer } from "@angular/platform-browser";
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import html from "highlight.js/lib/languages/xml";
+
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("html", html);
+
+const STYLE_ELEMENT_ID = "highlight-theme";
+
+const highlightTheme = {
+  dark: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
+  light: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css",
+};
 
 @Component({
   standalone: true,
@@ -9,68 +24,46 @@ import { ThemeService } from "@quillar/core";
   selector: "app-code",
   templateUrl: "./code.component.html",
 })
-export class CodeComponent implements AfterViewChecked, OnInit {
-  @Input() code!: Code;
+export class CodeComponent implements OnInit, OnDestroy {
+  @Input() code: Code[] = [];
 
-  @Input() service!: any;
+  public currentCode?: Code;
 
-  @Input() selector!: string;
+  private subscriptions: Subscription[] = [];
 
-  @Input() extFiles: ExtFile[] = [];
-
-  @Input() routeFiles: RouteFile[] = [];
-
-  @Input() hideToggleCode = false;
-
-  @Input() hideCodeSandbox = false;
-
-  @Input() hideStackBlitz = false;
-
-  @ViewChild("codeElement") codeElement!: ElementRef;
-
-  fullCodeVisible = false;
-
-  lang: Languages = "basic";
-
-  constructor(private themeService: ThemeService) {}
-
-  ngAfterViewChecked() {
-    (window as any).hljs.highlightAll();
-  }
+  constructor(private themeService: ThemeService, @Inject(DOCUMENT) private readonly document: Document, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.lang = this.getInitialLang();
-  }
+    this.currentCode = this.code[0];
+    const styleElement = document.getElementById(STYLE_ELEMENT_ID);
 
-  changeLang(lang: Languages) {
-    this.lang = lang;
-  }
-
-  getInitialLang(): Languages {
-    if (this.code) {
-      return Object.keys(this.code)[0] as Languages;
+    if (styleElement) {
+      this.subscriptions.push(
+        this.themeService.$colorMode.subscribe((colorMode) => {
+          styleElement.setAttribute("href", highlightTheme[colorMode]);
+        }),
+      );
     }
-    return "basic";
+  }
+
+  showCode(index: number) {
+    this.currentCode = this.code[index];
   }
 
   async copyCode() {
-    await navigator.clipboard.writeText(this.code[this.lang] || "");
-  }
-
-  getCode(lang: Languages = "basic") {
-    if (this.code) {
-      if (this.fullCodeVisible || this.hideToggleCode) {
-        return this.code[lang];
-      } else {
-        return this.code["basic"];
-      }
+    if (this.currentCode) {
+      await navigator.clipboard.writeText(this.currentCode.template);
     }
-    return undefined;
   }
 
-  toggleCode() {
-    this.fullCodeVisible = !this.fullCodeVisible;
-    this.fullCodeVisible && (this.lang = "html");
-    !this.fullCodeVisible && (this.lang = "basic");
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  }
+
+  public getTemplate() {
+    if (this.currentCode) {
+      return hljs.highlight(this.currentCode?.template || "", { language: this.currentCode.language }).value;
+    }
+    return "";
   }
 }

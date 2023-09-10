@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { StyledComponent, SystemModule } from "@quillar/core";
+import { QStylesDirective, StyledComponent } from "@quillar/core";
 import { SystemStyleObject } from "@chakra-ui/styled-system";
 import { QUILLAR_ICONS_TOKEN, QuillarIcons } from "@quillar/icons";
 
@@ -17,7 +17,7 @@ const fallbackIcon = `
   selector: "q-icon",
   template: ` <svg fill="currentColor" [qStyles]="styles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [innerHTML]="template"></svg>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [SystemModule],
+  imports: [QStylesDirective],
 })
 export class IconComponent extends StyledComponent {
   private sanitizer = inject(DomSanitizer);

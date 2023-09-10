@@ -4,8 +4,8 @@ import { StylesService } from "../styles";
 import { toCSSObject } from "./system";
 import { ThemeService } from "../theme";
 
-@Directive({ selector: "[qStyles]" })
-export class ElementDirective implements OnInit, OnChanges {
+@Directive({ standalone: true, selector: "[qStyles]" })
+export class QStylesDirective implements OnInit, OnChanges {
   @Input() public qStyles: QuillarStyles = {};
 
   constructor(private readonly elementRef: ElementRef, private readonly themeService: ThemeService, private readonly styleService: StylesService) {}

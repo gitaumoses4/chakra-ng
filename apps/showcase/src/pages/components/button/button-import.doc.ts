@@ -1,7 +1,17 @@
 import { Component } from "@angular/core";
+import { CodeComponent } from "../../../layout/doc/code/code.component";
+import { Code } from "../../../layout/doc/code/types";
 
 @Component({
   standalone: true,
-  template: "<div style='width: 200px; height: 200px; background: red'></div>",
+  template: "<app-code [code]='code'></app-code>",
+  imports: [CodeComponent],
 })
-export class ButtonImportDoc {}
+export class ButtonImportDoc {
+  code: Code[] = [
+    {
+      language: "javascript",
+      template: `import { ButtonComponent } from '@quillar/angular'`,
+    },
+  ];
+}

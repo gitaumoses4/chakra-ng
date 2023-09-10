@@ -2,4 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
+.card {
+  width: 100%;
+  padding: var(--quillar-space-4);
+  border: 1px solid var(--quillar-colors-chakra-border-color);
+  border-radius: var(--quillar-radii-lg);
+  background: var(--quillar-colors-blackAlpha-100);
+}

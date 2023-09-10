@@ -4,7 +4,7 @@
       <h1>{{ page.header }}</h1>
       <p>{{ page.description }}</p>
     </div>
-    <app-docsection [sections]="page.sections"></app-docsection>
+    <app-doc-sections [sections]="page.sections" [pageId]="page.id"></app-doc-sections>
   </div>
   <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
 </div>

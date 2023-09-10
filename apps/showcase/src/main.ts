@@ -4,11 +4,10 @@ import { importProvidersFrom } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { appRoutes } from "./app/app.routes";
 import { ConfigModule, QuillarModule } from "@quillar/angular";
+import theme from "./theme";
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(RouterModule.forRoot(appRoutes), ConfigModule.forRoot({ theme: { config: { initialColorMode: "dark" } } }), QuillarModule),
-  ],
+  providers: [importProvidersFrom(RouterModule.forRoot(appRoutes), ConfigModule.forRoot({ theme }), QuillarModule)],
 })
   .then()
   .catch(console.error);

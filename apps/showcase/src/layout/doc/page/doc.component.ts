@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
-import { DocPage } from "../../../pages/components/types";
+import { DocPage } from "../../../types";
 import { CommonModule } from "@angular/common";
-import { AppDocSectionsComponent } from "../section/app-docsection.component";
+import { AppDocSectionsComponent } from "../sections/app-doc-sections.component";
 import { DocSectionNavComponent } from "../section-nav/doc-section-nav.component";
 
 @Component({

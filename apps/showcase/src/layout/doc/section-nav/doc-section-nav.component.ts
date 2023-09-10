@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from "@angular/core";
-import { DocSection } from "../../../pages/components/types";
+import { DocSection } from "../../../types";
 import { CommonModule, DOCUMENT, Location } from "@angular/common";
 import { RouterModule } from "@angular/router";
 

@@ -1,13 +1,6 @@
-export type Languages = "basic" | "html" | "typescript" | "command" | "scss" | "data";
+export type Language = "html" | "javascript" | "command" | "scss";
 
-export interface Code extends Partial<Record<Languages, string>> {
-  module?: string;
-  routerModule?: string;
-  component?: string;
-  service?: string[];
-  imports?: string[];
-  extFiles?: ExtFile[];
-}
+export type Code = { language: Language; template: string };
 
 export interface ExtFile {
   path: string;

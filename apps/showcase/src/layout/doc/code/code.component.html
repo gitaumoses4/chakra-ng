@@ -1,17 +1,11 @@
-<div *ngIf="code">
+<div *ngIf="code.length" class="border border-1 rounded-lg p-4" style="border-color: rgba(0, 0, 0, 0.1)">
   <div>
-    <div *ngIf="fullCodeVisible">
-      <button *ngIf="code.html" (click)="changeLang('html')">HTML</button>
-      <button *ngIf="code.typescript" (click)="changeLang('typescript')">Typescript</button>
-      <button *ngIf="code.data" (click)="changeLang('data')"></button>
+    <div *ngIf="code.length > 1">
+      <button *ngFor="let code of code; let i = index" (click)="showCode(i)">{{ code.language | titlecase }}</button>
     </div>
-    <button *ngIf="!hideToggleCode" (click)="toggleCode()">Toggle</button>
+  </div>
+  <div class="flex">
+    <pre class="flex-1" *ngIf="currentCode"><code [innerHTML]="this.getTemplate()"></code></pre>
     <button (click)="copyCode()">Copy</button>
   </div>
-  <pre *ngIf="lang === 'basic'"><code #codeElement>{{code.basic}}</code></pre>
-  <pre *ngIf="lang === 'html'"><code #codeElement>{{code.html}}</code></pre>
-  <pre *ngIf="lang === 'typescript'"><code #codeElement>{{code.typescript}}</code></pre>
-  <pre *ngIf="lang === 'data'"><code #codeElement>{{code.data}}</code></pre>
-  <pre *ngIf="lang === 'scss'"><code #codeElement>{{code.scss}}</code></pre>
-  <pre *ngIf="lang === 'command'"><code #codeElement>{{code.command}}</code></pre>
 </div>
