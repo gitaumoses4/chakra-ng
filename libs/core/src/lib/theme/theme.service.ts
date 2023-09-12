@@ -2,22 +2,20 @@ import { Injectable } from "@angular/core";
 import { Dict, filterUndefined, get, mergeWith } from "@chakra-ui/utils";
 import { resolveStyleConfig, ThemingProps, WithCSSVar } from "@chakra-ui/styled-system";
 import { omit } from "@chakra-ui/object-utils";
-import { BehaviorSubject, combineLatest, Subscription } from "rxjs";
+import { BehaviorSubject, combineLatest, map, Observable, Subscription } from "rxjs";
 import { ColorMode, ColorModeWithSystem } from "./types";
 import { ColorModeUtils } from "./color-mode.utils";
-import { QuillarConfig } from "../config";
+import { QuillarConfig } from "./quillar.config";
 import { generateTheme, QuillarTheme, QuillarThemeConfig } from "@quillar/utils";
 import { QuillarStyleObject } from "../system";
 
-@Injectable({ providedIn: "root" })
+@Injectable()
 export class ThemeService {
-  private $theme = new BehaviorSubject<WithCSSVar<QuillarTheme>>(generateTheme(this.themeConfig));
   private $resolvedColorMode = new BehaviorSubject<ColorMode | undefined>(undefined);
   private subscriptions: Subscription[] = [];
 
+  public $theme = new BehaviorSubject<WithCSSVar<QuillarTheme>>(generateTheme(this.themeConfig));
   public $colorMode = new BehaviorSubject<ColorMode>(this.getInitialColorMode());
-
-  public $changes = combineLatest([this.$theme, this.$colorMode]);
 
   constructor(
     private readonly config: QuillarConfig,
@@ -37,12 +35,12 @@ export class ThemeService {
     return initialColorMode === "system" || !initialColorMode ? "light" : initialColorMode;
   }
 
-  public getStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): QuillarStyleObject {
-    return this.getStyleConfigImp(themeKey, props);
+  public getStyleConfig(themeKey: string | null, $props: Observable<ThemingProps & Dict>): Observable<QuillarStyleObject> {
+    return this.getStyleConfigImp(themeKey, $props);
   }
 
-  public getMultiStyleConfig(themeKey: string | null, props: ThemingProps & Dict = {}): Record<string, QuillarStyleObject> {
-    return this.getStyleConfigImp(themeKey, props);
+  public getMultiStyleConfig(themeKey: string | null, $props: Observable<ThemingProps & Dict>): Observable<Record<string, QuillarStyleObject>> {
+    return this.getStyleConfigImp(themeKey, $props);
   }
 
   public getColorMode(): ColorMode {
@@ -67,23 +65,24 @@ export class ThemeService {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  private getStyleConfigImp(themeKey: string | null, props: ThemingProps & Dict = {}): any {
-    const { styleConfig: styleConfigProp, ...rest } = props;
+  private getStyleConfigImp(themeKey: string | null, $props: Observable<ThemingProps & Dict>): Observable<any> {
+    return combineLatest([this.$theme, this.$colorMode, $props]).pipe(
+      map(([theme, colorMode, props]) => {
+        const { styleConfig: styleConfigProp, ...rest } = props;
 
-    const theme = this.getTheme();
-    const colorMode = this.getColorMode();
+        const themeStyleConfig = themeKey ? get(theme, `components.${themeKey}`) : undefined;
 
-    const themeStyleConfig = themeKey ? get(theme, `components.${themeKey}`) : undefined;
+        const styleConfig = styleConfigProp || themeStyleConfig;
 
-    const styleConfig = styleConfigProp || themeStyleConfig;
+        const mergedProps = mergeWith({ theme, colorMode }, styleConfig?.defaultProps ?? {}, filterUndefined(omit(rest)));
 
-    const mergedProps = mergeWith({ theme, colorMode }, styleConfig?.defaultProps ?? {}, filterUndefined(omit(rest)));
-
-    if (styleConfig) {
-      const getStyles = resolveStyleConfig(styleConfig);
-      return getStyles(mergedProps);
-    }
-    return {};
+        if (styleConfig) {
+          const getStyles = resolveStyleConfig(styleConfig);
+          return getStyles(mergedProps);
+        }
+        return {};
+      }),
+    );
   }
 
   private initialize() {

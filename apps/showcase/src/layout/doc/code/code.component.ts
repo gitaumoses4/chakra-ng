@@ -1,53 +1,48 @@
 import { Component, Inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { Code } from "./types";
 import { CommonModule, DOCUMENT } from "@angular/common";
-import { ThemeService } from "@quillar/angular";
+import { ButtonComponent, ThemeService } from "@quillar/angular";
 import { Subscription } from "rxjs";
-import { DomSanitizer } from "@angular/platform-browser";
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
-import html from "highlight.js/lib/languages/xml";
-
-hljs.registerLanguage("javascript", javascript);
-hljs.registerLanguage("html", html);
+import { HighlightLoader, HighlightModule } from "ngx-highlightjs";
 
 const STYLE_ELEMENT_ID = "highlight-theme";
 
 const highlightTheme = {
-  dark: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
-  light: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css",
+  dark: "assets/css/github-dark.min.css",
+  light: "assets/css/github.min.css",
 };
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent, HighlightModule],
   selector: "app-code",
   templateUrl: "./code.component.html",
 })
 export class CodeComponent implements OnInit, OnDestroy {
   @Input() code: Code[] = [];
 
-  public currentCode?: Code;
+  public active = 0;
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private themeService: ThemeService, @Inject(DOCUMENT) private readonly document: Document, private sanitizer: DomSanitizer) {}
+  constructor(private themeService: ThemeService, @Inject(DOCUMENT) private readonly document: Document, private highlightLoader: HighlightLoader) {}
 
   ngOnInit() {
-    this.currentCode = this.code[0];
-    const styleElement = document.getElementById(STYLE_ELEMENT_ID);
+    this.active = 0;
 
-    if (styleElement) {
-      this.subscriptions.push(
-        this.themeService.$colorMode.subscribe((colorMode) => {
-          styleElement.setAttribute("href", highlightTheme[colorMode]);
-        }),
-      );
-    }
+    this.subscriptions.push(
+      this.themeService.$colorMode.subscribe((colorMode) => {
+        this.highlightLoader.setTheme(highlightTheme[colorMode]);
+      }),
+    );
   }
 
   showCode(index: number) {
-    this.currentCode = this.code[index];
+    this.active = index;
+  }
+
+  get currentCode() {
+    return this.code[this.active];
   }
 
   async copyCode() {
@@ -58,12 +53,5 @@ export class CodeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
-  }
-
-  public getTemplate() {
-    if (this.currentCode) {
-      return hljs.highlight(this.currentCode?.template || "", { language: this.currentCode.language }).value;
-    }
-    return "";
   }
 }

@@ -18,7 +18,7 @@ export class DocComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.page && changes.page.currentValue) {
-      this.titleService.setTitle(changes.page.currentValue.title);
+      this.titleService.setTitle(changes.page.currentValue.header + " - Quillar UI");
       this.metaService.updateTag({ name: "description", content: changes.page.currentValue.description });
     }
   }

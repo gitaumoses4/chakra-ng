@@ -1,11 +1,15 @@
-<div *ngIf="code.length" class="border border-1 rounded-lg p-4" style="border-color: rgba(0, 0, 0, 0.1)">
-  <div>
-    <div *ngIf="code.length > 1">
-      <button *ngFor="let code of code; let i = index" (click)="showCode(i)">{{ code.language | titlecase }}</button>
-    </div>
+<div
+  *ngIf="code.length"
+  class="flex hljs flex-col gap-4 border border-1 rounded-lg p-4"
+  style="border-color: var(--quillar-colors-chakra-border-color);"
+>
+  <div *ngIf="code.length > 1">
+    <q-button size="sm" [variant]="active === i ? 'solid' : 'ghost'" *ngFor="let code of code; let i = index" (click)="showCode(i)">{{
+      code.fileName || (code.language | titlecase)
+    }}</q-button>
   </div>
   <div class="flex">
-    <pre class="flex-1" *ngIf="currentCode"><code [innerHTML]="this.getTemplate()"></code></pre>
-    <button (click)="copyCode()">Copy</button>
+    <pre class="flex-1" *ngIf="currentCode"><code [highlight]="currentCode.template"></code></pre>
+    <q-button (click)="copyCode()">Copy</q-button>
   </div>
 </div>

@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
-import createEmotion from "@emotion/css/create-instance";
+import { QuillarStyles } from "../system";
 
-@Injectable({ providedIn: "root" })
+@Injectable()
 export class CacheService {
-  private emotion = createEmotion({ key: "quillar" });
+  private readonly cache: Map<string, Record<string, QuillarStyles>> = new Map();
 
-  public cache() {
-    return this.emotion.cache;
+  public insert(element: HTMLElement, stylesId: string, styles: QuillarStyles) {
+    const elementId = element.getAttribute("data-quillar-id");
   }
+
+  private generateElementId() {}
 }

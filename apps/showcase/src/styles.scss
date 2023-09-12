@@ -1,3 +1,5 @@
+@import "node_modules/prismjs/themes/prism-okaidia.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,5 +9,4 @@
   padding: var(--quillar-space-4);
   border: 1px solid var(--quillar-colors-chakra-border-color);
   border-radius: var(--quillar-radii-lg);
-  background: var(--quillar-colors-blackAlpha-100);
 }

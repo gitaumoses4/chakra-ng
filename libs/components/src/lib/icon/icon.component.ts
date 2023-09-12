@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { QStylesDirective, StyledComponent } from "@quillar/core";
+import { QStylesDirective, BaseStyledComponent } from "@quillar/core";
 import { SystemStyleObject } from "@chakra-ui/styled-system";
 import { QUILLAR_ICONS_TOKEN, QuillarIcons } from "@quillar/icons";
+import { CommonModule } from "@angular/common";
 
 const fallbackIcon = `
     <g stroke="currentColor" stroke-width="1.5">
@@ -15,11 +16,17 @@ const fallbackIcon = `
 @Component({
   standalone: true,
   selector: "q-icon",
-  template: ` <svg fill="currentColor" [qStyles]="styles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [innerHTML]="template"></svg>`,
+  template: ` <svg
+    fill="currentColor"
+    [qStyles]="$styles | async"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    [innerHTML]="template"
+  ></svg>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [QStylesDirective],
+  imports: [QStylesDirective, CommonModule],
 })
-export class IconComponent extends StyledComponent {
+export class IconComponent extends BaseStyledComponent {
   private sanitizer = inject(DomSanitizer);
 
   public template = this.sanitizer.bypassSecurityTrustHtml(fallbackIcon);
@@ -45,7 +52,7 @@ export class IconComponent extends StyledComponent {
       display: "inline-block",
       lineHeight: "1em",
       flexShrink: 0,
-      color: this.styles.color || "currentColor",
+      color: themeStyles.color || "currentColor",
       verticalAlign: "middle",
       ...themeStyles,
     };

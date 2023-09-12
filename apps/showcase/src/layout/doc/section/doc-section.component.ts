@@ -3,13 +3,14 @@ import { DocSection } from "../../../types";
 import { Location, NgIf } from "@angular/common";
 import { QStylesDirective, QuillarModule } from "@quillar/angular";
 import { Code } from "../code/types";
-import { docs } from "../../../docs";
+import { demos } from "../../../docs";
 import { CodeComponent } from "../code/code.component";
+import { MarkdownModule } from "ngx-markdown";
 
 @Component({
   standalone: true,
   selector: "app-doc-section",
-  imports: [NgIf, QuillarModule, QStylesDirective, CodeComponent],
+  imports: [NgIf, QuillarModule, QStylesDirective, CodeComponent, MarkdownModule],
   template: `
     <div class="flex flex-col gap-4">
       <h1 class="group">
@@ -17,8 +18,9 @@ import { CodeComponent } from "../code/code.component";
         <a class="invisible group-hover:visible cursor-pointer" [qStyles]="{ color: 'accent' }" (click)="navigate($event, section)">#</a>
       </h1>
       <p *ngIf="section.description">{{ section.description }}</p>
-      <div [ngClass]="{ card: code?.length }">
-        <ng-template #sectionContainer></ng-template>
+      <div *ngIf="section.docs" markdown [innerHTML]="section.docs"></div>
+      <div class="card" *ngIf="code.length">
+        <ng-template #demoContainer></ng-template>
       </div>
       <app-code [code]="code"></app-code>
     </div>
@@ -31,11 +33,12 @@ export class DocSectionComponent implements AfterViewInit, OnInit {
   public code: Code[] = [];
 
   @ViewChild("sectionContainer", { read: ViewContainerRef }) container!: ViewContainerRef;
+  @ViewChild("demoContainer", { read: ViewContainerRef }) demoContainer!: ViewContainerRef;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private location: Location) {}
 
   ngOnInit() {
-    this.code = (docs as any)[this.getDocsId()] || [];
+    this.code = (demos as any)[this.getDocsId()] || [];
   }
 
   public getDocsId() {
@@ -43,7 +46,12 @@ export class DocSectionComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.container.createComponent(this.section.component);
+    if (this.section.component) {
+      this.container.createComponent(this.section.component);
+    }
+    if (this.section.demo) {
+      this.demoContainer.createComponent(this.section.demo);
+    }
     this.changeDetectorRef.detectChanges();
   }
 
@@ -55,6 +63,4 @@ export class DocSectionComponent implements AfterViewInit, OnInit {
       hash === section.id && event.preventDefault();
     }
   }
-
-  getSectionCode() {}
 }

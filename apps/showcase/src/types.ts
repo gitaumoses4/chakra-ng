@@ -3,15 +3,16 @@ import { Type } from "@angular/core";
 export interface Doc {
   id: string;
   header: string;
-  description: string;
+  description?: string;
 }
 
 export interface DocPage extends Doc {
-  title: string;
   sections: DocSection[];
 }
 
 export interface DocSection extends Doc {
-  component: Type<any>;
+  component?: Type<any>;
+  docs?: string;
+  demo?: Type<any>;
   children?: DocSection[];
 }

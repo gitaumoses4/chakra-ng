@@ -1,7 +1,6 @@
 import { DocPage } from "../../../types";
 import { Component } from "@angular/core";
 import { DocComponent } from "./doc.component";
-import { docs } from "../../../docs";
 
 export function createDocs(docPage: DocPage) {
   @Component({

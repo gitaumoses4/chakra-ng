@@ -1,24 +1,12 @@
-import { Directive, ElementRef, Input, OnChanges, OnInit } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 import { QuillarStyles } from "./types";
-import { StylesService } from "../styles";
-import { toCSSObject } from "./system";
-import { ThemeService } from "../theme";
+import { BaseStyledDirective } from "./base-styled.directive";
 
 @Directive({ standalone: true, selector: "[qStyles]" })
-export class QStylesDirective implements OnInit, OnChanges {
-  @Input() public qStyles: QuillarStyles = {};
+export class QStylesDirective extends BaseStyledDirective {
+  @Input() public qStyles: QuillarStyles | null = null;
 
-  constructor(private readonly elementRef: ElementRef, private readonly themeService: ThemeService, private readonly styleService: StylesService) {}
-
-  ngOnInit() {
-    this.applyStyles();
-  }
-
-  ngOnChanges() {
-    this.applyStyles();
-  }
-
-  private applyStyles() {
-    this.styleService.attachStyles([toCSSObject(this.themeService.getTheme())(this.qStyles)], this.elementRef.nativeElement);
+  override getStyles(): QuillarStyles | null {
+    return this.qStyles;
   }
 }
