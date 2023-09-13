@@ -1,5 +1,5 @@
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from "@angular/core";
-import { DocSection } from "../../../types";
+import { Doc } from "../../../types";
 import { CommonModule, DOCUMENT, Location } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
@@ -10,7 +10,7 @@ import { RouterModule } from "@angular/router";
   templateUrl: "./doc-section-nav.component.html",
 })
 export class DocSectionNavComponent implements OnInit {
-  @Input() sections!: DocSection[];
+  @Input() sections!: Doc[];
 
   activeId!: string;
 
@@ -34,11 +34,11 @@ export class DocSectionNavComponent implements OnInit {
     }
   }
 
-  onChildButtonClick(parent: DocSection, isFirst: boolean, child: DocSection): void {
+  onChildButtonClick(parent: Doc, isFirst: boolean, child: Doc): void {
     this.onButtonClick(isFirst ? parent : child);
   }
 
-  onButtonClick(doc: DocSection) {
+  onButtonClick(doc: Doc) {
     this.activeId = doc.id;
     setTimeout(() => {
       this.scrollToLabelById(doc.id);

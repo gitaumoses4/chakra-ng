@@ -1,10 +1,12 @@
-<div class="flex gap-4">
-  <div class="doc-main">
+<div qFlex *ngIf="$page | async as page" [gap]="'4'">
+  <div [qStyles]="{ flex: 1 }">
     <div>
-      <h1>{{ page.header }}</h1>
+      <h1>{{ page.title }}</h1>
       <p>{{ page.description }}</p>
     </div>
-    <app-doc-sections [sections]="page.sections" [pageId]="page.id"></app-doc-sections>
+    <app-doc-sections [sections]="page.sections"></app-doc-sections>
   </div>
-  <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
+  <div [qStyles]="{ w: '36' }">
+    <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
+  </div>
 </div>

@@ -5,7 +5,7 @@ import { QuillarStyles } from "./types";
 
 @Directive()
 export abstract class BaseStyledDirective implements OnInit, OnChanges, OnDestroy {
-  private readonly elementRef = inject(ElementRef);
+  protected readonly elementRef = inject(ElementRef);
   private readonly styleService = inject(StylesService);
 
   private readonly $styles = new BehaviorSubject<QuillarStyles>(this.getStyles() || {});

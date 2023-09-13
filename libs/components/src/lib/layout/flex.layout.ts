@@ -7,6 +7,8 @@ import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
   selector: "[qFlex]",
 })
 export class FlexLayout extends BaseStyledDirective {
+  @Input() qFlex: SystemProps["flexDirection"] | "" | undefined;
+
   /**
    * Shorthand for `alignItems` style prop
    */
@@ -23,11 +25,6 @@ export class FlexLayout extends BaseStyledDirective {
   @Input() wrap?: SystemProps["flexWrap"];
 
   /**
-   * Shorthand for `flexDirection` style prop
-   */
-  @Input() direction?: SystemProps["flexDirection"];
-
-  /**
    * Shorthand for `flexBasis` style prop
    */
   @Input() basis?: SystemProps["flexBasis"];
@@ -42,16 +39,34 @@ export class FlexLayout extends BaseStyledDirective {
    */
   @Input() shrink?: SystemProps["flexShrink"];
 
+  /**
+   * It defines the gap between the flex items
+   */
+  @Input() gap?: SystemProps["gap"];
+
+  /**
+   * It defines the gap between the flex items along the main axis
+   */
+  @Input() rowGap?: SystemProps["rowGap"];
+
+  /**
+   * It defines the gap between the flex items along the cross axis
+   */
+  @Input() columnGap?: SystemProps["columnGap"];
+
   public override getStyles(): QuillarStyles {
     return {
       display: "flex",
-      flexDirection: this.direction,
+      flexDirection: this.qFlex || "row",
       alignItems: this.align,
       justifyContent: this.justify,
       flexWrap: this.wrap,
       flexBasis: this.basis,
       flexGrow: this.grow,
       flexShrink: this.shrink,
+      gap: this.gap,
+      rowGap: this.rowGap,
+      columnGap: this.columnGap,
     };
   }
 }

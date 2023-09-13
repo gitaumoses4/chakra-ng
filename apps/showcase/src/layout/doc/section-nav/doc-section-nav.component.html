@@ -2,18 +2,18 @@
   <li *ngFor="let section of sections; let i = index" class="navbar-item" [ngClass]="{ 'active-navbar-item': activeId === section.id }">
     <ng-container>
       <div class="navbar-item-content">
-        <button class="p-link" (click)="onButtonClick(section)">{{ section.header }}</button>
+        <button class="p-link" (click)="onButtonClick(section)">{{ section.title }}</button>
       </div>
       <ng-container>
-        <ul *ngIf="section.children">
+        <ul *ngIf="section.sections">
           <li
-            *ngFor="let child of section.children; let isFirst = first"
+            *ngFor="let child of section.sections; let isFirst = first"
             class="navbar-item"
             [ngClass]="{ 'active-navbar-item': isActiveChildId(isFirst, activeId, child.id, section.id) }"
           >
             <div class="navbar-item-content">
               <button class="p-link" (click)="onChildButtonClick(section, isFirst, child)">
-                {{ child.header }}
+                {{ child.title }}
               </button>
             </div>
           </li>

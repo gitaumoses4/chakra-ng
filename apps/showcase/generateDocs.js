@@ -3,15 +3,21 @@ const path = require("path");
 const watch = require("node-watch");
 
 const docsSrcFolder = path.resolve(__dirname, "src/docs");
-const docsOutFolder = path.resolve(__dirname, "src/assets/docs");
 
 function docFiles(filePrefix) {
   return {
     markdown: filePrefix + ".md",
-    typescript: filePrefix + ".demo.ts",
     html: filePrefix + ".demo.html",
     scss: filePrefix + ".demo.scss",
+    typescript: filePrefix + ".demo.ts",
   };
+}
+
+function getCodeContent(file) {
+  const content = fs.readFileSync(file, { encoding: "utf-8" });
+
+  // double the tabs to make it work with the markdown code block
+  return content.replace(/\n( +)/g, "\n$1$1");
 }
 
 function getDocs(section) {
@@ -31,7 +37,8 @@ function getDocs(section) {
         ...acc,
         [cur]: {
           fileName: allowedFiles[cur],
-          content: fs.readFileSync(path.join(fullDir, allowedFiles[cur]), { encoding: "utf-8" }),
+          language: cur,
+          content: getCodeContent(path.join(fullDir, allowedFiles[cur])),
         },
       };
     }
@@ -46,35 +53,110 @@ function getSections(section) {
   });
 }
 
-function saveDocs(section, files) {
-  Object.keys(files).forEach((language) => {
-    const file = files[language];
+function parseMarkdownFile(file) {
+  if (file) {
+    const contentSections = file.content.split("---\n");
 
-    fs.mkdirSync(path.join(docsOutFolder, section), { recursive: true });
-    const outputFile = path.join(docsOutFolder, section, language + ".md");
+    if (contentSections.length < 3) {
+      return {
+        header: {},
+        content: file.content,
+      };
+    }
 
-    const content = language === "markdown" ? file.content : `\`\`\`${language}\n${file.content}\`\`\``;
-    fs.writeFileSync(outputFile, content);
+    const contentBetweenMarkers = contentSections[1].trim();
+
+    const lines = contentBetweenMarkers.split("\n");
+
+    // Initialize an empty object
+    const parsedObject = {};
+
+    let previousKey = null;
+
+    lines.forEach((line) => {
+      const colonIndex = line.indexOf(":");
+      if (colonIndex !== -1) {
+        const key = line.slice(0, colonIndex).trim();
+        parsedObject[key] = line.slice(colonIndex + 1).trim();
+
+        previousKey = key;
+      } else {
+        if (previousKey) {
+          parsedObject[previousKey] += " \n" + line.trim();
+        }
+      }
+    });
+
+    return {
+      header: parsedObject,
+      content: contentSections.slice(2).join("---\n"),
+    };
+  }
+}
+
+function buildDocs(section, files) {
+  const docs = {
+    id: section,
+    title: "",
+    description: "",
+    content: "",
+    code: [],
+  };
+
+  if (files.markdown) {
+    const parsedMarkdown = parseMarkdownFile(files.markdown);
+
+    docs.title = parsedMarkdown.header.title;
+    docs.description = parsedMarkdown.header.description;
+    docs.content = parsedMarkdown.content;
+  }
+
+  Object.keys(files).forEach((file) => {
+    if (file !== "markdown") {
+      docs.code.push({
+        language: file,
+        content: files[file].content,
+        fileName: files[file].fileName,
+      });
+
+      if (file === "typescript") {
+        docs.demo = path.join(section, section.replace("/", "-") + ".demo");
+      }
+    }
   });
+
+  return docs;
 }
 
 function generateDocsForSection(parentSection, section) {
   const subSections = getSections(path.join(parentSection, section));
   const files = getDocs(path.join(parentSection, section));
 
-  if (Object.keys(files).length) {
-    saveDocs(path.join(parentSection, section), files);
-  }
+  const docs = {
+    id: section,
+    ...buildDocs(path.join(parentSection, section), files),
+  };
 
-  if (subSections.length) {
-    subSections.forEach((subSection) => generateDocsForSection(path.join(parentSection, section), subSection));
-  }
+  docs.sections = subSections.map((subSection) => {
+    return generateDocsForSection(path.join(parentSection, section), subSection);
+  });
+
+  return docs;
 }
 
 function generateDocs() {
   const pages = getSections("");
 
-  pages.forEach((sectionDir) => generateDocsForSection("", sectionDir));
+  const docs = pages.reduce((acc, sectionDir) => ({ ...acc, [sectionDir]: generateDocsForSection("", sectionDir) }), {});
+
+  const generated = `import { Docs } from '../types';\nexport const docs: Docs = ${JSON.stringify(docs, null, 2)}`;
+
+  // remove all quotes from the demo property in the generated docs
+  const regex = /"demo": "(.*)"/g;
+  const subst = `"demo": import("./$1")`;
+  const result = generated.replace(regex, subst);
+
+  fs.writeFileSync(path.join(docsSrcFolder, "index.ts"), result);
 }
 
 generateDocs();

@@ -1,18 +1,17 @@
-import { Type } from "@angular/core";
-
 export interface Doc {
   id: string;
-  header: string;
+  title: string;
   description?: string;
+  content: string;
+  demo?: Promise<any>;
+  code: Code[];
+  sections: Doc[];
 }
 
-export interface DocPage extends Doc {
-  sections: DocSection[];
-}
+export type Code = {
+  language: string;
+  fileName: string;
+  content: string;
+};
 
-export interface DocSection extends Doc {
-  component?: Type<any>;
-  docs?: string;
-  demo?: Type<any>;
-  children?: DocSection[];
-}
+export type Docs = Record<string, Doc>;
