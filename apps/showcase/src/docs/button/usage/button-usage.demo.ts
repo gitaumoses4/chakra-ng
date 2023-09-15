@@ -5,6 +5,6 @@ import { Component } from "@angular/core";
   standalone: true,
   imports: [ButtonComponent],
   selector: "button-usage-demo",
-  templateUrl: "./button-usage-demo.html",
+  templateUrl: "./button-usage.demo.html",
 })
 export class ButtonUsageDemo {}

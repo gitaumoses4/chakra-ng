@@ -1,42 +1,26 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgModule, ViewChild, ViewContainerRef } from "@angular/core";
 import { Doc } from "../../../types";
-import { Location, NgIf } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
 import { FlexLayout, QStylesDirective, QuillarModule } from "@quillar/angular";
-import { CodeComponent } from "../code/code.component";
 import { MarkdownModule } from "ngx-markdown";
+import { CodeComponent } from "../code/code.component";
 
 @Component({
-  standalone: true,
-  selector: "app-doc-section",
-  imports: [NgIf, QuillarModule, QStylesDirective, CodeComponent, MarkdownModule, FlexLayout],
+  selector: "app-doc-sections",
   template: `
-    <div [qFlex]="'column'" [gap]="4">
-      <h1 class="group">
-        {{ section.title }}
-        <a
-          [qStyles]="{ color: 'accent', cursor: 'pointer', visibility: 'hidden', _groupHover: { visibility: 'visible' } }"
-          (click)="navigate($event, section)"
-          >#</a
-        >
-      </h1>
-      <p *ngIf="section.description">{{ section.description }}</p>
-      <div *ngIf="section.content" markdown class="markdown" [innerHTML]="section.content"></div>
-      <div
-        [qStyles]="{
-          w: 'full',
-          p: '4',
-          borderWidth: '1px',
-          borderColor: 'blackAlpha.200',
-          borderRadius: 'lg',
-          _dark: { borderColor: 'whiteAlpha.200' },
-        }"
-        *ngIf="section.code.length"
-      >
-        <ng-template #demoContainer></ng-template>
-      </div>
-      <app-code [code]="section.code"></app-code>
+    <div class="flex flex-col gap-6 my-4">
+      <app-doc-section [section]="section" *ngFor="let section of sections"></app-doc-section>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppDocSectionsComponent {
+  @Input() sections!: Doc[];
+}
+
+@Component({
+  selector: "app-doc-section",
+  templateUrl: "./doc-section.component.html",
 })
 export class DocSectionComponent implements AfterViewInit {
   @Input({ required: true }) section!: Doc;
@@ -47,8 +31,8 @@ export class DocSectionComponent implements AfterViewInit {
   constructor(private changeDetectorRef: ChangeDetectorRef, private location: Location) {}
 
   ngAfterViewInit() {
-    if (this.section.demo) {
-      this.section.demo
+    if (this.section.demo?.component) {
+      this.section.demo.component
         .then((module) => Object.values(module)[0])
         .then((component: any) => {
           this.demoContainer.createComponent(component);
@@ -66,3 +50,10 @@ export class DocSectionComponent implements AfterViewInit {
     }
   }
 }
+
+@NgModule({
+  declarations: [AppDocSectionsComponent, DocSectionComponent],
+  imports: [CommonModule, FlexLayout, QStylesDirective, MarkdownModule, QuillarModule, CodeComponent],
+  exports: [AppDocSectionsComponent, DocSectionComponent],
+})
+export class DocSectionModule {}

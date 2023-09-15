@@ -38,7 +38,7 @@ const theme: PartialQuillarTheme = {
           fontStyle: "normal !important",
         },
       },
-      ".markdown": {
+      markdown: {
         h1: {
           mt: "2rem",
           mb: ".25rem",

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nx serve showcase"
+    "start:dev": "nx serve showcase",
+    "generateDocs": "ts-node --project tools/tsconfig.tools.json tools/docs/generateDocs.ts"
   },
   "private": true,
   "dependencies": {
@@ -29,14 +30,22 @@
     "emoji-toolkit": "^7.0.0",
     "highlight.js": "^11.8.0",
     "katex": "^0.16.0",
+    "lodash": "^4.17.21",
     "marked": "^4.3.0",
+    "mdast-util-to-markdown": "^2.1.0",
     "mermaid": "^9.1.2",
     "ngx-highlightjs": "^10.0.0",
     "ngx-markdown": "^16.0.0",
     "prismjs": "1.28.0",
     "reflect-metadata": "^0.1.13",
+    "remark": "^14.0.3",
+    "remark-normalize-headings": "^3.0.1",
+    "remark-parse": "^10.0.2",
+    "remark-sectionize-headings": "^0.2.8",
+    "remark-stringify": "^10.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "unified": "^11.0.3",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -59,8 +68,9 @@
     "@nx/workspace": "16.7.4",
     "@schematics/angular": "~16.2.0",
     "@types/jest": "^29.4.0",
+    "@types/lodash": "^4.14.198",
     "@types/marked": "^4.3.0",
-    "@types/node": "16.11.7",
+    "@types/node": "20.6.0",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "autoprefixer": "^10.4.0",

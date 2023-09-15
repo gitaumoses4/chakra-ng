@@ -1,0 +1,32 @@
+<div>
+  <div [qFlex]="'column'" [gap]="4">
+    <h1 class="group">
+      {{ section.title }}
+      <a
+        [qStyles]="{ color: 'accent', cursor: 'pointer', visibility: 'hidden', _groupHover: { visibility: 'visible' } }"
+        (click)="navigate($event, section)"
+        >#</a
+      >
+    </h1>
+    <markdown *ngIf="section.content" [data]="section.content"></markdown>
+    <div
+      [qStyles]="{
+          w: 'full',
+          p: '4',
+          borderWidth: '1px',
+          borderColor: 'blackAlpha.200',
+          borderRadius: 'lg',
+          _dark: { borderColor: 'whiteAlpha.200' },
+        }"
+      *ngIf="section.demo"
+    >
+      <ng-template #demoContainer></ng-template>
+    </div>
+    <div *ngIf="section.demo">
+      <app-code [code]="section.demo.code"></app-code>
+    </div>
+    <div>
+      <app-doc-sections *ngIf="section.sections" [sections]="section.sections"></app-doc-sections>
+    </div>
+  </div>
+</div>

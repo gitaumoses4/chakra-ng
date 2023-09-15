@@ -1,10 +1,15 @@
+export interface Demo {
+  component?: Promise<any>;
+  code: Code[];
+}
+
 export interface Doc {
   id: string;
+  path: string;
   title: string;
-  description?: string;
+  depth: number;
   content: string;
-  demo?: Promise<any>;
-  code: Code[];
+  demo?: Demo;
   sections: Doc[];
 }
 

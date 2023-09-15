@@ -1,19 +1,19 @@
 import { Component, OnInit } from "@angular/core";
-import { Meta, Title } from "@angular/platform-browser";
+import { Title } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
-import { AppDocSectionsComponent } from "../sections/app-doc-sections.component";
 import { DocSectionNavComponent } from "../section-nav/doc-section-nav.component";
 import { docs } from "../../../docs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs";
-import { FlexLayout } from "@quillar/components";
-import { QStylesDirective } from "@quillar/core";
+import { FlexLayout, QStylesDirective } from "@quillar/angular";
+import { MarkdownModule } from "ngx-markdown";
+import { DocSectionModule } from "../section/doc-section.component";
 
 @Component({
   standalone: true,
   selector: "app-doc",
   templateUrl: "./doc.component.html",
-  imports: [CommonModule, AppDocSectionsComponent, DocSectionNavComponent, FlexLayout, QStylesDirective],
+  imports: [CommonModule, DocSectionModule, DocSectionNavComponent, FlexLayout, QStylesDirective, MarkdownModule],
 })
 export class DocComponent implements OnInit {
   public $page = this.route.paramMap.pipe(
@@ -27,13 +27,12 @@ export class DocComponent implements OnInit {
       return docs[pageDocId];
     }),
   );
-  constructor(private titleService: Title, private metaService: Meta, private route: ActivatedRoute, private router: Router) {}
+  constructor(private titleService: Title, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.$page.subscribe((page) => {
       if (page) {
         this.titleService.setTitle(page.title + " - Quillar UI");
-        this.metaService.updateTag({ name: "description", content: page.description || "" });
       } else {
         this.router.navigate(["/docs"]).then();
       }

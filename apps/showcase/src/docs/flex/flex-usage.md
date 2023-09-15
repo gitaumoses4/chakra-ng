@@ -1,6 +1,14 @@
----
-title: Usage
----
+# Flex
+
+Flex is Box with display set to flex and comes with helpful style shorthand.
+
+## Import
+
+```javascript
+import { FlexLayout } from "@quillar/angular";
+```
+
+## Usage
 
 Using the Flex components, here are some helpful shorthand props:
 
@@ -12,5 +20,4 @@ Using the Flex components, here are some helpful shorthand props:
 - `alignItems` is `align`
 - `justifyContent` is `justify`
 
-While you can pass the verbose props, using the shorthand can save you some
-time.
+While you can pass the verbose props, using the shorthand can save you some time.
