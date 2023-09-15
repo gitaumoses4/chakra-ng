@@ -6,7 +6,7 @@ import { ResponsiveValue, ThemeTypings, ThemingProps } from "@chakra-ui/styled-s
 import { Dict } from "@chakra-ui/utils";
 
 @Component({ template: "", standalone: true })
-export abstract class BaseStyledComponent<ThemeComponent extends string = any> implements OnChanges, OnInit, OnDestroy {
+export abstract class BaseStyledComponent<ThemeComponent extends string = string> implements OnChanges, OnInit, OnDestroy {
   public readonly $styles = new BehaviorSubject<QuillarStyles>({});
 
   private readonly themeService: ThemeService = inject(ThemeService);

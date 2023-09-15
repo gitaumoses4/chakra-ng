@@ -2,30 +2,25 @@ import { Directive, ElementRef, inject, OnChanges, OnDestroy, OnInit } from "@an
 import { StylesService } from "../styles";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { QuillarStyles } from "./types";
+import { getStylesId } from "./system";
 
 @Directive()
-export abstract class BaseStyledDirective implements OnInit, OnChanges, OnDestroy {
+export abstract class BaseStyledDirective<ThemeComponent extends string = string> implements OnInit, OnDestroy, OnChanges {
   protected readonly elementRef = inject(ElementRef);
   private readonly styleService = inject(StylesService);
 
-  private readonly $styles = new BehaviorSubject<QuillarStyles>(this.getStyles() || {});
   private readonly baseSubscriptions: Subscription[] = [];
 
+  protected readonly $styles = new BehaviorSubject<QuillarStyles>(this.getStyles() || {});
+
   ngOnInit() {
-    const id = this.getStylesId();
-    this.baseSubscriptions.push(this.styleService.applyQuillarStyles(id, this.$styles, this.elementRef.nativeElement));
+    this.baseSubscriptions.push(
+      this.styleService.applyQuillarStyles(getStylesId(this.constructor.name), this.$styles, this.elementRef.nativeElement),
+    );
   }
 
-  private getStylesId() {
-    let hash = 5381;
-    const className = this.constructor.name;
-    let index = className.length;
-
-    while (index) {
-      hash = (hash * 33) ^ className.charCodeAt(--index);
-    }
-
-    return (hash >>> 0).toString(16);
+  ngOnDestroy() {
+    this.baseSubscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   ngOnChanges() {
@@ -33,8 +28,4 @@ export abstract class BaseStyledDirective implements OnInit, OnChanges, OnDestro
   }
 
   public abstract getStyles(): QuillarStyles | null | undefined;
-
-  ngOnDestroy() {
-    this.baseSubscriptions.forEach((subscription) => subscription.unsubscribe());
-  }
 }

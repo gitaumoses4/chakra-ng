@@ -1,6 +1,6 @@
 <div qFlex *ngIf="$page | async as page" [gap]="'4'">
   <div [qStyles]="{ flex: 1 }">
-    <h1>{{ page.title }}</h1>
+    <h1 qHeading >{{ page.title }}</h1>
     <markdown [data]="page.content" *ngIf="page.content"></markdown>
     <app-doc-sections [sections]="page.sections"></app-doc-sections>
   </div>

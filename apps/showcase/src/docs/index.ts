@@ -120,6 +120,14 @@ export const docs: Docs = {
         },
         "content": "Using the Flex components, here are some helpful shorthand props:\n\n* `flexDirection` is `direction`\n* `flexWrap` is `wrap`\n* `flexBasis` is `basis`\n* `flexGrow` is `grow`\n* `flexShrink` is `shrink`\n* `alignItems` is `align`\n* `justifyContent` is `justify`\n\nWhile you can pass the verbose props, using the shorthand can save you some time.\n",
         "sections": []
+      },
+      {
+        "id": "using-the-spacer",
+        "path": "flex/using-the-spacer",
+        "title": "Using the Spacer",
+        "depth": 2,
+        "content": "The `Spacer` component is a simple `div` with `flex-grow: 1` set. This means that it will take up all available space in the container.\n",
+        "sections": []
       }
     ]
   }

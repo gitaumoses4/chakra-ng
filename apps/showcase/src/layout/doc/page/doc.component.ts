@@ -5,7 +5,7 @@ import { DocSectionNavComponent } from "../section-nav/doc-section-nav.component
 import { docs } from "../../../docs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs";
-import { FlexLayout, QStylesDirective } from "@quillar/angular";
+import { FlexLayout, Heading, QStylesDirective } from "@quillar/angular";
 import { MarkdownModule } from "ngx-markdown";
 import { DocSectionModule } from "../section/doc-section.component";
 
@@ -13,7 +13,7 @@ import { DocSectionModule } from "../section/doc-section.component";
   standalone: true,
   selector: "app-doc",
   templateUrl: "./doc.component.html",
-  imports: [CommonModule, DocSectionModule, DocSectionNavComponent, FlexLayout, QStylesDirective, MarkdownModule],
+  imports: [CommonModule, DocSectionModule, DocSectionNavComponent, FlexLayout, QStylesDirective, MarkdownModule, Heading],
 })
 export class DocComponent implements OnInit {
   public $page = this.route.paramMap.pipe(

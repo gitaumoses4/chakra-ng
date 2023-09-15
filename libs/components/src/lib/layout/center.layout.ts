@@ -1,4 +1,4 @@
-import { Directive, Input } from "@angular/core";
+import { Directive, Input, OnChanges } from "@angular/core";
 import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
 
 @Directive({

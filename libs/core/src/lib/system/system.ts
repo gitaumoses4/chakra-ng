@@ -17,3 +17,14 @@ export const toCSSObject: GetStyleObject =
     const computedCSS = css(finalStyles)(theme);
     return (cssProp ? [computedCSS, cssProp] : computedCSS) as any;
   };
+
+export function getStylesId(className: string) {
+  let hash = 5381;
+  let index = className.length;
+
+  while (index) {
+    hash = (hash * 33) ^ className.charCodeAt(--index);
+  }
+
+  return (hash >>> 0).toString(16);
+}

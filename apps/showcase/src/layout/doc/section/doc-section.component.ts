@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgModule, ViewChild, ViewContainerRef } from "@angular/core";
 import { Doc } from "../../../types";
 import { CommonModule, Location } from "@angular/common";
-import { FlexLayout, QStylesDirective, QuillarModule } from "@quillar/angular";
+import { FlexLayout, Heading, QStylesDirective, QuillarModule } from "@quillar/angular";
 import { MarkdownModule } from "ngx-markdown";
 import { CodeComponent } from "../code/code.component";
 
@@ -53,7 +53,7 @@ export class DocSectionComponent implements AfterViewInit {
 
 @NgModule({
   declarations: [AppDocSectionsComponent, DocSectionComponent],
-  imports: [CommonModule, FlexLayout, QStylesDirective, MarkdownModule, QuillarModule, CodeComponent],
+  imports: [CommonModule, FlexLayout, QStylesDirective, MarkdownModule, QuillarModule, CodeComponent, Heading],
   exports: [AppDocSectionsComponent, DocSectionComponent],
 })
 export class DocSectionModule {}
