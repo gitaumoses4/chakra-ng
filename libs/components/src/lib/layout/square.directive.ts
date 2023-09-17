@@ -1,5 +1,5 @@
 import { Directive, Input } from "@angular/core";
-import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledDirective, QuillarProps } from "@quillar/core";
 
 /**
  * A square is a div with equal width and height
@@ -11,7 +11,7 @@ export class SquareDirective extends BaseStyledDirective {
   /**
    * The size (width and height) of the square
    */
-  @Input() size?: QuillarStyles["width"];
+  @Input() size?: QuillarProps["width"];
 
   /**
    * If `true`, the content will be centered in the square
@@ -20,8 +20,8 @@ export class SquareDirective extends BaseStyledDirective {
    */
   @Input() centerContent = true;
 
-  getStyles(): QuillarStyles | null | undefined {
-    const styles: QuillarStyles = {
+  getStyles(): QuillarProps | null | undefined {
+    const styles: QuillarProps = {
       boxSize: this.size,
       flexShrink: 0,
       flexGrow: 0,

@@ -1,0 +1,8 @@
+<div qStack [spacing]="8" [direction]="'row'">
+  <ng-container *ngFor="let feature of features">
+    <div [qStyles]="{ p: 5, shadow: 'md', borderWidth: '1px'}">
+      <h1 qHeading [size]="'md'">{{ feature.title }}</h1>
+      <p [qStyles]="{ mt: 4}">{{ feature.description }}</p>
+    </div>
+  </ng-container>
+</div>

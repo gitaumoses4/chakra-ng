@@ -1,12 +1,12 @@
 import { Directive, Input } from "@angular/core";
-import { QuillarStyles } from "./types";
+import { QuillarProps } from "./types";
 import { BaseStyledDirective } from "./base-styled.directive";
 
 @Directive({ selector: "[qStyles]" })
 export class QStylesDirective extends BaseStyledDirective {
-  @Input() public qStyles: QuillarStyles | null = null;
+  @Input() public qStyles: QuillarProps | null = null;
 
-  override getStyles(): QuillarStyles | null {
+  override getStyles(): QuillarProps | null {
     return this.qStyles;
   }
 }

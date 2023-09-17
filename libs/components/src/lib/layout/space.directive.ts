@@ -1,11 +1,11 @@
 import { Directive } from "@angular/core";
-import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledDirective, QuillarProps } from "@quillar/core";
 
 @Directive({
   selector: "[qSpace]",
 })
 export class SpaceDirective extends BaseStyledDirective {
-  getStyles(): QuillarStyles | null | undefined {
+  getStyles(): QuillarProps | null | undefined {
     return {
       flex: 1,
       justifySelf: "stretch",

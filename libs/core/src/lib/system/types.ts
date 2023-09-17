@@ -7,7 +7,7 @@ export type MaybeRequired<T> = {
 
 export type QuillarStyleObject = SystemStyleObject;
 
-export interface QuillarStyles extends SystemProps {
+export interface QuillarProps extends SystemProps {
   /**
    * Used to truncate text at a specific number of lines
    */

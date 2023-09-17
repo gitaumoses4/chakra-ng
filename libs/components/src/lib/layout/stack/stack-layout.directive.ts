@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Directive, Input, OnChanges, TemplateRef } from "@angular/core";
-import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledDirective, QuillarProps } from "@quillar/core";
 import { ResponsiveValue, SystemProps } from "@chakra-ui/styled-system";
 import { getDividerStyles } from "./stack-utils";
 
@@ -54,9 +54,15 @@ export class StackLayoutDirective extends BaseStyledDirective implements OnChang
       }
 
       const view = this.divider.createEmbeddedView(null);
+      view.detectChanges();
 
-      const divider = document.createElement("div");
-      divider.append(...view.rootNodes);
+      let divider = view.rootNodes[0] as HTMLElement;
+
+      if (view.rootNodes.length > 1) {
+        divider = document.createElement("div");
+        divider.append(...view.rootNodes);
+      }
+
       divider.setAttribute("data-divider", "");
 
       this.applyQuillarStyles(styles, divider);
@@ -77,14 +83,14 @@ export class StackLayoutDirective extends BaseStyledDirective implements OnChang
     return this.direction || "row";
   }
 
-  getStyles(): QuillarStyles | null | undefined {
+  getStyles(): QuillarProps | null | undefined {
     return {
       display: "flex",
       alignItems: this.align || "center",
       justifyContent: this.justify,
       flexDirection: this.getDirection(),
       flexWrap: this.wrap,
-      gap: this.spacing,
+      gap: this.divider ? undefined : this.spacing,
     };
   }
 }

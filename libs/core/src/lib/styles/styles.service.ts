@@ -3,7 +3,7 @@ import { Interpolation, SerializedStyles, serializeStyles } from "@emotion/seria
 import { DOCUMENT } from "@angular/common";
 import { CacheService } from "./cache.service";
 import { ThemeService } from "../theme";
-import { QuillarStyles, toCSSObject } from "../system";
+import { QuillarProps, toCSSObject } from "../system";
 import { combineLatest, Observable } from "rxjs";
 import createEmotion from "@emotion/css/create-instance";
 import { registerStyles } from "@emotion/utils";
@@ -78,7 +78,7 @@ export class StylesService {
     this.renderer.addClass(element, className);
   }
 
-  public applyQuillarStyles(id: string, $styles: Observable<QuillarStyles>, element: HTMLElement) {
+  public applyQuillarStyles(id: string, $styles: Observable<QuillarProps>, element: HTMLElement) {
     return combineLatest([this.themeService.$theme, $styles]).subscribe(([theme, styles]) => {
       this.attachStyles([toCSSObject(theme)(styles)], element, id);
     });

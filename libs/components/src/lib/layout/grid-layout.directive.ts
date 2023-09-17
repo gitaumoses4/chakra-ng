@@ -1,6 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledDirective, QuillarProps } from "@quillar/core";
 
 @Directive({
   selector: "[qGrid]",
@@ -51,7 +51,7 @@ export class GridLayoutDirective extends BaseStyledDirective {
    */
   @Input() row?: SystemProps["gridRow"];
 
-  public override getStyles(): QuillarStyles | null | undefined {
+  public override getStyles(): QuillarProps | null | undefined {
     return {
       display: "grid",
       gridTemplateColumns: this.templateColumns,

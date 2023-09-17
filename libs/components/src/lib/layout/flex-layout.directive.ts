@@ -1,6 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledDirective, QuillarProps } from "@quillar/core";
 
 const FLEX_DIRECTION = {
   qFlexRow: "row",
@@ -68,7 +68,7 @@ export class FlexLayoutDirective extends BaseStyledDirective {
     return direction ? (FLEX_DIRECTION as any)[direction] : "row";
   }
 
-  public override getStyles(): QuillarStyles {
+  public override getStyles(): QuillarProps {
     return {
       display: "flex",
       flexDirection: this.getFlexDirection(),

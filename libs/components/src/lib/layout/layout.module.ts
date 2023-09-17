@@ -9,6 +9,9 @@ import {
   StackLayoutDirective,
 } from "./";
 import { GridLayoutDirective } from "./grid-layout.directive";
+import { StackDividerComponent } from "./stack/stack-divider.component";
+import { SystemModule } from "@quillar/core";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { GridLayoutDirective } from "./grid-layout.directive";
     SpaceDirective,
     SquareDirective,
     StackLayoutDirective,
+    StackDividerComponent,
   ],
   exports: [
     CenterLayoutDirective,
@@ -30,6 +34,8 @@ import { GridLayoutDirective } from "./grid-layout.directive";
     SpaceDirective,
     SquareDirective,
     StackLayoutDirective,
+    StackDividerComponent,
   ],
+  imports: [SystemModule, CommonModule],
 })
 export class LayoutModule {}

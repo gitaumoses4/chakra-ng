@@ -59,7 +59,7 @@ export class ButtonComponent extends BaseStyledComponent {
    */
   @Input() public spinnerPlacement: "start" | "end" = "start";
 
-  override buildStyles(styles: QuillarStyleObject): QuillarStyleObject {
+  override defaultStyles(): QuillarStyleObject {
     return {
       display: "inline-flex",
       appearance: "none",
@@ -70,7 +70,6 @@ export class ButtonComponent extends BaseStyledComponent {
       whiteSpace: "nowrap",
       verticalAlign: "middle",
       outline: "none",
-      ...styles,
     };
   }
 

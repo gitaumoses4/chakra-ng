@@ -1,5 +1,5 @@
 import { Directive, OnInit } from "@angular/core";
-import { BaseStyledComponentDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledComponentDirective, QuillarProps } from "@quillar/core";
 
 @Directive({
   selector: "[qHeading]",
@@ -9,7 +9,7 @@ export class HeadingDirective extends BaseStyledComponentDirective implements On
     return "Heading";
   }
 
-  override getStyles(): QuillarStyles | null | undefined {
+  override getStyles(): QuillarProps | null | undefined {
     return undefined;
   }
 }

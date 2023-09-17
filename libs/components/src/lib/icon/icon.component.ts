@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { BaseStyledComponent } from "@quillar/core";
-import { SystemStyleObject } from "@chakra-ui/styled-system";
+import { BaseStyledComponent, QuillarStyleObject } from "@quillar/core";
 import { QUILLAR_ICONS_TOKEN, QuillarIcons } from "@quillar/icons";
 
 const fallbackIcon = `
@@ -42,16 +41,15 @@ export class IconComponent extends BaseStyledComponent {
     this.template = this.sanitizer.bypassSecurityTrustHtml(svgString);
   }
 
-  public override buildStyles(themeStyles: SystemStyleObject): SystemStyleObject {
+  public override defaultStyles(): QuillarStyleObject {
     return {
       w: "1em",
       h: "1em",
       display: "inline-block",
       lineHeight: "1em",
       flexShrink: 0,
-      color: themeStyles.color || "currentColor",
+      color: "currentColor",
       verticalAlign: "middle",
-      ...themeStyles,
     };
   }
 

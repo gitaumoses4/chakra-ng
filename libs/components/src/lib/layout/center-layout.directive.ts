@@ -1,11 +1,11 @@
 import { Directive, Input, OnChanges } from "@angular/core";
-import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
+import { BaseStyledDirective, QuillarProps } from "@quillar/core";
 
 @Directive({
   selector: "[qCenter]",
 })
 export class CenterLayoutDirective extends BaseStyledDirective {
-  getStyles(): QuillarStyles | null | undefined {
+  getStyles(): QuillarProps | null | undefined {
     return {
       display: "flex",
       alignItems: "center",
@@ -36,7 +36,7 @@ const centerStyles = {
 export class AbsoluteCenterLayoutDirective extends BaseStyledDirective {
   @Input() axis: "horizontal" | "vertical" | "both" = "both";
 
-  getStyles(): QuillarStyles | null | undefined {
+  getStyles(): QuillarProps | null | undefined {
     return {
       ...centerStyles[this.axis],
       position: "absolute",
