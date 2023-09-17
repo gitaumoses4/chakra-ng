@@ -1,19 +1,6 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgModule, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild, ViewContainerRef } from "@angular/core";
 import { Doc } from "../../../types";
 import { Location } from "@angular/common";
-
-@Component({
-  selector: "app-doc-sections",
-  template: `
-    <div [qFlex]="'column'" [gap]="6" [qStyles]="{ my: '6' }">
-      <app-doc-section [section]="section" *ngFor="let section of sections"></app-doc-section>
-    </div>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class DocSectionsComponent {
-  @Input() sections!: Doc[];
-}
 
 @Component({
   selector: "app-doc-section",
@@ -48,11 +35,8 @@ export class DocSectionComponent implements AfterViewInit {
   }
 
   public getHeadingSize() {
-    const sizes = ["xl", "lg", "md", "sm", "xs"];
+    const sizes = ["lg", "md", "sm", "xs"];
 
     return this.section.depth > sizes.length ? sizes[sizes.length - 1] : sizes[this.section.depth - 1];
   }
 }
-
-@NgModule({})
-export class DocSectionModule {}

@@ -63,7 +63,12 @@ async function generateSections(node: any, parentId = "") {
 }
 
 export async function parseDocs(page: string) {
-  const usageDoc = fs.readFileSync(path.join(DOCS_FOLDER, page, page + "-usage.md"), { encoding: "utf8" });
+  const file = path.join(DOCS_FOLDER, page, page + "-usage.md");
+
+  if (!fs.existsSync(file)) {
+    return null;
+  }
+  const usageDoc = fs.readFileSync(file, { encoding: "utf8" });
   const { remarkParse, unified, sectionize, normalize } = await imports();
 
   const tree = unified()

@@ -2,12 +2,17 @@ import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
 import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
 
+const FLEX_DIRECTION = {
+  qFlexRow: "row",
+  qFlexColumn: "column",
+  qFlexRowReverse: "row-reverse",
+  qFlexColumnReverse: "column-reverse",
+};
+
 @Directive({
-  selector: "[qFlex]",
+  selector: "[qFlex],[qFlexColumn],[qFlexRow],[qFlexRowReverse],[qFlexColumnReverse]",
 })
 export class FlexLayoutDirective extends BaseStyledDirective {
-  @Input() qFlex: SystemProps["flexDirection"] | "" | undefined;
-
   /**
    * Shorthand for `alignItems` style prop
    */
@@ -53,10 +58,20 @@ export class FlexLayoutDirective extends BaseStyledDirective {
    */
   @Input() columnGap?: SystemProps["columnGap"];
 
+  private getFlexDirection() {
+    const element = this.elementRef.nativeElement as HTMLElement;
+
+    const direction = Object.keys(FLEX_DIRECTION).find((key) => {
+      return element.hasAttribute(key);
+    });
+
+    return direction ? (FLEX_DIRECTION as any)[direction] : "row";
+  }
+
   public override getStyles(): QuillarStyles {
     return {
       display: "flex",
-      flexDirection: this.qFlex || "row",
+      flexDirection: this.getFlexDirection(),
       alignItems: this.align,
       justifyContent: this.justify,
       flexWrap: this.wrap,

@@ -1,5 +1,13 @@
 import { NgModule } from "@angular/core";
-import { AbsoluteCenterLayoutDirective, CenterLayoutDirective, CircleDirective, FlexLayoutDirective, SpaceDirective, SquareDirective } from "./";
+import {
+  AbsoluteCenterLayoutDirective,
+  CenterLayoutDirective,
+  CircleDirective,
+  FlexLayoutDirective,
+  SpaceDirective,
+  SquareDirective,
+  StackLayoutDirective,
+} from "./";
 import { GridLayoutDirective } from "./grid-layout.directive";
 
 @NgModule({
@@ -11,6 +19,7 @@ import { GridLayoutDirective } from "./grid-layout.directive";
     GridLayoutDirective,
     SpaceDirective,
     SquareDirective,
+    StackLayoutDirective,
   ],
   exports: [
     CenterLayoutDirective,
@@ -20,6 +29,7 @@ import { GridLayoutDirective } from "./grid-layout.directive";
     GridLayoutDirective,
     SpaceDirective,
     SquareDirective,
+    StackLayoutDirective,
   ],
 })
 export class LayoutModule {}

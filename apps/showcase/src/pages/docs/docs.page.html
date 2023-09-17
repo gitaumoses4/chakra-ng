@@ -1,0 +1,12 @@
+<div [qStyles]="{ maxWidth: '6xl', m: 'auto', p: '4' }">
+  <div qFlex *ngIf="$page | async as page" [gap]="'4'">
+    <div [qStyles]="{ flex: 1 }">
+      <h1 qHeading [size]="'lg'">{{ page.title }}</h1>
+      <markdown [data]="page.content" *ngIf="page.content"></markdown>
+      <app-doc-sections [sections]="page.sections"></app-doc-sections>
+    </div>
+    <div [qStyles]="{ w: '36', position: 'sticky', top: 0, alignSelf: 'flex-start' }">
+      <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
+    </div>
+  </div>
+</div>

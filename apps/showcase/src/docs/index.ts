@@ -145,5 +145,91 @@ export const docs: Docs = {
         "sections": []
       }
     ]
+  },
+  "stack": {
+    "id": "stack",
+    "path": "stack",
+    "title": "Stack",
+    "depth": 1,
+    "content": "Stack is a container that lays out its children vertically or horizontally and applies a space between them.\n",
+    "sections": [
+      {
+        "id": "import",
+        "path": "stack/import",
+        "title": "Import",
+        "depth": 2,
+        "content": "```js\nimport { LayoutModule } from \"@quillar/angular\";\n```\n",
+        "sections": []
+      },
+      {
+        "id": "usage",
+        "path": "stack/usage",
+        "title": "Usage",
+        "depth": 2,
+        "demo": {
+          "component": import("./stack/usage/stack-usage.demo"),
+          "code": [
+            {
+              "fileName": "stack-usage.demo.html",
+              "language": "html",
+              "content": "<div qHorizontalStack [spacing]=\"'24px'\">\n    <div qSquare [qStyles]=\"{ bg: 'yellow.200', color: 'black'}\" [size]=\"'40px'\">1</div>\n    <div qSquare [qStyles]=\"{ bg: 'tomato'}\" [size]=\"'40px'\">2</div>\n    <div qSquare [qStyles]=\"{ bg: 'pink.100', color: 'black'}\" [size]=\"'40px'\">3</div>\n</div>\n"
+            },
+            {
+              "fileName": "stack-usage.demo.ts",
+              "language": "typescript",
+              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@quillar/components\";\nimport { QuillarModule } from \"@quillar/angular\";\n\n@Component({\n    standalone: true,\n    selector: \"stack-usage-demo\",\n    templateUrl: \"./stack-usage.demo.html\",\n    imports: [LayoutModule, QuillarModule],\n})\nexport class StackUsageDemo {}\n"
+            }
+          ]
+        },
+        "content": "Stack uses a modified version of the [CSS lobotomized own selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/) to add spacing\nbetween its children.\n\nTo stack elements in horizontal or vertical direction only, use the `qHorizontalStack` or `qVerticalStack` directives respectively. You can also use\nthe `qStack` directive and pass the direction as an input.\n",
+        "sections": []
+      },
+      {
+        "id": "responsive-direction",
+        "path": "stack/responsive-direction",
+        "title": "Responsive Direction",
+        "depth": 2,
+        "demo": {
+          "component": import("./stack/responsive-direction/stack-responsive.demo"),
+          "code": [
+            {
+              "fileName": "stack-responsive.demo.html",
+              "language": "html",
+              "content": "<div qStack [direction]=\"['column', 'row']\" [spacing]=\"'24px'\">\n    <div qSquare [qStyles]=\"{ bg: 'yellow.200', color: 'black'}\" [size]=\"'40px'\">1</div>\n    <div qSquare [qStyles]=\"{ bg: 'tomato'}\" [size]=\"'40px'\">2</div>\n    <div qSquare [qStyles]=\"{ bg: 'pink.100', color: 'black'}\" [size]=\"'40px'\">3</div>\n</div>\n"
+            },
+            {
+              "fileName": "stack-responsive.demo.ts",
+              "language": "typescript",
+              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, QuillarModule } from \"@quillar/angular\";\n\n@Component({\n    standalone: true,\n    selector: \"stack-responsive-demo\",\n    templateUrl: \"./stack-responsive.demo.html\",\n    imports: [QuillarModule, LayoutModule],\n})\nexport class StackResponsiveDemo {}\n"
+            }
+          ]
+        },
+        "content": "You can pass responsive values to the `qStack` directive to change the direction of the stack at different breakpoints.\n",
+        "sections": []
+      },
+      {
+        "id": "stack-dividers",
+        "path": "stack/stack-dividers",
+        "title": "Stack Dividers",
+        "depth": 2,
+        "demo": {
+          "component": import("./stack/stack-dividers/stack-dividers.demo"),
+          "code": [
+            {
+              "fileName": "stack-dividers.demo.html",
+              "language": "html",
+              "content": "<div qVerticalStack [spacing]=\"'2'\" [align]=\"'stretch'\" [divider]=\"divider\">\n    <div [qStyles]=\"{ h: '40px', bg: 'yellow.200', color: 'black' }\">1</div>\n    <div [qStyles]=\"{ h: '40px', bg: 'tomato' }\">2</div>\n    <div [qStyles]=\"{ h: '40px', bg: 'pink.100', color: 'black' }\">3</div>\n</div>\n\n<ng-template #divider>\n    <div [qStyles]=\"{ h: '2px', bg: 'gray.200' }\"></div>\n</ng-template>\n"
+            },
+            {
+              "fileName": "stack-dividers.demo.ts",
+              "language": "typescript",
+              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, QuillarModule } from \"@quillar/angular\";\n\n@Component({\n    standalone: true,\n    selector: \"stack-dividers-demo\",\n    templateUrl: \"./stack-dividers.demo.html\",\n    imports: [QuillarModule, LayoutModule],\n})\nexport class StackDividersDemo {}\n"
+            }
+          ]
+        },
+        "content": "In some scenarios, you may want to add dividers between the children of a stack.\n",
+        "sections": []
+      }
+    ]
   }
 }

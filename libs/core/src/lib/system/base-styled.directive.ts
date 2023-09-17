@@ -1,11 +1,11 @@
 import { Directive, ElementRef, inject, OnChanges, OnDestroy, OnInit } from "@angular/core";
 import { StylesService } from "../styles";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { BehaviorSubject, of, Subscription } from "rxjs";
 import { QuillarStyles } from "./types";
 import { getStylesId } from "./system";
 
 @Directive()
-export abstract class BaseStyledDirective<ThemeComponent extends string = string> implements OnInit, OnDestroy, OnChanges {
+export abstract class BaseStyledDirective implements OnInit, OnDestroy, OnChanges {
   protected readonly elementRef = inject(ElementRef);
   private readonly styleService = inject(StylesService);
 
@@ -17,6 +17,10 @@ export abstract class BaseStyledDirective<ThemeComponent extends string = string
     this.baseSubscriptions.push(
       this.styleService.applyQuillarStyles(getStylesId(this.constructor.name), this.$styles, this.elementRef.nativeElement),
     );
+  }
+
+  public applyQuillarStyles(styles: QuillarStyles, element: HTMLElement) {
+    return this.styleService.applyQuillarStyles(getStylesId(this.constructor.name), of(styles), element);
   }
 
   ngOnDestroy() {
