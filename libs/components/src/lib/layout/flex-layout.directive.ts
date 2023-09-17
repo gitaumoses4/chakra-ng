@@ -3,10 +3,9 @@ import { SystemProps } from "@chakra-ui/styled-system";
 import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
 
 @Directive({
-  standalone: true,
   selector: "[qFlex]",
 })
-export class FlexLayout extends BaseStyledDirective {
+export class FlexLayoutDirective extends BaseStyledDirective {
   @Input() qFlex: SystemProps["flexDirection"] | "" | undefined;
 
   /**

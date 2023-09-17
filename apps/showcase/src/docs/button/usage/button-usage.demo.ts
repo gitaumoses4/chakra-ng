@@ -1,9 +1,9 @@
-import { ButtonComponent } from "@quillar/angular";
+import { ButtonModule } from "@quillar/angular";
 import { Component } from "@angular/core";
 
 @Component({
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonModule],
   selector: "button-usage-demo",
   templateUrl: "./button-usage.demo.html",
 })

@@ -11,7 +11,7 @@ export const docs: Docs = {
         "id": "import",
         "path": "button/import",
         "title": "Import",
-        "depth": 3,
+        "depth": 2,
         "content": "```javascript\nimport { ButtonComponent } from \"@quillar/angular\";\n```\n",
         "sections": []
       },
@@ -19,7 +19,7 @@ export const docs: Docs = {
         "id": "usage",
         "path": "button/usage",
         "title": "Usage",
-        "depth": 3,
+        "depth": 2,
         "demo": {
           "component": import("./button/usage/button-usage.demo"),
           "code": [
@@ -31,7 +31,7 @@ export const docs: Docs = {
             {
               "fileName": "button-usage.demo.ts",
               "language": "typescript",
-              "content": "import { ButtonComponent } from \"@quillar/angular\";\nimport { Component } from \"@angular/core\";\n\n@Component({\n    standalone: true,\n    imports: [ButtonComponent],\n    selector: \"button-usage-demo\",\n    templateUrl: \"./button-usage.demo.html\",\n})\nexport class ButtonUsageDemo {}\n"
+              "content": "import { ButtonModule } from \"@quillar/angular\";\nimport { Component } from \"@angular/core\";\n\n@Component({\n    standalone: true,\n    imports: [ButtonModule],\n    selector: \"button-usage-demo\",\n    templateUrl: \"./button-usage.demo.html\",\n})\nexport class ButtonUsageDemo {}\n"
             }
           ]
         },
@@ -41,45 +41,45 @@ export const docs: Docs = {
             "id": "button-sizes",
             "path": "button/usage/button-sizes",
             "title": "Button Sizes",
-            "depth": 4,
+            "depth": 3,
             "content": "Use the `size` prop to change the size of the button. You can set the value to `xs`, `sm`, `md` or `lg`.\n",
+            "sections": [
+              {
+                "id": "button-props",
+                "path": "button/usage/button-sizes/button-props",
+                "title": "Button Props",
+                "depth": 4,
+                "content": "It's important to note that the `button` component is a wrapper around the native `button` element. This means that any props that are not explicitly\n",
+                "sections": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "accessibility",
+        "path": "button/accessibility",
+        "title": "Accessibility",
+        "depth": 2,
+        "content": "A button has a role of `button` and is keyboard focusable by default. If you need to disable the button, use the `disabled` prop or set the `disabled`\nattribute to `true` or `disabled`.\n",
+        "sections": [
+          {
+            "id": "button-variants",
+            "path": "button/accessibility/button-variants",
+            "title": "Button Variants",
+            "depth": 3,
+            "content": "Use the `variant` prop to change the variant of the button. You can set the value to `primary`, `secondary`, `success`, `warning`, `danger`, `info`,\n",
             "sections": []
           }
         ]
       },
       {
-        "id": "button-props",
-        "path": "button/button-props",
-        "title": "Button Props",
+        "id": "theming",
+        "path": "button/theming",
+        "title": "Theming",
         "depth": 2,
-        "content": "It's important to note that the `button` component is a wrapper around the native `button` element. This means that any props that are not explicitly\n",
-        "sections": [
-          {
-            "id": "accessibility",
-            "path": "button/button-props/accessibility",
-            "title": "Accessibility",
-            "depth": 3,
-            "content": "A button has a role of `button` and is keyboard focusable by default. If you need to disable the button, use the `disabled` prop or set the `disabled`\nattribute to `true` or `disabled`.\n",
-            "sections": [
-              {
-                "id": "button-variants",
-                "path": "button/button-props/accessibility/button-variants",
-                "title": "Button Variants",
-                "depth": 4,
-                "content": "Use the `variant` prop to change the variant of the button. You can set the value to `primary`, `secondary`, `success`, `warning`, `danger`, `info`,\n",
-                "sections": []
-              }
-            ]
-          },
-          {
-            "id": "theming",
-            "path": "button/button-props/theming",
-            "title": "Theming",
-            "depth": 3,
-            "content": "The button component uses the `button` theme by default. You can change the theme using the `theme` prop or the `theme` attribute.\n",
-            "sections": []
-          }
-        ]
+        "content": "The button component uses the `button` theme by default. You can change the theme using the `theme` prop or the `theme` attribute.\n",
+        "sections": []
       }
     ]
   },
@@ -114,7 +114,7 @@ export const docs: Docs = {
             {
               "fileName": "flex-usage.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { CenterLayout, FlexLayout, QStylesDirective, Square } from \"@quillar/angular\";\n\n@Component({\n    standalone: true,\n    imports: [FlexLayout, QStylesDirective, CenterLayout, Square],\n    selector: \"flex-usage-demo\",\n    templateUrl: \"./flex-usage.demo.html\",\n})\nexport class FlexUsageDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, QuillarModule } from \"@quillar/angular\";\n\n@Component({\n    standalone: true,\n    imports: [LayoutModule, QuillarModule],\n    selector: \"flex-usage-demo\",\n    templateUrl: \"./flex-usage.demo.html\",\n})\nexport class FlexUsageDemo {}\n"
             }
           ]
         },
@@ -126,6 +126,21 @@ export const docs: Docs = {
         "path": "flex/using-the-spacer",
         "title": "Using the Spacer",
         "depth": 2,
+        "demo": {
+          "component": import("./flex/using-the-spacer/flex-spacer.demo"),
+          "code": [
+            {
+              "fileName": "flex-spacer.demo.html",
+              "language": "html",
+              "content": "<div qFlex>\n    <div [qStyles]=\"{ p: '4', bg: 'red.400'}\">Box 1</div>\n    <div qSpace></div>\n    <div [qStyles]=\"{ p: '4', bg: 'green.400'}\">Box 2</div>\n</div>\n"
+            },
+            {
+              "fileName": "flex-spacer.demo.ts",
+              "language": "typescript",
+              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, QuillarModule } from \"@quillar/angular\";\n\n@Component({\n    standalone: true,\n    selector: \"flex-spacer-demo\",\n    templateUrl: \"./flex-spacer.demo.html\",\n    imports: [LayoutModule, QuillarModule],\n})\nexport class FlexSpacerDemo {}\n"
+            }
+          ]
+        },
         "content": "The `Spacer` component is a simple `div` with `flex-grow: 1` set. This means that it will take up all available space in the container.\n",
         "sections": []
       }

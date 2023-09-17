@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { IconsModule } from "@quillar/icons";
+import { SystemModule } from "@quillar/core";
 
 @NgModule({
-  imports: [CommonModule, IconsModule.withIcons({})],
-  exports: [CommonModule],
+  imports: [IconsModule.withIcons({}), SystemModule],
+  exports: [SystemModule],
 })
 export class QuillarModule {}

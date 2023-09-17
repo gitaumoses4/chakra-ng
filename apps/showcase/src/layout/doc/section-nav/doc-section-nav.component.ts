@@ -1,11 +1,8 @@
 import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from "@angular/core";
 import { Doc } from "../../../types";
-import { CommonModule, DOCUMENT, Location } from "@angular/common";
-import { RouterModule } from "@angular/router";
+import { DOCUMENT, Location } from "@angular/common";
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, RouterModule],
   selector: "app-doc-section-nav",
   templateUrl: "./doc-section-nav.component.html",
 })

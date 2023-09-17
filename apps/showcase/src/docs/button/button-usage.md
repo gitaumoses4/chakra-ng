@@ -14,7 +14,7 @@ import { ButtonComponent } from "@quillar/angular";
 
 Use the `size` prop to change the size of the button. You can set the value to `xs`, `sm`, `md` or `lg`.
 
-# Button Props
+#### Button Props
 
 It's important to note that the `button` component is a wrapper around the native `button` element. This means that any props that are not explicitly
 

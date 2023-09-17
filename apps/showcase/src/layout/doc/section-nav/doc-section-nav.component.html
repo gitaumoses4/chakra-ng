@@ -5,7 +5,7 @@
         <button class="p-link" (click)="onButtonClick(section)">{{ section.title }}</button>
       </div>
       <ng-container>
-        <ul *ngIf="section.sections">
+        <ul *ngIf="section.sections" [qStyles]="{ ml: '4' }">
           <li
             *ngFor="let child of section.sections; let isFirst = first"
             class="navbar-item"

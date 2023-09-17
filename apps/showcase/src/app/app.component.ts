@@ -1,10 +1,7 @@
 import { Component } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { ButtonComponent, QStylesDirective, ThemeService } from "@quillar/angular";
+import { ThemeService } from "@quillar/angular";
 
 @Component({
-  standalone: true,
-  imports: [RouterModule, ButtonComponent, QStylesDirective],
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],

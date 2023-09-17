@@ -1,20 +1,17 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, NgModule, ViewChild, ViewContainerRef } from "@angular/core";
 import { Doc } from "../../../types";
-import { CommonModule, Location } from "@angular/common";
-import { FlexLayout, Heading, QStylesDirective, QuillarModule } from "@quillar/angular";
-import { MarkdownModule } from "ngx-markdown";
-import { CodeComponent } from "../code/code.component";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-doc-sections",
   template: `
-    <div class="flex flex-col gap-6 my-4">
+    <div [qFlex]="'column'" [gap]="6" [qStyles]="{ my: '6' }">
       <app-doc-section [section]="section" *ngFor="let section of sections"></app-doc-section>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppDocSectionsComponent {
+export class DocSectionsComponent {
   @Input() sections!: Doc[];
 }
 
@@ -49,11 +46,13 @@ export class DocSectionComponent implements AfterViewInit {
       hash === section.id && event.preventDefault();
     }
   }
+
+  public getHeadingSize() {
+    const sizes = ["xl", "lg", "md", "sm", "xs"];
+
+    return this.section.depth > sizes.length ? sizes[sizes.length - 1] : sizes[this.section.depth - 1];
+  }
 }
 
-@NgModule({
-  declarations: [AppDocSectionsComponent, DocSectionComponent],
-  imports: [CommonModule, FlexLayout, QStylesDirective, MarkdownModule, QuillarModule, CodeComponent, Heading],
-  exports: [AppDocSectionsComponent, DocSectionComponent],
-})
+@NgModule({})
 export class DocSectionModule {}

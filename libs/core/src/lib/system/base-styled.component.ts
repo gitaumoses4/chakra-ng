@@ -8,6 +8,7 @@ import { Dict } from "@chakra-ui/utils";
 @Component({ template: "", standalone: true })
 export abstract class BaseStyledComponent<ThemeComponent extends string = string> implements OnChanges, OnInit, OnDestroy {
   public readonly $styles = new BehaviorSubject<QuillarStyles>({});
+  @Input() public classes: string | string[] | Set<string> | { [klass: string]: any } = {};
 
   private readonly themeService: ThemeService = inject(ThemeService);
   private readonly $customStyles = new BehaviorSubject<QuillarStyles>({});

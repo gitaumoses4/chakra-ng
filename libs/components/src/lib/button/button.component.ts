@@ -1,12 +1,9 @@
 import { Component, ContentChild, Input, TemplateRef } from "@angular/core";
-import { QStylesDirective, QuillarStyleObject, BaseStyledComponent } from "@quillar/core";
+import { BaseStyledComponent, QuillarStyleObject } from "@quillar/core";
 import { QuillarIcons } from "@quillar/icons";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { AsyncPipe } from "@angular/common";
 
 @Component({
-  standalone: true,
-  imports: [QStylesDirective, AsyncPipe],
   selector: "q-button",
   templateUrl: "./button.component.html",
 })

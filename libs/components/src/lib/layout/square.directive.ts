@@ -1,14 +1,13 @@
-import { Directive, Input, OnChanges } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 import { BaseStyledDirective, QuillarStyles } from "@quillar/core";
 
 /**
  * A square is a div with equal width and height
  */
 @Directive({
-  standalone: true,
   selector: "[qSquare]",
 })
-export class Square extends BaseStyledDirective {
+export class SquareDirective extends BaseStyledDirective {
   /**
    * The size (width and height) of the square
    */

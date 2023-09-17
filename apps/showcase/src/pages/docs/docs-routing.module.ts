@@ -8,7 +8,7 @@ const routes: Route[] = [
     component: DocsPage,
     children: [
       { path: "", redirectTo: "button", pathMatch: "full" },
-      { path: ":pageDocId", loadComponent: () => import("../../layout/doc/page/doc.component").then((m) => m.DocComponent) },
+      { path: ":pageDocId", loadComponent: () => import("../../layout/doc/page/doc-page.component").then((m) => m.DocPageComponent) },
     ],
   },
 ];

@@ -1,1 +1,2 @@
-export * from "./heading";
+export * from "./heading.directive";
+export * from "./typography.module";

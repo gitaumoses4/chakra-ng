@@ -2,10 +2,9 @@ import { Directive, OnInit } from "@angular/core";
 import { BaseStyledComponentDirective, QuillarStyles } from "@quillar/core";
 
 @Directive({
-  standalone: true,
   selector: "[qHeading]",
 })
-export class Heading extends BaseStyledComponentDirective implements OnInit {
+export class HeadingDirective extends BaseStyledComponentDirective implements OnInit {
   override component(): string {
     return "Heading";
   }
