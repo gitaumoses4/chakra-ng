@@ -143,6 +143,53 @@ export const docs: Docs = {
         },
         "content": "The `Spacer` component is a simple `div` with `flex-grow: 1` set. This means that it will take up all available space in the container.\n",
         "sections": []
+      },
+      {
+        "id": "flex-grid-stack",
+        "path": "flex/flex-grid-stack",
+        "title": "Flex and Spacer vs Grid vs Stack",
+        "depth": 2,
+        "demo": {
+          "component": import("./flex/flex-grid-stack/flex-grid-stack.demo"),
+          "code": [
+            {
+              "fileName": "flex-grid-stack.demo.html",
+              "language": "html",
+              "content": "<div>\n  <p>Flex and Spacer: Full width, equal spacing</p>\n  <div qFlex>\n    <div [qStyles]=\"{ w: '70px', h: '10', bg: 'red.500'}\"></div>\n    <div qSpace></div>\n    <div [qStyles]=\"{ w: '170px', h: '10', bg: 'red.500'}\"></div>\n    <div qSpace></div>\n    <div [qStyles]=\"{ w: '180px', h: '10', bg: 'red.500'}\"></div>\n  </div>\n\n  <p>Grid: The children start at the beginning, the 1/3 mark and 2/3 mark</p>\n  <div qGrid [templateColumns]=\"'repeat(3, 1fr)'\" [gap]=\"6\">\n    <div [qStyles]=\"{ w: '70px', h: '10', bg: 'blue.500'}\"></div>\n    <div [qStyles]=\"{ w: '170px', h: '10', bg: 'blue.500'}\"></div>\n    <div [qStyles]=\"{ w: '180px', h: '10', bg: 'blue.500'}\"></div>\n  </div>\n\n  <p>HorizontalStack: The children have equal spacing but don't span the whole container</p>\n  <div qHorizontalStack [spacing]=\"6\">\n    <div [qStyles]=\"{ w: '70px', h: '10', bg: 'green.500'}\"></div>\n    <div [qStyles]=\"{ w: '170px', h: '10', bg: 'green.500'}\"></div>\n    <div [qStyles]=\"{ w: '180px', h: '10', bg: 'green.500'}\"></div>\n  </div>\n</div>\n"
+            },
+            {
+              "fileName": "flex-grid-stack.demo.ts",
+              "language": "typescript",
+              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@quillar/components\";\nimport { QuillarModule } from \"@quillar/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-grid-stack-demo\",\n  templateUrl: \"./flex-grid-stack.demo.html\",\n  imports: [LayoutModule, QuillarModule],\n})\nexport class FlexGridStackDemo {}\n"
+            }
+          ]
+        },
+        "content": "The `Flex` and `Spacer` components are a simple way to create a flexbox layout. If you need more control over the layout, you can use the `Grid` or\n`Stack` components.\n\n* In `Stack` The children will have equal spacing between them but won't span the entire width of the container.\n* In `Grid` The starting points of the children will be aligned but the children will not have equal spacing between them.\n* In `Flex` The children will have equal spacing between them and will span the entire width of the container.\n",
+        "sections": [
+          {
+            "id": "spacer-usage",
+            "path": "flex/flex-grid-stack/spacer-usage",
+            "title": "Spacer Usage",
+            "depth": 3,
+            "demo": {
+              "component": import("./flex/flex-grid-stack/spacer-usage/spacer-usage.demo"),
+              "code": [
+                {
+                  "fileName": "spacer-usage.demo.html",
+                  "language": "html",
+                  "content": "<div qFlex [qStyles]=\"{ minWidth: 'max-content', alignItems: 'center'}\" [gap]=\"2\">\n  <div [qStyles]=\"{ p: 2 }\">\n    <h2 qHeading [size]=\"'md'\">Quillar App</h2>\n  </div>\n  <div qSpace></div>\n  <div qFlex [gap]=\"2\">\n    <q-button [colorScheme]=\"'teal'\">Sign Up</q-button>\n    <q-button [colorScheme]=\"'teal'\">Log In</q-button>\n  </div>\n</div>\n"
+                },
+                {
+                  "fileName": "spacer-usage.demo.ts",
+                  "language": "typescript",
+                  "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule, SystemModule, TypographyModule } from \"@quillar/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-spacer-usage\",\n  templateUrl: \"./spacer-usage.demo.html\",\n  imports: [LayoutModule, SystemModule, TypographyModule, ButtonModule],\n})\nexport class FlexSpacerUsageDemo {}\n"
+                }
+              ]
+            },
+            "content": "A good use case for `Spacer` is to create a navbar with signup/login button aligned to the right.\n\nSince `Spacer` renders a `div`, any `gap` value provided to the parent is applied to both sides of this component, and therefore make the gap appear\ndoubled when the spacer is completely collapsed.\n\n> The example below is not responsive on purpose as you might switch to a collapsed menu on mobile.\n",
+            "sections": []
+          }
+        ]
       }
     ]
   },
@@ -239,12 +286,12 @@ export const docs: Docs = {
         "sections": []
       },
       {
-        "id": "feature-cards-with-stack-layout",
-        "path": "stack/feature-cards-with-stack-layout",
+        "id": "stack-demo",
+        "path": "stack/stack-demo",
         "title": "Feature cards with Stack Layout",
         "depth": 2,
         "demo": {
-          "component": import("./stack/feature-cards-with-stack-layout/stack-component.demo"),
+          "component": import("./stack/stack-demo/stack-component.demo"),
           "code": [
             {
               "fileName": "stack-component.demo.html",
@@ -262,12 +309,12 @@ export const docs: Docs = {
         "sections": []
       },
       {
-        "id": "feature-cards-with-hstack-layout",
-        "path": "stack/feature-cards-with-hstack-layout",
-        "title": "Feature cards with Hstack Layout",
+        "id": "hstack-demo",
+        "path": "stack/hstack-demo",
+        "title": "Feature cards with HStack Layout",
         "depth": 2,
         "demo": {
-          "component": import("./stack/feature-cards-with-hstack-layout/h-stack-component.demo"),
+          "component": import("./stack/hstack-demo/h-stack-component.demo"),
           "code": [
             {
               "fileName": "h-stack-component.demo.html",

@@ -1,0 +1,876 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Stack",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3,
+              "offset": 2
+            },
+            "end": {
+              "line": 1,
+              "column": 8,
+              "offset": 7
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 8,
+          "offset": 7
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Stack is a container that lays out its children vertically or horizontally and applies a space between them.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 109,
+              "offset": 117
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 9
+        },
+        "end": {
+          "line": 3,
+          "column": 109,
+          "offset": 117
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Import",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 4,
+              "offset": 122
+            },
+            "end": {
+              "line": 5,
+              "column": 10,
+              "offset": 128
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 119
+        },
+        "end": {
+          "line": 5,
+          "column": 10,
+          "offset": 128
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "js",
+      "meta": null,
+      "value": "import { LayoutModule } from \"@quillar/angular\";",
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 130
+        },
+        "end": {
+          "line": 9,
+          "column": 4,
+          "offset": 188
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Usage",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 4,
+              "offset": 193
+            },
+            "end": {
+              "line": 11,
+              "column": 9,
+              "offset": 198
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 190
+        },
+        "end": {
+          "line": 11,
+          "column": 9,
+          "offset": 198
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Stack uses a modified version of the ",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1,
+              "offset": 200
+            },
+            "end": {
+              "line": 13,
+              "column": 38,
+              "offset": 237
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/",
+          "children": [
+            {
+              "type": "text",
+              "value": "CSS lobotomized own selector",
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 39,
+                  "offset": 238
+                },
+                "end": {
+                  "line": 13,
+                  "column": 67,
+                  "offset": 266
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 38,
+              "offset": 237
+            },
+            "end": {
+              "line": 13,
+              "column": 136,
+              "offset": 335
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " to add spacing\nbetween its children.",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 136,
+              "offset": 335
+            },
+            "end": {
+              "line": 14,
+              "column": 22,
+              "offset": 372
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1,
+          "offset": 200
+        },
+        "end": {
+          "line": 14,
+          "column": 22,
+          "offset": 372
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To stack elements in horizontal or vertical direction only, use the ",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1,
+              "offset": 374
+            },
+            "end": {
+              "line": 16,
+              "column": 69,
+              "offset": 442
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qHorizontalStack",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 69,
+              "offset": 442
+            },
+            "end": {
+              "line": 16,
+              "column": 87,
+              "offset": 460
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or ",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 87,
+              "offset": 460
+            },
+            "end": {
+              "line": 16,
+              "column": 91,
+              "offset": 464
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qVerticalStack",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 91,
+              "offset": 464
+            },
+            "end": {
+              "line": 16,
+              "column": 107,
+              "offset": 480
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directives respectively. You can also use\nthe ",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 107,
+              "offset": 480
+            },
+            "end": {
+              "line": 17,
+              "column": 5,
+              "offset": 527
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qStack",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 5,
+              "offset": 527
+            },
+            "end": {
+              "line": 17,
+              "column": 13,
+              "offset": 535
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directive and pass the direction as an input.",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 13,
+              "offset": 535
+            },
+            "end": {
+              "line": 17,
+              "column": 59,
+              "offset": 581
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1,
+          "offset": 374
+        },
+        "end": {
+          "line": 17,
+          "column": 59,
+          "offset": 581
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Responsive Direction",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 4,
+              "offset": 586
+            },
+            "end": {
+              "line": 19,
+              "column": 24,
+              "offset": 606
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1,
+          "offset": 583
+        },
+        "end": {
+          "line": 19,
+          "column": 24,
+          "offset": 606
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can pass responsive values to the ",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1,
+              "offset": 608
+            },
+            "end": {
+              "line": 21,
+              "column": 39,
+              "offset": 646
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qStack",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 39,
+              "offset": 646
+            },
+            "end": {
+              "line": 21,
+              "column": 47,
+              "offset": 654
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directive to change the direction of the stack at different breakpoints.",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 47,
+              "offset": 654
+            },
+            "end": {
+              "line": 21,
+              "column": 120,
+              "offset": 727
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1,
+          "offset": 608
+        },
+        "end": {
+          "line": 21,
+          "column": 120,
+          "offset": 727
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Stack Dividers",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 4,
+              "offset": 732
+            },
+            "end": {
+              "line": 23,
+              "column": 18,
+              "offset": 746
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1,
+          "offset": 729
+        },
+        "end": {
+          "line": 23,
+          "column": 18,
+          "offset": 746
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In some scenarios, you may want to add dividers between the children of a stack. Pass the divider template to the ",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1,
+              "offset": 748
+            },
+            "end": {
+              "line": 25,
+              "column": 115,
+              "offset": 862
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qStack",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 115,
+              "offset": 862
+            },
+            "end": {
+              "line": 25,
+              "column": 123,
+              "offset": 870
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directive to add dividers.",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 123,
+              "offset": 870
+            },
+            "end": {
+              "line": 25,
+              "column": 150,
+              "offset": 897
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1,
+          "offset": 748
+        },
+        "end": {
+          "line": 25,
+          "column": 150,
+          "offset": 897
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Stack items horizontally",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 4,
+              "offset": 902
+            },
+            "end": {
+              "line": 27,
+              "column": 28,
+              "offset": 926
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1,
+          "offset": 899
+        },
+        "end": {
+          "line": 27,
+          "column": 28,
+          "offset": 926
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Use the ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 1,
+              "offset": 928
+            },
+            "end": {
+              "line": 29,
+              "column": 9,
+              "offset": 936
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qHorizontalStack",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 9,
+              "offset": 936
+            },
+            "end": {
+              "line": 29,
+              "column": 27,
+              "offset": 954
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directive or pass ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 27,
+              "offset": 954
+            },
+            "end": {
+              "line": 29,
+              "column": 46,
+              "offset": 973
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "direction",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 46,
+              "offset": 973
+            },
+            "end": {
+              "line": 29,
+              "column": 57,
+              "offset": 984
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " to the ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 57,
+              "offset": 984
+            },
+            "end": {
+              "line": 29,
+              "column": 65,
+              "offset": 992
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "qStack",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 65,
+              "offset": 992
+            },
+            "end": {
+              "line": 29,
+              "column": 73,
+              "offset": 1000
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " directive to stack items horizontally. Optionally, you can pass the ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 73,
+              "offset": 1000
+            },
+            "end": {
+              "line": 29,
+              "column": 142,
+              "offset": 1069
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "align",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 142,
+              "offset": 1069
+            },
+            "end": {
+              "line": 29,
+              "column": 149,
+              "offset": 1076
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nand ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 149,
+              "offset": 1076
+            },
+            "end": {
+              "line": 30,
+              "column": 5,
+              "offset": 1081
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "justify",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 5,
+              "offset": 1081
+            },
+            "end": {
+              "line": 30,
+              "column": 14,
+              "offset": 1090
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " inputs to align and justify the items.",
+          "position": {
+            "start": {
+              "line": 30,
+              "column": 14,
+              "offset": 1090
+            },
+            "end": {
+              "line": 30,
+              "column": 53,
+              "offset": 1129
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 29,
+          "column": 1,
+          "offset": 928
+        },
+        "end": {
+          "line": 30,
+          "column": 53,
+          "offset": 1129
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Feature cards with Stack Layout {#stack-demo}",
+          "position": {
+            "start": {
+              "line": 32,
+              "column": 4,
+              "offset": 1134
+            },
+            "end": {
+              "line": 32,
+              "column": 49,
+              "offset": 1179
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 32,
+          "column": 1,
+          "offset": 1131
+        },
+        "end": {
+          "line": 32,
+          "column": 49,
+          "offset": 1179
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Feature cards with HStack Layout {#hstack-demo}",
+          "position": {
+            "start": {
+              "line": 34,
+              "column": 4,
+              "offset": 1184
+            },
+            "end": {
+              "line": 34,
+              "column": 51,
+              "offset": 1231
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 34,
+          "column": 1,
+          "offset": 1181
+        },
+        "end": {
+          "line": 34,
+          "column": 51,
+          "offset": 1231
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 35,
+      "column": 1,
+      "offset": 1232
+    }
+  }
+}

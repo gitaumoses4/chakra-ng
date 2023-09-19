@@ -1,0 +1,20 @@
+<div qVerticalStack [spacing]="4" [align]="'start'">
+  <ng-container *ngFor="let item of items">
+    <div qFlexColumn [gap]="4" [qStyles]="{ flex: 1 }">
+      <div qHorizontalStack [spacing]="2">
+        <q-icon *ngIf="item.icon" [name]="item.icon"></q-icon>
+        <h3 qHeading [size]="'sm'">{{ item.title }}</h3>
+      </div>
+      <div *ngFor="let subItem of item.children || []" qVerticalStack [spacing]="2" [align]="'start'">
+        <h6 qHeading [size]="'xs'" [qStyles]="{ color: 'teal.500', _dark: { color: 'teal.200' }, textTransform: 'uppercase' }">{{ subItem.title }}</h6>
+        <ng-container *ngFor="let subSubItem of subItem.children || []">
+          <ng-container *ngIf="subSubItem.routerLink">
+            <q-button [variant]="'link'" [size]="'sm'" [qStyles]="{ w: 'full', justifyContent: 'start' }">
+              <a [routerLink]="subSubItem.routerLink">{{ subSubItem.title }}</a>
+            </q-button>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>

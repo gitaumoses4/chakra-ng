@@ -29,6 +29,6 @@ In some scenarios, you may want to add dividers between the children of a stack.
 Use the `qHorizontalStack` directive or pass `direction` to the `qStack` directive to stack items horizontally. Optionally, you can pass the `align`
 and `justify` inputs to align and justify the items.
 
-## Feature cards with Stack Layout 
+## Feature cards with Stack Layout {#stack-demo}
 
-## Feature cards with Hstack Layout
+## Feature cards with HStack Layout {#hstack-demo}

@@ -4,12 +4,7 @@ import * as path from "path";
 import { DOCS_FOLDER } from "./constants";
 
 function getCodeContent(file: string) {
-  const content = fs.readFileSync(file, { encoding: "utf-8" });
-
-  return content;
-
-  // double the tabs to make it work with the markdown code block
-  // return content.replace(/\n( +)/g, "\n$1$1");
+  return fs.readFileSync(file, { encoding: "utf-8" });
 }
 
 function isAngularComponent(fileContent: string) {

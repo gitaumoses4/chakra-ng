@@ -98,6 +98,10 @@ const theme: PartialQuillarTheme = {
           px: "1.25rem",
           py: "1rem",
           my: "1.5rem",
+          color: "black",
+          "& p": {
+            margin: 0,
+          },
         },
         ul: {
           mt: "0.5rem",
@@ -121,9 +125,11 @@ const theme: PartialQuillarTheme = {
           fontSize: "0.875em",
           py: "2px",
           lineHeight: "normal",
-          color: "purple.500",
-          _dark: {
-            color: "purple.200",
+          "&:not(pre code)": {
+            color: "purple.500",
+            _dark: {
+              color: "purple.200",
+            },
           },
         },
       },

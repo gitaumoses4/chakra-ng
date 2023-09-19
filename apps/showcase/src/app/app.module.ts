@@ -1,10 +1,11 @@
 import { NgModule, SecurityContext } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { Route, RouterModule } from "@angular/router";
-import { ButtonModule, QuillarModule, ThemeModule } from "@quillar/angular";
+import { ButtonModule, IconModule, LayoutModule, QuillarModule, ThemeModule, TypographyModule } from "@quillar/angular";
 import theme from "../theme";
 import { MarkdownModule } from "ngx-markdown";
 import { BrowserModule } from "@angular/platform-browser";
+import { SideNavComponent } from "../layout/side-nav/side-nav.component";
 
 const routes: Route[] = [
   { path: "", pathMatch: "full", redirectTo: "docs" },
@@ -13,7 +14,7 @@ const routes: Route[] = [
 
 @NgModule({
   bootstrap: [AppComponent],
-  declarations: [AppComponent],
+  declarations: [AppComponent, SideNavComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
@@ -23,6 +24,9 @@ const routes: Route[] = [
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE,
     }),
+    LayoutModule,
+    TypographyModule,
+    IconModule,
   ],
   exports: [RouterModule, AppComponent],
 })

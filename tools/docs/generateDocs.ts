@@ -29,14 +29,16 @@ async function generateDocs() {
 
   fs.writeFileSync(path.join(DOCS_FOLDER, "index.ts"), result);
 }
+const watchForChanges = true;
 
 generateDocs().then(() => {
-  console.log("Listening for changes...");
-
-  watch.default(DOCS_FOLDER, { recursive: true, filter: (f) => !/index.ts/.test(f) }, () => {
-    console.log("Generating docs...");
-    generateDocs().then(() => {
-      console.log("Docs generated!");
+  if (watchForChanges) {
+    console.log("Listening for changes...");
+    watch.default(DOCS_FOLDER, { recursive: true, filter: (f) => !/index.ts/.test(f) }, () => {
+      console.log("Generating docs...");
+      generateDocs().then(() => {
+        console.log("Docs generated!");
+      });
     });
-  });
+  }
 });

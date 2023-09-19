@@ -23,8 +23,15 @@ async function imports() {
 async function generateSections(node: any, parentId = "") {
   if (node.type === "root") return generateSections(node.children[0]);
 
-  const title = node.children?.[0]?.children?.[0]?.value;
-  const id = _.kebabCase(title);
+  let title = (node.children?.[0]?.children?.[0]?.value || "").replace(/ +$/g, "");
+
+  const customId = title.match(/ {#([^]+?)}$/);
+
+  const id = customId ? customId[1] : _.kebabCase(title);
+
+  if (customId) {
+    title = title.substring(0, customId.index);
+  }
 
   const { toMarkDown } = await imports();
 
