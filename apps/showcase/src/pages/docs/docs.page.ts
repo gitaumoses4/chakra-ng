@@ -26,7 +26,7 @@ export class DocsPage implements OnInit {
   ngOnInit() {
     this.$page.subscribe((page) => {
       if (page) {
-        this.titleService.setTitle(page.title + " - Quillar UI");
+        this.titleService.setTitle(page.title + " - ChakraNg UI");
       } else {
         this.router.navigate(["/docs"]).then();
       }

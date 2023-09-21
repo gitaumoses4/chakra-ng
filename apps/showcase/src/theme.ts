@@ -1,6 +1,6 @@
-import { PartialQuillarTheme } from "@quillar/angular";
+import { PartialChakraTheme } from "@chakra-ng/angular";
 
-const theme: PartialQuillarTheme = {
+const theme: PartialChakraTheme = {
   config: {
     initialColorMode: "dark",
   },

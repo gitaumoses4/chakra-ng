@@ -1,8 +1,8 @@
-import { QuillarIcons } from "@quillar/icons";
+import { ChakraNgIcons } from "@chakra-ng/icons";
 
 export type NavMenuItem = {
   title: string;
-  icon?: QuillarIcons;
+  icon?: ChakraNgIcons;
   routerLink?: string;
   children?: NavMenuItem[];
 };

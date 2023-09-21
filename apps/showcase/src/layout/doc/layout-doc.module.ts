@@ -4,12 +4,12 @@ import { DocSectionComponent } from "./section/doc-section.component";
 import { DocSectionNavComponent } from "./section-nav/doc-section-nav.component";
 import { CommonModule } from "@angular/common";
 import { MarkdownModule } from "ngx-markdown";
-import { ButtonModule, LayoutModule, QuillarModule, TypographyModule } from "@quillar/angular";
+import { ButtonModule, LayoutModule, ChakraNgModule, TypographyModule } from "@chakra-ng/angular";
 import { DocSectionsComponent } from "./sections/doc-sections.component";
 
 @NgModule({
   declarations: [CodeComponent, DocSectionNavComponent, DocSectionsComponent, DocSectionComponent],
-  imports: [CommonModule, MarkdownModule, QuillarModule, LayoutModule, ButtonModule, TypographyModule],
+  imports: [CommonModule, MarkdownModule, ChakraNgModule, LayoutModule, ButtonModule, TypographyModule],
   exports: [CodeComponent, DocSectionNavComponent, DocSectionsComponent, DocSectionComponent],
 })
 export class LayoutDocModule {}

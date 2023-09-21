@@ -1,4 +1,4 @@
-import { ButtonModule } from "@quillar/angular";
+import { ButtonModule } from "@chakra-ng/angular";
 import { Component } from "@angular/core";
 
 @Component({

@@ -5,7 +5,7 @@ The button component is a wrapper around the native element.
 ## Import
 
 ```javascript
-import { ButtonComponent } from "@quillar/angular";
+import { ButtonComponent } from "@chakra-ng/angular";
 ```
 
 ## Usage

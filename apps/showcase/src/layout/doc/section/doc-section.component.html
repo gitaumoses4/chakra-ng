@@ -1,16 +1,16 @@
 <div>
-  <div qFlexColumn [gap]="4">
-    <h2 qHeading [size]="getHeadingSize()" class="group">
+  <div chakraFlexColumn [gap]="4">
+    <h2 chakraHeading [size]="getHeadingSize()" class="group">
       {{ section.title }}
       <a
-        [qStyles]="{ color: 'accent', cursor: 'pointer', visibility: 'hidden', _groupHover: { visibility: 'visible' } }"
+        [chakraStyles]="{ color: 'accent', cursor: 'pointer', visibility: 'hidden', _groupHover: { visibility: 'visible' } }"
         (click)="navigate($event, section)"
         >#</a
       >
     </h2>
     <markdown *ngIf="section.content" [data]="section.content"></markdown>
     <div
-      [qStyles]="{
+      [chakraStyles]="{
           w: 'full',
           p: '4',
           borderWidth: '1px',

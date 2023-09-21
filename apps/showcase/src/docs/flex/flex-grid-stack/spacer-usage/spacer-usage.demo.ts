@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ButtonModule, LayoutModule, SystemModule, TypographyModule } from "@quillar/angular";
+import { ButtonModule, LayoutModule, SystemModule, TypographyModule } from "@chakra-ng/angular";
 
 @Component({
   standalone: true,

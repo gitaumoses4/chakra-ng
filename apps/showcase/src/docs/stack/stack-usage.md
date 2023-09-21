@@ -5,7 +5,7 @@ Stack is a container that lays out its children vertically or horizontally and a
 ## Import
 
 ```js
-import { LayoutModule } from "@quillar/angular";
+import { LayoutModule } from "@chakra-ng/angular";
 ```
 
 ## Usage

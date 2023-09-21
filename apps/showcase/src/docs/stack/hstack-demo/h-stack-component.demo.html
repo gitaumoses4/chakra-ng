@@ -1,8 +1,8 @@
-<div qHorizontalStack [spacing]="8">
+<div chakraHStack [spacing]="8">
   <ng-container *ngFor="let feature of features">
-    <div [qStyles]="{ p: 5, shadow: 'md', borderWidth: '1px'}">
-      <h1 qHeading [size]="'md'">{{ feature.title }}</h1>
-      <p [qStyles]="{ mt: 4}">{{ feature.description }}</p>
+    <div [chakraStyles]="{ p: 5, shadow: 'md', borderWidth: '1px'}">
+      <h1 chakraHeading [size]="'md'">{{ feature.title }}</h1>
+      <p [chakraStyles]="{ mt: 4}">{{ feature.description }}</p>
     </div>
   </ng-container>
 </div>

@@ -2,7 +2,7 @@
   "name": "showcase",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "quillar",
+  "prefix": "chakra-ng",
   "sourceRoot": "apps/showcase/src",
   "tags": ["scope:app"],
   "targets": {

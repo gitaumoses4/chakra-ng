@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
-import { LayoutModule, QuillarModule } from "@quillar/angular";
+import { LayoutModule, ChakraNgModule } from "@chakra-ng/angular";
 
 @Component({
   standalone: true,
-  imports: [LayoutModule, QuillarModule],
+  imports: [LayoutModule, ChakraNgModule],
   selector: "flex-usage-demo",
   templateUrl: "./flex-usage.demo.html",
 })

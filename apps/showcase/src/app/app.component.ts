@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ThemeService } from "@quillar/angular";
+import { ThemeService } from "@chakra-ng/angular";
 
 @Component({
   selector: "app-root",

@@ -16,11 +16,8 @@
     "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
     "paths": {
-      "@quillar/angular": ["libs/angular/src/index.ts"],
-      "@quillar/components": ["libs/components/src/index.ts"],
-      "@quillar/core": ["libs/core/src/index.ts"],
-      "@quillar/icons": ["libs/icons/src/index.ts"],
-      "@quillar/utils": ["libs/utils/src/index.ts"]
+      "@chakra-ng/angular": ["libs/angular/src/index.ts"],
+      "@chakra-ng/icons": ["libs/icons/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,10 +1,10 @@
 import { NavMenu } from "./types";
-import { QuillarIcon } from "@quillar/icons";
+import { ChakraNgIcon } from "@chakra-ng/icons";
 
 export const navMenu: NavMenu = [
   {
     title: "Components",
-    icon: QuillarIcon.BOX,
+    icon: ChakraNgIcon.BOX,
     children: [
       {
         title: "Layout",

@@ -1,10 +1,10 @@
-<div qFlexColumn [qStyles]="{ h: 'screen', maxW: '8xl', m: 'auto' }">
-  <nav [qStyles]="{ p: '4', position: 'fixed', top: 0, h: '20', w: 'full', zIndex: 'docked' }">
-    <q-button (click)="toggleTheme()">Toggle Theme</q-button>
+<div chakraFlexColumn [chakraStyles]="{ h: 'screen', maxW: '8xl', m: 'auto' }">
+  <nav [chakraStyles]="{ p: '4', position: 'fixed', top: 0, h: '20', w: 'full', zIndex: 'docked' }">
+    <chakra-button (click)="toggleTheme()">Toggle Theme</chakra-button>
   </nav>
-  <div qFlex [qStyles]="{ flex: 1, mt: '20' }">
+  <div chakraFlex [chakraStyles]="{ flex: 1, mt: '20' }">
     <div
-      [qStyles]="{ w: '60', h: 'calc(100vh - 6rem)', p: 4, overflowY: 'scroll', position: 'sticky', top: '20', alignSelf: 'start' }"
+      [chakraStyles]="{ w: '60', h: 'calc(100vh - 6rem)', p: 4, overflowY: 'scroll', position: 'sticky', top: '20', alignSelf: 'start' }"
       style="overscroll-behavior: contain"
     >
       <app-side-nav></app-side-nav>

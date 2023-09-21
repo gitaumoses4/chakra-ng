@@ -1,14 +1,14 @@
 <div
   *ngIf="code.length"
-  qFlexColumn
-  [qStyles]="{ borderWidth: '1px', borderColor: 'blackAlpha.200', borderRadius: 'lg', p: '2', _dark: { borderColor: 'whiteAlpha.200' } }"
+  chakraFlexColumn
+  [chakraStyles]="{ borderWidth: '1px', borderColor: 'blackAlpha.200', borderRadius: 'lg', p: '2', _dark: { borderColor: 'whiteAlpha.200' } }"
   class="code-container"
 >
-  <div qFlex>
+  <div chakraFlex>
     <div *ngFor="let currentCode of code; let i = index">
-      <q-button size="sm" [variant]="active === i ? 'solid' : 'ghost'" (click)="showCode(i)">{{
+      <chakra-button size="sm" [variant]="active === i ? 'solid' : 'ghost'" (click)="showCode(i)">{{
         currentCode.fileName || (currentCode.language | titlecase)
-      }}</q-button>
+      }}</chakra-button>
     </div>
   </div>
   <div *ngFor="let currentCode of code; let i = index">

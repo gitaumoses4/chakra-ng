@@ -5,7 +5,7 @@ Flex is Box with display set to flex and comes with helpful style shorthand.
 ## Import
 
 ```javascript
-import { FlexLayout } from "@quillar/angular";
+import { FlexLayout } from "@chakra-ng/angular";
 ```
 
 ## Usage

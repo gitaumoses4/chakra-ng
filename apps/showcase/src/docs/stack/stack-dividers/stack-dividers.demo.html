@@ -1,9 +1,9 @@
-<div qVerticalStack [spacing]="'2'" [align]="'stretch'" [divider]="divider">
-  <div [qStyles]="{ h: '40px', bg: 'yellow.200', color: 'black' }">1</div>
-  <div [qStyles]="{ h: '40px', bg: 'tomato' }">2</div>
-  <div [qStyles]="{ h: '40px', bg: 'pink.100', color: 'black' }">3</div>
+<div chakraVStack [spacing]="'2'" [align]="'stretch'" [divider]="divider">
+  <div [chakraStyles]="{ h: '40px', bg: 'yellow.200', color: 'black' }">1</div>
+  <div [chakraStyles]="{ h: '40px', bg: 'tomato' }">2</div>
+  <div [chakraStyles]="{ h: '40px', bg: 'pink.100', color: 'black' }">3</div>
 </div>
 
 <ng-template #divider>
-  <q-stack-divider [qStyles]="{ borderColor: 'gray.200' }"></q-stack-divider>
+  <q-stack-divider [chakraStyles]="{ borderColor: 'gray.200' }"></q-stack-divider>
 </ng-template>

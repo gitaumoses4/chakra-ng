@@ -2,7 +2,7 @@
   "name": "angular",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/angular/src",
-  "prefix": "quillar",
+  "prefix": "chakra-ng",
   "tags": ["scope:angular"],
   "projectType": "library",
   "targets": {
