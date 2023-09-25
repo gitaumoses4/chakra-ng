@@ -1,12 +1,18 @@
 <div
   *ngIf="code.length"
-  chakraFlexColumn
-  [chakraStyles]="{ borderWidth: '1px', borderColor: 'blackAlpha.200', borderRadius: 'lg', p: '2', _dark: { borderColor: 'whiteAlpha.200' } }"
+  flexColumn
+  [chakraStyles]="{
+    borderWidth: '1px',
+    borderColor: 'blackAlpha.200',
+    borderRadius: 'lg',
+    p: '2',
+    _dark: { borderColor: 'whiteAlpha.200' },
+  }"
   class="code-container"
 >
-  <div chakraFlex>
+  <div flex>
     <div *ngFor="let currentCode of code; let i = index">
-      <chakra-button size="sm" [variant]="active === i ? 'solid' : 'ghost'" (click)="showCode(i)">{{
+      <chakra-button [size]="'sm'" [variant]="active === i ? 'solid' : 'ghost'" (click)="showCode(i)">{{
         currentCode.fileName || (currentCode.language | titlecase)
       }}</chakra-button>
     </div>

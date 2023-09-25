@@ -1,6 +1,6 @@
 import { ColorMode, StorageType } from "./types";
 
-export const STORAGE_KEY = "chakra-ng-color-mode";
+export const STORAGE_KEY = "chakra-ui-color-mode";
 
 type MaybeColorMode = ColorMode | undefined;
 

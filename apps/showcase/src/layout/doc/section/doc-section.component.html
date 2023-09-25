@@ -1,10 +1,11 @@
 <div>
-  <div chakraFlexColumn [gap]="4">
-    <h2 chakraHeading [size]="getHeadingSize()" class="group">
+  <div flexColumn [gap]="4">
+    <h2 heading [size]="getHeadingSize()" class="group" [chakraStyles]="{ scrollMarginTop: 'nav-bar' }" #header>
       {{ section.title }}
       <a
         [chakraStyles]="{ color: 'accent', cursor: 'pointer', visibility: 'hidden', _groupHover: { visibility: 'visible' } }"
         (click)="navigate($event, section)"
+        [id]="section.id"
         >#</a
       >
     </h2>

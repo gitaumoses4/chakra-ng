@@ -12,6 +12,7 @@ import { GridLayoutDirective } from "./grid-layout.directive";
 import { StackDividerComponent } from "./stack/stack-divider.component";
 import { CommonModule } from "@angular/common";
 import { SystemModule } from "../../core";
+import { AspectRatioDirective } from "./aspect-ratio.directive";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SystemModule } from "../../core";
     SquareDirective,
     StackLayoutDirective,
     StackDividerComponent,
+    AspectRatioDirective,
   ],
   exports: [
     CenterLayoutDirective,
@@ -35,6 +37,7 @@ import { SystemModule } from "../../core";
     SquareDirective,
     StackLayoutDirective,
     StackDividerComponent,
+    AspectRatioDirective,
   ],
   imports: [SystemModule, CommonModule],
 })

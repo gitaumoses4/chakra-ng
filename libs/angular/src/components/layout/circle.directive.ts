@@ -3,7 +3,7 @@ import { SquareDirective } from "./square.directive";
 import { ChakraStyles } from "../../core";
 
 @Directive({
-  selector: "[chakraCircle]",
+  selector: "[circle]",
 })
 export class CircleDirective extends SquareDirective {
   override getStyles(): ChakraStyles {

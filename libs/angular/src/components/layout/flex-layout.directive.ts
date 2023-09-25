@@ -3,14 +3,14 @@ import { SystemProps } from "@chakra-ui/styled-system";
 import { BaseStyledDirective, ChakraStyles } from "../../core";
 
 const FLEX_DIRECTION = {
-  chakraFlexRow: "row",
-  chakraFlexColumn: "column",
-  chakraFlexRowReverse: "row-reverse",
-  chakraFlexColumnReverse: "column-reverse",
+  flexRow: "row",
+  flexColumn: "column",
+  flexRowReverse: "row-reverse",
+  flexColumnReverse: "column-reverse",
 };
 
 @Directive({
-  selector: "[chakraFlex],[chakraFlexColumn],[chakraFlexRow],[chakraFlexRowReverse],[chakraFlexColumnReverse]",
+  selector: "[flex],[flexColumn],[flexRow],[flexRowReverse],[flexColumnReverse]",
 })
 export class FlexLayoutDirective extends BaseStyledDirective {
   /**

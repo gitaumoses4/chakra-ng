@@ -1,24 +1,37 @@
-<ul #nav *ngIf="sections && sections.length" class="doc-section-nav">
-  <li *ngFor="let section of sections; let i = index" class="navbar-item" [ngClass]="{ 'active-navbar-item': activeId === section.id }">
-    <ng-container>
-      <div class="navbar-item-content">
-        <button class="p-link" (click)="onButtonClick(section)">{{ section.title }}</button>
-      </div>
+<div [chakraStyles]="{ borderLeftWidth: '1px', borderLeftColor: 'chakra-border-color', px: 4, position: 'relative' }">
+  <ul *ngIf="_sections && _sections.length" style="list-style: none">
+    <li *ngFor="let section of _sections; let i = index">
       <ng-container>
-        <ul *ngIf="section.sections" [chakraStyles]="{ ml: '4' }">
-          <li
-            *ngFor="let child of section.sections; let isFirst = first"
-            class="navbar-item"
-            [ngClass]="{ 'active-navbar-item': isActiveChildId(isFirst, activeId, child.id, section.id) }"
+        <div>
+          <chakra-button
+            [qStyles]="{ color: 'fg-muted', _active: { color: 'accent' } }"
+            [isActive]="section.id === activeId"
+            [size]="'sm'"
+            [variant]="'link'"
+            (click)="onButtonClick(section)"
+            [className]="{ 'active-section': section.id === activeId }"
+            >{{ section.title }}</chakra-button
           >
-            <div class="navbar-item-content">
-              <button class="p-link" (click)="onChildButtonClick(section, isFirst, child)">
-                {{ child.title }}
-              </button>
-            </div>
-          </li>
-        </ul>
+        </div>
+        <ng-container>
+          <ul style="list-style: none" *ngIf="section.sections" [chakraStyles]="{ ml: '4' }">
+            <li *ngFor="let child of section.sections">
+              <div>
+                <chakra-button
+                  [qStyles]="{ color: 'fg-muted', _active: { color: 'accent' } }"
+                  [size]="'sm'"
+                  [variant]="'link'"
+                  [className]="{ 'active-section': section.id === activeId }"
+                  (click)="onButtonClick(child)"
+                  [isActive]="child.id === activeId"
+                >
+                  {{ child.title }}
+                </chakra-button>
+              </div>
+            </li>
+          </ul>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>

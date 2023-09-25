@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild, ViewContainerRef } from "@angular/core";
 import { Doc } from "../../../types";
 import { Location } from "@angular/common";
 
@@ -12,6 +12,8 @@ export class DocSectionComponent implements AfterViewInit {
   @ViewChild("sectionContainer", { read: ViewContainerRef }) container!: ViewContainerRef;
   @ViewChild("demoContainer", { read: ViewContainerRef }) demoContainer!: ViewContainerRef;
 
+  @ViewChild("header") header!: ElementRef;
+
   constructor(private changeDetectorRef: ChangeDetectorRef, private location: Location) {}
 
   ngAfterViewInit() {
@@ -21,16 +23,29 @@ export class DocSectionComponent implements AfterViewInit {
         .then((component: any) => {
           this.demoContainer.createComponent(component);
           this.changeDetectorRef.detectChanges();
+
+          this.scrollToView();
         });
+    } else {
+      this.scrollToView();
+    }
+  }
+
+  private scrollToView() {
+    const hash = window.location.hash.substring(1);
+
+    console.log(hash);
+
+    if (hash === this.section.id) {
+      this.header.nativeElement.scrollIntoView({ block: "start", behavior: "smooth" });
     }
   }
 
   navigate(event: any, section: Doc) {
     if (typeof window !== undefined) {
-      const hash = window.location.hash.substring(1);
       this.location.go(this.location.path().split("#")[0] + "#" + section.id);
-
-      hash === section.id && event.preventDefault();
+      this.scrollToView();
+      event.preventDefault();
     }
   }
 

@@ -3,7 +3,7 @@ import { ColorMode } from "./types";
 import { DOCUMENT } from "@angular/common";
 import { fromEvent, startWith, Subscription } from "rxjs";
 
-const classNames = { light: "chakra-ng-light", dark: "chakra-ng-dark" };
+const classNames = { light: "chakra-ui-light", dark: "chakra-ui-dark" };
 
 @Injectable()
 export class ColorModeUtils {

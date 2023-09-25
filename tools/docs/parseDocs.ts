@@ -20,8 +20,8 @@ async function imports() {
   };
 }
 
-async function generateSections(node: any, parentId = "") {
-  if (node.type === "root") return generateSections(node.children[0]);
+async function generateSections(node: any, page: string, parentId = "") {
+  if (node?.type === "root") return generateSections(node.children[0], page);
 
   let title = (node.children?.[0]?.children?.[0]?.value || "").replace(/ +$/g, "");
 
@@ -50,12 +50,12 @@ async function generateSections(node: any, parentId = "") {
     children: [],
   };
 
-  section.demo = getDemo(section.path);
+  section.demo = getDemo(path.join(page, section.id));
 
   if (node.children) {
     for (const child of node.children) {
       if (child.type === "section") {
-        section.sections.push(await generateSections(child, section.path));
+        section.sections.push(await generateSections(child, page, section.path));
       } else {
         if (child.type !== "heading") {
           content.children.push(child);
@@ -85,5 +85,5 @@ export async function parseDocs(page: string) {
   normalize(tree);
   sectionize(tree);
 
-  return generateSections(tree);
+  return generateSections(tree, page);
 }

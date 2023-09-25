@@ -6,7 +6,7 @@ import { BaseStyledDirective, ChakraStyles } from "../../../core";
 export type StackDirection = ResponsiveValue<"row" | "column" | "row-reverse" | "column-reverse">;
 
 @Directive({
-  selector: "[chakraStack],[chakraHStack],[chakraVStack]",
+  selector: "[stack],[hStack],[vStack]",
 })
 export class StackLayoutDirective extends BaseStyledDirective implements OnChanges {
   @Input() align?: SystemProps["alignItems"];
@@ -15,7 +15,7 @@ export class StackLayoutDirective extends BaseStyledDirective implements OnChang
 
   @Input() wrap?: SystemProps["flexWrap"];
 
-  @Input() spacing?: SystemProps["margin"];
+  @Input() spacing?: SystemProps["margin"] = "0.5rem";
 
   @Input() direction?: StackDirection;
 
@@ -74,9 +74,9 @@ export class StackLayoutDirective extends BaseStyledDirective implements OnChang
   private getDirection() {
     const element = this.elementRef.nativeElement as HTMLElement;
 
-    if (element.hasAttribute("chakraHStack")) {
+    if (element.hasAttribute("hStack")) {
       return "row";
-    } else if (element.hasAttribute("chakraVStack")) {
+    } else if (element.hasAttribute("vStack")) {
       return "column";
     }
 
@@ -90,7 +90,7 @@ export class StackLayoutDirective extends BaseStyledDirective implements OnChang
       justifyContent: this.justify,
       flexDirection: this.getDirection(),
       flexWrap: this.wrap,
-      gap: this.divider ? undefined : this.spacing,
+      gap: this.divider ? undefined : this.spacing || "0.5rem",
     };
   }
 }

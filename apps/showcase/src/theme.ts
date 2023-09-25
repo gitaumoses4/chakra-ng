@@ -17,6 +17,13 @@ const theme: PartialChakraTheme = {
       "fg-subtle": { default: "gray.500", _dark: "gray.300" },
       "fg-on-accent": { default: "white", _dark: "inherit" },
     },
+    space: {
+      "nav-bar": "20",
+    },
+    sizes: {
+      "nav-bar": "20",
+      "page-content": "calc(100vh - 4rem)",
+    },
   },
   fonts: {
     heading: "'Eudoxus Sans', system-ui, sans-serif",
@@ -130,6 +137,25 @@ const theme: PartialChakraTheme = {
             _dark: {
               color: "purple.200",
             },
+          },
+        },
+        table: {
+          width: "full",
+          my: "2rem",
+          borderCollapse: "separate",
+          borderSpacing: 0,
+          "th,td": {
+            textAlign: "left",
+            py: "0.5rem",
+            pr: "1rem",
+            pl: 0,
+            borderColor: "inherit",
+            borderBottomWidth: "1px",
+          },
+          th: {
+            verticalAlign: "bottom",
+            borderBottomWidth: "2px",
+            color: "fg-muted",
           },
         },
       },

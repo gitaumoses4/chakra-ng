@@ -10,7 +10,7 @@ export abstract class BaseComponent implements OnInit, OnDestroy {
 
   protected styleSubscription: Subscription | undefined;
 
-  @Input() public classes: string | string[] | Set<string> | { [klass: string]: any } = {};
+  @Input() public className: string | string[] | Set<string> | { [klass: string]: any } = {};
 
   @Input() public set qStyles(styles: SystemStyleObject) {
     this.$customStyles.next(styles);

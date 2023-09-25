@@ -5,7 +5,7 @@ import { BaseStyledDirective, ChakraStyles } from "../../core";
  * A square is a div with equal width and height
  */
 @Directive({
-  selector: "[chakraSquare]",
+  selector: "[square]",
 })
 export class SquareDirective extends BaseStyledDirective {
   /**

@@ -3,7 +3,7 @@ import { SystemProps } from "@chakra-ui/styled-system";
 import { BaseStyledDirective, ChakraStyles } from "@chakra-ng/angular";
 
 @Directive({
-  selector: "[chakraGrid]",
+  selector: "[grid]",
 })
 export class GridLayoutDirective extends BaseStyledDirective {
   /**

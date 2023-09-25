@@ -10,6 +10,14 @@ export const navMenu: NavMenu = [
         title: "Layout",
         children: [
           {
+            title: "Aspect Ratio",
+            routerLink: "/docs/aspect-ratio",
+          },
+          {
+            title: "Center",
+            routerLink: "/docs/center",
+          },
+          {
             title: "Flex",
             routerLink: "/docs/flex",
           },

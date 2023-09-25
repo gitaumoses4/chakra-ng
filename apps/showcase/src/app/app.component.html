@@ -1,15 +1,16 @@
-<div chakraFlexColumn [chakraStyles]="{ h: 'screen', maxW: '8xl', m: 'auto' }">
-  <nav [chakraStyles]="{ p: '4', position: 'fixed', top: 0, h: '20', w: 'full', zIndex: 'docked' }">
-    <chakra-button (click)="toggleTheme()">Toggle Theme</chakra-button>
+<div chakraFlexColumn [chakraStyles]="{ h: 'screen' }">
+  <nav
+    [chakraStyles]="{ p: '4', position: 'fixed', top: 0, left: 0, h: 'nav-bar', w: 'full', zIndex: 'docked', bg: 'chakra-body-bg', boxShadow: 'sm' }"
+  >
+    <div [chakraStyles]="{ maxW: '8xl', m: 'auto' }">
+      <chakra-button (click)="toggleTheme()">Toggle Theme</chakra-button>
+    </div>
   </nav>
-  <div chakraFlex [chakraStyles]="{ flex: 1, mt: '20' }">
-    <div
-      [chakraStyles]="{ w: '60', h: 'calc(100vh - 6rem)', p: 4, overflowY: 'scroll', position: 'sticky', top: '20', alignSelf: 'start' }"
-      style="overscroll-behavior: contain"
-    >
+  <div chakraFlex [chakraStyles]="{ flex: 1, maxW: '8xl', m: 'auto', position: 'relative' }">
+    <div [chakraStyles]="{ w: '60', p: 4, overflowY: 'scroll', position: 'fixed', top: 'nav-bar', bottom: '0', alignSelf: 'start' }">
       <app-side-nav></app-side-nav>
     </div>
-    <div style="flex: 1">
+    <div style="flex: 1" [chakraStyles]="{ pt: 'nav-bar', ml: '60' }">
       <router-outlet></router-outlet>
     </div>
   </div>

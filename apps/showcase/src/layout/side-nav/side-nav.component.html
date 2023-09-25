@@ -1,12 +1,12 @@
-<div chakraVStack [spacing]="4" [align]="'start'">
+<div vStack [spacing]="4" [align]="'start'">
   <ng-container *ngFor="let item of items">
-    <div chakraFlexColumn [gap]="4" [chakraStyles]="{ flex: 1 }">
-      <div chakraHStack [spacing]="2">
+    <div flexColumn [gap]="4" [chakraStyles]="{ flex: 1 }">
+      <div hStack [spacing]="2">
         <chakra-icon *ngIf="item.icon" [name]="item.icon"></chakra-icon>
-        <h3 chakraHeading [size]="'sm'">{{ item.title }}</h3>
+        <h3 heading [size]="'sm'">{{ item.title }}</h3>
       </div>
-      <div *ngFor="let subItem of item.children || []" chakraVStack [spacing]="2" [align]="'start'">
-        <h6 chakraHeading [size]="'xs'" [chakraStyles]="{ color: 'teal.500', _dark: { color: 'teal.200' }, textTransform: 'uppercase' }">{{ subItem.title }}</h6>
+      <div *ngFor="let subItem of item.children || []" vStack [spacing]="2" [align]="'start'">
+        <h6 heading [size]="'xs'" [chakraStyles]="{ color: 'teal.500', _dark: { color: 'teal.200' }, textTransform: 'uppercase' }">{{ subItem.title }}</h6>
         <ng-container *ngFor="let subSubItem of subItem.children || []">
           <ng-container *ngIf="subSubItem.routerLink">
             <chakra-button [variant]="'link'" [size]="'sm'" [chakraStyles]="{ w: 'full', justifyContent: 'start' }">

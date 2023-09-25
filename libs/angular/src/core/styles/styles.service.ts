@@ -12,7 +12,7 @@ type Styles = Array<Interpolation<any> | TemplateStringsArray>;
 @Injectable()
 export class StylesService {
   private renderer: Renderer2;
-  private emotion = createEmotion({ key: "chakra-ng" });
+  private emotion = createEmotion({ key: "chakra" });
 
   constructor(
     private readonly rendererFactory: RendererFactory2,

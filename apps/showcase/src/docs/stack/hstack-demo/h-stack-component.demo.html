@@ -1,7 +1,7 @@
-<div chakraHStack [spacing]="8">
+<div hStack [spacing]="8">
   <ng-container *ngFor="let feature of features">
     <div [chakraStyles]="{ p: 5, shadow: 'md', borderWidth: '1px'}">
-      <h1 chakraHeading [size]="'md'">{{ feature.title }}</h1>
+      <h1 heading [size]="'md'">{{ feature.title }}</h1>
       <p [chakraStyles]="{ mt: 4}">{{ feature.description }}</p>
     </div>
   </ng-container>

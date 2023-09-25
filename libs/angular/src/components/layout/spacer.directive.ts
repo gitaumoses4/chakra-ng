@@ -2,7 +2,7 @@ import { Directive } from "@angular/core";
 import { BaseStyledDirective, ChakraStyles } from "../../core";
 
 @Directive({
-  selector: "[chakraSpacer]",
+  selector: "[spacer]",
 })
 export class SpacerDirective extends BaseStyledDirective {
   getStyles(): ChakraStyles {

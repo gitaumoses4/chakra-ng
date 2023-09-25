@@ -5,3 +5,4 @@ export * from "./circle.directive";
 export * from "./spacer.directive";
 export * from "./stack/stack-layout.directive";
 export * from "./layout.module";
+export * from "./aspect-ratio.directive";
