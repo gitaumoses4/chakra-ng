@@ -1,15 +1,6 @@
 # Flex
 
 Flex is Box with display set to flex and comes with helpful style shorthand.
-
-| Directive           | Description                                                                                                       |
-|---------------------|-------------------------------------------------------------------------------------------------------------------|
-| `flex`              | Defines a flex container with flex direction set to `row`. It enables a flex context for all its direct children. |
-| `flexRow`           | Defines a flex container with flex-direction set to `row`.                                                        |
-| `flexColumn`        | Defines a flex container with flex-direction set to `column`.                                                     |
-| `flexRowReverse`    | Defines a flex container with flex-direction set to `row-reverse`.                                                |
-| `flexColumnReverse` | Defines a flex container with flex-direction set to `column-reverse`.                                             |
-
 ## Import
 
 ```javascript

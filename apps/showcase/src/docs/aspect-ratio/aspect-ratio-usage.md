@@ -2,10 +2,6 @@
 
 Aspect Ratio is a utility directive that allows you to maintain the aspect ratio of an element. <br/><br/>
 
-| Directive     | Description                           |
-|---------------|---------------------------------------|
-| `aspectRatio` | Sets the aspect ratio of the element. |
-
 ## Import
 
 ```typescript

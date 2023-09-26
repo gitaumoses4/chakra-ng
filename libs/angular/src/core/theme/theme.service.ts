@@ -3,25 +3,21 @@ import { Injectable } from "@angular/core";
 import { ColorMode, ColorModeWithSystem } from "./types";
 import { resolveStyleConfig, SystemStyleObject, ThemingProps, WithCSSVar } from "@chakra-ui/styled-system";
 import { ChakraTheme } from "@chakra-ui/theme";
-import { ChakraNgConfig } from "./chakra-ng.config";
+import { ChakraConfig } from "./chakra.config";
 import { ColorModeUtils } from "./color-mode.utils";
 import { Dict, filterUndefined, get, mergeWith } from "@chakra-ui/utils";
 import { omit } from "@chakra-ui/object-utils";
-import { ChakraNgThemeConfig, generateTheme } from "../../utils";
+import { generateTheme } from "../../utils";
 
 @Injectable()
 export class ThemeService {
   private $resolvedColorMode = new BehaviorSubject<ColorMode | undefined>(undefined);
   private subscriptions: Subscription[] = [];
 
-  public $theme = new BehaviorSubject<WithCSSVar<ChakraTheme>>(generateTheme(this.themeConfig));
+  public $theme = new BehaviorSubject<WithCSSVar<ChakraTheme>>(generateTheme(this.config));
   public $colorMode = new BehaviorSubject<ColorMode>(this.getInitialColorMode());
 
-  constructor(
-    private readonly config: ChakraNgConfig,
-    private readonly colorModeUtils: ColorModeUtils,
-    private readonly themeConfig: ChakraNgThemeConfig,
-  ) {
+  constructor(private readonly config: ChakraConfig, private readonly colorModeUtils: ColorModeUtils) {
     this.initialize();
   }
 

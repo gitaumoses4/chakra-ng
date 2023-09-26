@@ -1,10 +1,10 @@
 import { NavMenu } from "./types";
-import { ChakraNgIcon } from "@chakra-ng/icons";
+import { ChakraIcons } from "@chakra-ng/icons";
 
 export const navMenu: NavMenu = [
   {
     title: "Components",
-    icon: ChakraNgIcon.BOX,
+    icon: ChakraIcons.BOX,
     children: [
       {
         title: "Layout",

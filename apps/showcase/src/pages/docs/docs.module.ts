@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { DocsPage } from "./docs.page";
-import { LayoutModule, ChakraNgModule, TypographyModule } from "@chakra-ng/angular";
+import { ChakraSystemModule, LayoutModule, TypographyModule } from "@chakra-ng/angular";
 import { LayoutDocModule } from "../../layout/doc/layout-doc.module";
 import { MarkdownModule } from "ngx-markdown";
 import { CommonModule } from "@angular/common";
@@ -13,7 +13,7 @@ const routes: Route[] = [
 
 @NgModule({
   declarations: [DocsPage],
-  imports: [RouterModule.forChild(routes), ChakraNgModule, LayoutDocModule, MarkdownModule, TypographyModule, LayoutModule, CommonModule],
+  imports: [RouterModule.forChild(routes), ChakraSystemModule, LayoutDocModule, MarkdownModule, TypographyModule, LayoutModule, CommonModule],
   exports: [RouterModule],
 })
 export class DocsModule {}

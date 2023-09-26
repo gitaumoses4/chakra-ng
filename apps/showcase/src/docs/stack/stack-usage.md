@@ -2,12 +2,6 @@
 
 Stack is a container that lays out its children vertically or horizontally and applies a space between them.
 
-| Directive | Description                                     |
-|-----------|-------------------------------------------------|
-| `stack`   | Stacks the children vertically or horizontally. |
-| `hStack`  | Sets the space between the children.            |
-| `vStack`  | Sets the space between the children.            |
-
 ## Import
 
 ```js

@@ -2,13 +2,6 @@
 
 Center is a directive that centers an element's content within itself.
 
-| Directive        | Description                                                                                                   |
-|------------------|---------------------------------------------------------------------------------------------------------------|
-| `center`         | Centers the content of the element.                                                                           |
-| `square`         | Centers the content of the element and sets the width and height to be equal.                                 |
-| `circle`         | Centers the content of the element and sets the width and height to be equal and the border-radius to be 50%. |
-| `absoluteCenter` | Centers the content of the element using absolute positioning.                                                |
-
 ## Import
 
 ```typescript
@@ -26,3 +19,8 @@ Center can be used to create frames around icons or numbers.
 ### Square and Circle
 
 To reducer boilerplate, we've created the `[square]` and `[circle]` directives that automatically center the content.
+
+### Absolute Center
+
+Used to horizontally and vertically center an element relative to its parent dimensions. Uses the `position: absolute` CSS property. 
+Takes `axis` property which could be "both" (default), "horizontal" or "vertical".

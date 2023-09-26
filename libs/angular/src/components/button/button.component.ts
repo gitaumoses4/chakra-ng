@@ -1,5 +1,5 @@
 import { Component, ContentChild, Input, TemplateRef } from "@angular/core";
-import { ChakraNgIcons } from "@chakra-ng/icons";
+import { ChakraIcon } from "@chakra-ng/icons";
 import { SystemProps } from "@chakra-ui/styled-system";
 import { BaseStyledComponent, ChakraStyles } from "../../core";
 
@@ -37,12 +37,12 @@ export class ButtonComponent extends BaseStyledComponent {
   /**
    * If added, the button will show an icon before the button's label
    */
-  @Input() public leftIcon?: ChakraNgIcons;
+  @Input() public leftIcon?: ChakraIcon;
 
   /**
    * If added, the button will show an icon after the button's label
    */
-  @Input() public rightIcon?: ChakraNgIcons;
+  @Input() public rightIcon?: ChakraIcon;
 
   /**
    * The space between the button icon and label.

@@ -1,6 +1,15 @@
 import { ColorModeManager, LocalStorageManager } from "./color-mode.manager";
+import { PartialChakraTheme, ThemeExtensionConfig } from "../../utils";
 
-export class ChakraNgConfig {
+export class ChakraConfig {
+  public theme: PartialChakraTheme = {};
+
+  public useDefaultTheme = true;
+
+  public extensions: Array<ThemeExtensionConfig> = [];
+
+  public icons: Record<string, string> = {};
+
   /**
    * The element to attach the CSS custom properties to.
    * @default ":host, :root"

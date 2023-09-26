@@ -2,8 +2,8 @@ import { toCSSVar, WithCSSVar } from "@chakra-ui/styled-system";
 import { ChakraTheme } from "@chakra-ui/theme";
 import { extendBaseTheme, extendTheme } from "@chakra-ui/theme-utils";
 import { ThemeExtensionConfig } from "./types";
-import { ChakraNgThemeConfig } from "./chakra-ng-theme.config";
 import { extensions } from "./extensions";
+import { ChakraConfig } from "../../core";
 
 function getExtension(extensionConfig: ThemeExtensionConfig) {
   const extension = extensions[extensionConfig.type];
@@ -15,8 +15,8 @@ function getExtension(extensionConfig: ThemeExtensionConfig) {
   return null;
 }
 
-export function generateTheme(config: Partial<ChakraNgThemeConfig> = {}): WithCSSVar<ChakraTheme> {
-  const fullConfig = { ...new ChakraNgThemeConfig(), ...config };
+export function generateTheme(config: Partial<ChakraConfig> = {}): WithCSSVar<ChakraTheme> {
+  const fullConfig = { theme: config.theme || {}, useDefaultTheme: config.useDefaultTheme, extensions: config.extensions || [] };
 
   const extensions = [];
 

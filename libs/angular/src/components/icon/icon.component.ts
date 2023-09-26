@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, Input } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
-import { CHAKRA_NG_ICONS_TOKEN, ChakraNgIcons } from "@chakra-ng/icons";
+import { CHAKRA_ICONS_TOKEN, ChakraIcon } from "@chakra-ng/icons";
 import { BaseStyledComponent, ChakraStyles } from "../../core";
 
 const fallbackIcon = `
@@ -26,9 +26,9 @@ export class IconComponent extends BaseStyledComponent {
   private sanitizer = inject(DomSanitizer);
 
   public template = this.sanitizer.bypassSecurityTrustHtml(fallbackIcon);
-  private readonly icons: Array<Record<string, string>> = inject(CHAKRA_NG_ICONS_TOKEN);
+  private readonly icons: Array<Record<string, string>> = inject(CHAKRA_ICONS_TOKEN);
 
-  @Input() set name(name: ChakraNgIcons | string) {
+  @Input() set name(name: ChakraIcon | string) {
     for (const icons of [...this.icons].reverse()) {
       if (icons[name]) {
         this.template = this.sanitizer.bypassSecurityTrustHtml(icons[name]);

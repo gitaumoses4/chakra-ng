@@ -11,7 +11,7 @@ import {
 import { GridLayoutDirective } from "./grid-layout.directive";
 import { StackDividerComponent } from "./stack/stack-divider.component";
 import { CommonModule } from "@angular/common";
-import { SystemModule } from "../../core";
+import { ChakraSystemModule } from "../../core";
 import { AspectRatioDirective } from "./aspect-ratio.directive";
 
 @NgModule({
@@ -39,6 +39,6 @@ import { AspectRatioDirective } from "./aspect-ratio.directive";
     StackDividerComponent,
     AspectRatioDirective,
   ],
-  imports: [SystemModule, CommonModule],
+  imports: [ChakraSystemModule, CommonModule],
 })
 export class LayoutModule {}

@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
-import { LayoutModule, ChakraNgModule } from "@chakra-ng/angular";
+import { ChakraSystemModule, LayoutModule } from "@chakra-ng/angular";
 
 @Component({
   standalone: true,
   selector: "flex-spacer-demo",
   templateUrl: "./flex-spacer.demo.html",
-  imports: [LayoutModule, ChakraNgModule],
+  imports: [LayoutModule, ChakraSystemModule],
 })
 export class FlexSpacerDemo {}

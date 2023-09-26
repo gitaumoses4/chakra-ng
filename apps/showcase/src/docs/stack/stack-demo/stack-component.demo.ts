@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
-import { LayoutModule, ChakraNgModule, TypographyModule } from "@chakra-ng/angular";
+import { ChakraSystemModule, LayoutModule, TypographyModule } from "@chakra-ng/angular";
 import { CommonModule } from "@angular/common";
 
 @Component({
   standalone: true,
   selector: "stack-component-demo",
   templateUrl: "./stack-component.demo.html",
-  imports: [LayoutModule, ChakraNgModule, TypographyModule, CommonModule],
+  imports: [LayoutModule, ChakraSystemModule, TypographyModule, CommonModule],
 })
 export class StackComponentDemo {
   features = [

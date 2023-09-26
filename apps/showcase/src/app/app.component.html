@@ -1,4 +1,4 @@
-<div chakraFlexColumn [chakraStyles]="{ h: 'screen' }">
+<div flexColumn [chakraStyles]="{ h: 'screen' }">
   <nav
     [chakraStyles]="{ p: '4', position: 'fixed', top: 0, left: 0, h: 'nav-bar', w: 'full', zIndex: 'docked', bg: 'chakra-body-bg', boxShadow: 'sm' }"
   >
@@ -6,7 +6,7 @@
       <chakra-button (click)="toggleTheme()">Toggle Theme</chakra-button>
     </div>
   </nav>
-  <div chakraFlex [chakraStyles]="{ flex: 1, maxW: '8xl', m: 'auto', position: 'relative' }">
+  <div flex [chakraStyles]="{ flex: 1, maxW: '8xl', m: 'auto', position: 'relative' }">
     <div [chakraStyles]="{ w: '60', p: 4, overflowY: 'scroll', position: 'fixed', top: 'nav-bar', bottom: '0', alignSelf: 'start' }">
       <app-side-nav></app-side-nav>
     </div>

@@ -5,7 +5,7 @@ export const docs: Docs = {
     "path": "aspect-ratio",
     "title": "Aspect Ratio",
     "depth": 1,
-    "content": "Aspect Ratio is a utility directive that allows you to maintain the aspect ratio of an element. <br/><br/>\n\n| Directive     | Description                           |\n|---------------|---------------------------------------|\n| `aspectRatio` | Sets the aspect ratio of the element. |\n",
+    "content": "Aspect Ratio is a utility directive that allows you to maintain the aspect ratio of an element. <br/><br/>\n",
     "sections": [
       {
         "id": "import",
@@ -38,7 +38,7 @@ export const docs: Docs = {
                 {
                   "fileName": "embed-video.demo.ts",
                   "language": "typescript",
-                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraNgModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"embed-video-demo\",\n  templateUrl: \"./embed-video.demo.html\",\n  imports: [LayoutModule, ChakraNgModule],\n})\nexport class EmbedVideoDemo {}\n"
+                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"embed-video-demo\",\n  templateUrl: \"./embed-video.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class EmbedVideoDemo {}\n"
                 }
               ]
             },
@@ -61,7 +61,7 @@ export const docs: Docs = {
                 {
                   "fileName": "embed-image.demo.ts",
                   "language": "typescript",
-                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraNgModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"embed-image-demo\",\n  templateUrl: \"./embed-image.demo.html\",\n  imports: [LayoutModule, ChakraNgModule],\n})\nexport class EmbedImageDemo {}\n"
+                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"embed-image-demo\",\n  templateUrl: \"./embed-image.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class EmbedImageDemo {}\n"
                 }
               ]
             },
@@ -195,7 +195,7 @@ export const docs: Docs = {
     "path": "center",
     "title": "Center",
     "depth": 1,
-    "content": "Center is a directive that centers an element's content within itself.\n\n| Directive        | Description                                                                                                   |\n|------------------|---------------------------------------------------------------------------------------------------------------|\n| `center`         | Centers the content of the element.                                                                           |\n| `square`         | Centers the content of the element and sets the width and height to be equal.                                 |\n| `circle`         | Centers the content of the element and sets the width and height to be equal and the border-radius to be 50%. |\n| `absoluteCenter` | Centers the content of the element using absolute positioning.                                                |\n",
+    "content": "Center is a directive that centers an element's content within itself.\n",
     "sections": [
       {
         "id": "import",
@@ -221,7 +221,7 @@ export const docs: Docs = {
             {
               "fileName": "usage.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { ChakraNgModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"usage-demo\",\n  templateUrl: \"./usage.demo.html\",\n  imports: [LayoutModule, ChakraNgModule],\n})\nexport class UsageDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"usage-demo\",\n  templateUrl: \"./usage.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class UsageDemo {}\n"
             }
           ]
         },
@@ -243,7 +243,7 @@ export const docs: Docs = {
                 {
                   "fileName": "with-icons.demo.ts",
                   "language": "typescript",
-                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraNgModule, IconModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"with-icons-demo\",\n  templateUrl: \"./with-icons.demo.html\",\n  imports: [LayoutModule, ChakraNgModule, IconModule],\n})\nexport class WithIconsDemo {}\n"
+                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, IconModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"with-icons-demo\",\n  templateUrl: \"./with-icons.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule, IconModule],\n})\nexport class WithIconsDemo {}\n"
                 }
               ]
             },
@@ -255,7 +255,45 @@ export const docs: Docs = {
             "path": "center/usage/square-and-circle",
             "title": "Square and Circle",
             "depth": 3,
+            "demo": {
+              "component": import("./center/square-and-circle/square-and-circle.demo"),
+              "code": [
+                {
+                  "fileName": "square-and-circle.demo.html",
+                  "language": "html",
+                  "content": "<div hStack>\n  <div circle [size]=\"'40px'\" [chakraStyles]=\"{ bg: 'tomato', color: 'white'}\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n  <div square [size]=\"'40px'\" [chakraStyles]=\"{ bg: 'purple.700', color: 'white'}\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n</div>\n"
+                },
+                {
+                  "fileName": "square-and-circle.demo.ts",
+                  "language": "typescript",
+                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, IconModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"square-and-circle-demo\",\n  templateUrl: \"./square-and-circle.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule, IconModule],\n})\nexport class SquareAndCircleDemo {}\n"
+                }
+              ]
+            },
             "content": "To reducer boilerplate, we've created the `[square]` and `[circle]` directives that automatically center the content.\n",
+            "sections": []
+          },
+          {
+            "id": "absolute-center",
+            "path": "center/usage/absolute-center",
+            "title": "Absolute Center",
+            "depth": 3,
+            "demo": {
+              "component": import("./center/absolute-center/absolute-center.demo"),
+              "code": [
+                {
+                  "fileName": "absolute-center.demo.html",
+                  "language": "html",
+                  "content": "<div [chakraStyles]=\"{ position: 'relative', h: '100px'}\">\n  <div absoluteCenter [chakraStyles]=\"{ bg: 'tomato', p: '4', color: 'white'}\" [axis]=\"'both'\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n</div>\n"
+                },
+                {
+                  "fileName": "absolute-center.demo.ts",
+                  "language": "typescript",
+                  "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, IconModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"absolute-center-demo\",\n  templateUrl: \"./absolute-center.demo.html\",\n  imports: [ChakraSystemModule, LayoutModule, IconModule],\n})\nexport class AbsoluteCenterDemo {}\n"
+                }
+              ]
+            },
+            "content": "Used to horizontally and vertically center an element relative to its parent dimensions. Uses the `position: absolute` CSS property.\nTakes `axis` property which could be \"both\" (default), \"horizontal\" or \"vertical\".\n",
             "sections": []
           }
         ]
@@ -267,7 +305,7 @@ export const docs: Docs = {
     "path": "flex",
     "title": "Flex",
     "depth": 1,
-    "content": "Flex is Box with display set to flex and comes with helpful style shorthand.\n\n| Directive           | Description                                                                                                       |\n|---------------------|-------------------------------------------------------------------------------------------------------------------|\n| `flex`              | Defines a flex container with flex direction set to `row`. It enables a flex context for all its direct children. |\n| `flexRow`           | Defines a flex container with flex-direction set to `row`.                                                        |\n| `flexColumn`        | Defines a flex container with flex-direction set to `column`.                                                     |\n| `flexRowReverse`    | Defines a flex container with flex-direction set to `row-reverse`.                                                |\n| `flexColumnReverse` | Defines a flex container with flex-direction set to `column-reverse`.                                             |\n",
+    "content": "Flex is Box with display set to flex and comes with helpful style shorthand.\n",
     "sections": [
       {
         "id": "import",
@@ -293,7 +331,7 @@ export const docs: Docs = {
             {
               "fileName": "flex-usage.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, ChakraNgModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  imports: [LayoutModule, ChakraNgModule],\n  selector: \"flex-usage-demo\",\n  templateUrl: \"./flex-usage.demo.html\",\n})\nexport class FlexUsageDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  imports: [LayoutModule, ChakraSystemModule],\n  selector: \"flex-usage-demo\",\n  templateUrl: \"./flex-usage.demo.html\",\n})\nexport class FlexUsageDemo {}\n"
             }
           ]
         },
@@ -316,7 +354,7 @@ export const docs: Docs = {
             {
               "fileName": "flex-spacer.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, ChakraNgModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-spacer-demo\",\n  templateUrl: \"./flex-spacer.demo.html\",\n  imports: [LayoutModule, ChakraNgModule],\n})\nexport class FlexSpacerDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-spacer-demo\",\n  templateUrl: \"./flex-spacer.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class FlexSpacerDemo {}\n"
             }
           ]
         },
@@ -339,7 +377,7 @@ export const docs: Docs = {
             {
               "fileName": "flex-grid-stack.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { ChakraNgModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-grid-stack-demo\",\n  templateUrl: \"./flex-grid-stack.demo.html\",\n  imports: [LayoutModule, ChakraNgModule],\n})\nexport class FlexGridStackDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-grid-stack-demo\",\n  templateUrl: \"./flex-grid-stack.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class FlexGridStackDemo {}\n"
             }
           ]
         },
@@ -361,7 +399,7 @@ export const docs: Docs = {
                 {
                   "fileName": "spacer-usage.demo.ts",
                   "language": "typescript",
-                  "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule, SystemModule, TypographyModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-spacer-usage\",\n  templateUrl: \"./spacer-usage.demo.html\",\n  imports: [LayoutModule, SystemModule, TypographyModule, ButtonModule],\n})\nexport class FlexSpacerUsageDemo {}\n"
+                  "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule, ChakraSystemModule, TypographyModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"flex-spacer-usage\",\n  templateUrl: \"./spacer-usage.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule, TypographyModule, ButtonModule],\n})\nexport class FlexSpacerUsageDemo {}\n"
                 }
               ]
             },
@@ -377,7 +415,7 @@ export const docs: Docs = {
     "path": "stack",
     "title": "Stack",
     "depth": 1,
-    "content": "Stack is a container that lays out its children vertically or horizontally and applies a space between them.\n\n| Directive | Description                                     |\n|-----------|-------------------------------------------------|\n| `stack`   | Stacks the children vertically or horizontally. |\n| `hStack`  | Sets the space between the children.            |\n| `vStack`  | Sets the space between the children.            |\n",
+    "content": "Stack is a container that lays out its children vertically or horizontally and applies a space between them.\n",
     "sections": [
       {
         "id": "import",
@@ -403,7 +441,7 @@ export const docs: Docs = {
             {
               "fileName": "stack-usage.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { ChakraNgModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-usage-demo\",\n  templateUrl: \"./stack-usage.demo.html\",\n  imports: [LayoutModule, ChakraNgModule],\n})\nexport class StackUsageDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-usage-demo\",\n  templateUrl: \"./stack-usage.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class StackUsageDemo {}\n"
             }
           ]
         },
@@ -426,7 +464,7 @@ export const docs: Docs = {
             {
               "fileName": "stack-responsive.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, ChakraNgModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-responsive-demo\",\n  templateUrl: \"./stack-responsive.demo.html\",\n  imports: [ChakraNgModule, LayoutModule],\n})\nexport class StackResponsiveDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-responsive-demo\",\n  templateUrl: \"./stack-responsive.demo.html\",\n  imports: [ChakraSystemModule, LayoutModule],\n})\nexport class StackResponsiveDemo {}\n"
             }
           ]
         },
@@ -449,7 +487,7 @@ export const docs: Docs = {
             {
               "fileName": "stack-dividers.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, ChakraNgModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-dividers-demo\",\n  templateUrl: \"./stack-dividers.demo.html\",\n  imports: [ChakraNgModule, LayoutModule],\n})\nexport class StackDividersDemo {}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-dividers-demo\",\n  templateUrl: \"./stack-dividers.demo.html\",\n  imports: [ChakraSystemModule, LayoutModule],\n})\nexport class StackDividersDemo {}\n"
             }
           ]
         },
@@ -480,7 +518,7 @@ export const docs: Docs = {
             {
               "fileName": "stack-component.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, ChakraNgModule, TypographyModule } from \"@chakra-ng/angular\";\nimport { CommonModule } from \"@angular/common\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-component-demo\",\n  templateUrl: \"./stack-component.demo.html\",\n  imports: [LayoutModule, ChakraNgModule, TypographyModule, CommonModule],\n})\nexport class StackComponentDemo {\n  features = [\n    { title: \"Plan Money\", description: \"The future can be even brighter but a goal without a plan is just a wish.\" },\n    {\n      title: \"Save Money\",\n      description:\n        \"You deserve good thing. With a whooping 10-15% interest\" +\n        \"rate per ann-um, grow your savings on your own terms with our completely automated process\",\n    },\n  ];\n}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule, TypographyModule } from \"@chakra-ng/angular\";\nimport { CommonModule } from \"@angular/common\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-component-demo\",\n  templateUrl: \"./stack-component.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule, TypographyModule, CommonModule],\n})\nexport class StackComponentDemo {\n  features = [\n    { title: \"Plan Money\", description: \"The future can be even brighter but a goal without a plan is just a wish.\" },\n    {\n      title: \"Save Money\",\n      description:\n        \"You deserve good thing. With a whooping 10-15% interest\" +\n        \"rate per ann-um, grow your savings on your own terms with our completely automated process\",\n    },\n  ];\n}\n"
             }
           ]
         },
@@ -503,7 +541,7 @@ export const docs: Docs = {
             {
               "fileName": "h-stack-component.demo.ts",
               "language": "typescript",
-              "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule, ChakraNgModule, TypographyModule } from \"@chakra-ng/angular\";\nimport { CommonModule } from \"@angular/common\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-component-demo\",\n  templateUrl: \"./h-stack-component.demo.html\",\n  imports: [LayoutModule, ChakraNgModule, TypographyModule, CommonModule],\n})\nexport class HStackComponentDemo {\n  features = [\n    { title: \"Plan Money\", description: \"The future can be even brighter but a goal without a plan is just a wish.\" },\n    {\n      title: \"Save Money\",\n      description:\n        \"You deserve good thing. With a whooping 10-15% interest\" +\n        \"rate per ann-um, grow your savings on your own terms with our completely automated process\",\n    },\n  ];\n}\n"
+              "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule, TypographyModule } from \"@chakra-ng/angular\";\nimport { CommonModule } from \"@angular/common\";\n\n@Component({\n  standalone: true,\n  selector: \"stack-component-demo\",\n  templateUrl: \"./h-stack-component.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule, TypographyModule, CommonModule],\n})\nexport class HStackComponentDemo {\n  features = [\n    { title: \"Plan Money\", description: \"The future can be even brighter but a goal without a plan is just a wish.\" },\n    {\n      title: \"Save Money\",\n      description:\n        \"You deserve good thing. With a whooping 10-15% interest\" +\n        \"rate per ann-um, grow your savings on your own terms with our completely automated process\",\n    },\n  ];\n}\n"
             }
           ]
         },

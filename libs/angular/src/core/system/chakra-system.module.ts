@@ -5,4 +5,4 @@ import { ChakraStylesDirective } from "./chakra-styles.directive";
   declarations: [ChakraStylesDirective],
   exports: [ChakraStylesDirective],
 })
-export class SystemModule {}
+export class ChakraSystemModule {}
