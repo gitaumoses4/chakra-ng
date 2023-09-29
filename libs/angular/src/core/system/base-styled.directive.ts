@@ -1,6 +1,6 @@
-import { Directive, ElementRef, inject, OnChanges, OnDestroy, OnInit } from "@angular/core";
+import { Directive, ElementRef, inject, Input, OnChanges, OnDestroy, OnInit } from "@angular/core";
 import { StylesService } from "../styles";
-import { BehaviorSubject, of, Subscription } from "rxjs";
+import { BehaviorSubject, map, of, Subscription } from "rxjs";
 import { ChakraStyles } from "./types";
 import { getStylesId } from "./system";
 
@@ -13,8 +13,12 @@ export abstract class BaseStyledDirective implements OnInit, OnDestroy, OnChange
 
   protected readonly $styles = new BehaviorSubject<ChakraStyles>(this.getStyles() || {});
 
+  @Input() public chakraStyles: ChakraStyles | null = null;
+
   ngOnInit() {
-    this.baseSubscriptions.push(this.styleService.applyChakraStyles(getStylesId(this.constructor.name), this.$styles, this.elementRef.nativeElement));
+    const styles = this.$styles.pipe(map((styles) => ({ ...styles, ...(this.chakraStyles || {}) })));
+
+    this.baseSubscriptions.push(this.styleService.applyChakraStyles(getStylesId(this.constructor.name), styles, this.elementRef.nativeElement));
   }
 
   public applyChakraStyles(styles: ChakraStyles, element: HTMLElement) {

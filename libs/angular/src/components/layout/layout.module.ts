@@ -3,7 +3,9 @@ import {
   AbsoluteCenterLayoutDirective,
   CenterLayoutDirective,
   CircleDirective,
+  ContainerDirective,
   FlexLayoutDirective,
+  GridItemDirective,
   SpacerDirective,
   SquareDirective,
   StackLayoutDirective,
@@ -26,6 +28,8 @@ import { AspectRatioDirective } from "./aspect-ratio.directive";
     StackLayoutDirective,
     StackDividerComponent,
     AspectRatioDirective,
+    ContainerDirective,
+    GridItemDirective,
   ],
   exports: [
     CenterLayoutDirective,
@@ -38,6 +42,8 @@ import { AspectRatioDirective } from "./aspect-ratio.directive";
     StackLayoutDirective,
     StackDividerComponent,
     AspectRatioDirective,
+    ContainerDirective,
+    GridItemDirective,
   ],
   imports: [ChakraSystemModule, CommonModule],
 })

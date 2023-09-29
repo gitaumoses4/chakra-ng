@@ -19,4 +19,4 @@ export type Code = {
   content: string;
 };
 
-export type Docs = Record<string, Doc>;
+export type Docs = Record<string, Record<string, Doc>>;

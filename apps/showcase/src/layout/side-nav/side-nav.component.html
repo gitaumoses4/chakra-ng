@@ -1,20 +1,30 @@
-<div vStack [spacing]="4" [align]="'start'">
-  <ng-container *ngFor="let item of items">
-    <div flexColumn [gap]="4" [chakraStyles]="{ flex: 1 }">
-      <div hStack [spacing]="2">
-        <chakra-icon *ngIf="item.icon" [name]="item.icon"></chakra-icon>
-        <h3 heading [size]="'sm'">{{ item.title }}</h3>
-      </div>
-      <div *ngFor="let subItem of item.children || []" vStack [spacing]="2" [align]="'start'">
-        <h6 heading [size]="'xs'" [chakraStyles]="{ color: 'teal.500', _dark: { color: 'teal.200' }, textTransform: 'uppercase' }">{{ subItem.title }}</h6>
-        <ng-container *ngFor="let subSubItem of subItem.children || []">
-          <ng-container *ngIf="subSubItem.routerLink">
-            <chakra-button [variant]="'link'" [size]="'sm'" [chakraStyles]="{ w: 'full', justifyContent: 'start' }">
-              <a [routerLink]="subSubItem.routerLink">{{ subSubItem.title }}</a>
-            </chakra-button>
-          </ng-container>
+<div vStack [spacing]="8" [align]="'stretch'">
+  <div chakraComponent="SideNav.menu">
+    <ng-container *ngFor="let item of menu">
+      <a chakraComponent="SideNav.menuItem" [attr.aria-current]="activeItem?.routerLink === item.routerLink && 'page'" [routerLink]="item.routerLink">
+        <div chakraComponent="SideNav.menuItemIcon">
+          <chakra-icon [boxSize]="'4'" [name]="item.icon"></chakra-icon>
+        </div>
+        <span chakraComponent="SideNav.menuItemTitle">{{ item.title }}</span>
+      </a>
+    </ng-container>
+  </div>
+  <div *ngIf="activeItem" vStack [spacing]="6" [align]="'stretch'">
+    <div *ngFor="let subItem of activeItem.subMenu" chakraComponent="SideNav.subMenu">
+      <h6 chakraComponent="SideNav.subMenuTitle">
+        {{ subItem.title }}
+      </h6>
+      <div chakraComponent="SideNav.subMenuContent">
+        <ng-container *ngFor="let subSubItem of subItem.items">
+          <a
+            chakraComponent="SideNav.subMenuItem"
+            *ngIf="subSubItem.routerLink"
+            [attr.aria-current]="subSubItem.routerLink === activeRoute && 'page'"
+            [routerLink]="subSubItem.routerLink"
+            >{{ subSubItem.title }}</a
+          >
         </ng-container>
       </div>
     </div>
-  </ng-container>
+  </div>
 </div>

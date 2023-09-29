@@ -1,4 +1,5 @@
 import { PartialChakraTheme } from "@chakra-ng/angular";
+import { components } from "./components";
 
 const theme: PartialChakraTheme = {
   config: {
@@ -6,11 +7,11 @@ const theme: PartialChakraTheme = {
   },
   semanticTokens: {
     colors: {
-      accent: { default: "pink.500", _dark: "pink.300" },
-      "accent-emphasis": { default: "pink.700", _dark: "pink.200" },
-      "accent-static": "pink.500",
-      "accent-muted": { default: "pink.300", _dark: "pink.200" },
-      "accent-subtle": { default: "pink.50", _dark: "pink.800" },
+      accent: { default: "teal.500", _dark: "teal.300" },
+      "accent-emphasis": { default: "teal.700", _dark: "teal.200" },
+      "accent-static": "teal.500",
+      "accent-muted": { default: "teal.300", _dark: "teal.200" },
+      "accent-subtle": { default: "teal.50", _dark: "teal.800" },
       fg: { default: "gray.700", _dark: "gray.100" },
       "fg-emphasis": { default: "gray.900", _dark: "gray.200" },
       "fg-muted": { default: "gray.600", _dark: "gray.400" },
@@ -29,6 +30,7 @@ const theme: PartialChakraTheme = {
     heading: "'Eudoxus Sans', system-ui, sans-serif",
     body: "'Eudoxus Sans', system-ui, sans-serif",
   },
+  components,
   styles: {
     global: {
       body: {
@@ -98,16 +100,30 @@ const theme: PartialChakraTheme = {
           my: "4rem",
         },
         blockquote: {
+          position: "relative",
+          overflow: "hidden",
           bg: "orange.100",
-          borderWidth: "1px",
-          borderColor: "orange.200",
+          _dark: {
+            bg: "rgba(251, 211, 141, 0.16)",
+          },
           rounded: "lg",
           px: "1.25rem",
           py: "1rem",
           my: "1.5rem",
-          color: "black",
           "& p": {
             margin: 0,
+          },
+          "&:before": {
+            content: `""`,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "100%",
+            width: "5px",
+            bg: "orange.500",
+            _dark: {
+              bg: "orange.200",
+            },
           },
         },
         ul: {

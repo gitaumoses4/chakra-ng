@@ -4,13 +4,16 @@ import { BehaviorSubject } from "rxjs";
 import { ResponsiveValue, ThemeTypings, ThemingProps } from "@chakra-ui/styled-system";
 import { Dict } from "@chakra-ui/utils";
 import { BaseStyledDirective } from "./base-styled.directive";
+import { ChakraStyles } from "./types";
 
-@Directive()
-export abstract class BaseStyledComponentDirective<ThemeComponent extends string = string> extends BaseStyledDirective implements OnChanges {
+@Directive({
+  selector: "[chakraComponent]",
+})
+export class ChakraComponentDirective<ThemeComponent extends string> extends BaseStyledDirective implements OnChanges {
   private readonly themeService = inject(ThemeService);
-
+  private readonly $chakraComponent = new BehaviorSubject(this.component());
   private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
-  private readonly $themeStyles = this.themeService.getStyleConfig(this.component(), this.$componentProps);
+  private readonly $themeStyles = this.themeService.getStyleConfig(this.$chakraComponent, this.$componentProps);
 
   @Input() public variant?: ResponsiveValue<
     ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["variants"] : string
@@ -30,10 +33,20 @@ export abstract class BaseStyledComponentDirective<ThemeComponent extends string
     });
   }
 
+  @Input() public set chakraComponent(component: string) {
+    this.$chakraComponent.next(component);
+  }
+
   override ngOnChanges() {
     super.ngOnChanges();
     this.$componentProps.next(this);
   }
 
-  public abstract component(): ThemeComponent;
+  public component(): string {
+    return "";
+  }
+
+  getStyles(): ChakraStyles {
+    return {};
+  }
 }

@@ -5,14 +5,15 @@ import { ChakraStyles } from "./types";
 
 @Component({ template: "", standalone: true })
 export abstract class BaseComponent implements OnInit, OnDestroy {
-  public readonly $styles = new BehaviorSubject<ChakraStyles>({});
   protected readonly $customStyles = new BehaviorSubject<SystemStyleObject>({});
+
+  public readonly $styles = new BehaviorSubject<ChakraStyles>({});
 
   protected styleSubscription: Subscription | undefined;
 
   @Input() public className: string | string[] | Set<string> | { [klass: string]: any } = {};
 
-  @Input() public set qStyles(styles: SystemStyleObject) {
+  @Input() public set chakraStyles(styles: SystemStyleObject) {
     this.$customStyles.next(styles);
   }
 

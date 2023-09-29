@@ -5,6 +5,6 @@ import { ChakraSystemModule, IconModule, LayoutModule } from "@chakra-ng/angular
   standalone: true,
   selector: "with-icons-demo",
   templateUrl: "./with-icons.demo.html",
-  imports: [LayoutModule, ChakraSystemModule, IconModule],
+  imports: [LayoutModule, IconModule, ChakraSystemModule],
 })
 export class WithIconsDemo {}

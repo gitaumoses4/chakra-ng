@@ -1,8 +1,9 @@
 import { Inject, ModuleWithProviders, NgModule, Optional, SkipSelf } from "@angular/core";
 import { CHAKRA_ICONS_TOKEN } from "./providers";
-import * as chakraIcons from "./icons";
+import * as solidIcons from "./solid";
+import * as outlineIcons from "./outline";
 
-const defaultIcons = [chakraIcons];
+const defaultIcons = [solidIcons, outlineIcons];
 
 @NgModule()
 export class ChakraIconsModule {

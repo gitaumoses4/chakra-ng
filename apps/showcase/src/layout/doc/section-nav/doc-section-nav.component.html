@@ -4,7 +4,7 @@
       <ng-container>
         <div>
           <chakra-button
-            [qStyles]="{ color: 'fg-muted', _active: { color: 'accent' } }"
+            [chakraStyles]="{ color: 'fg-muted', _active: { color: 'accent' } }"
             [isActive]="section.id === activeId"
             [size]="'sm'"
             [variant]="'link'"
@@ -18,7 +18,7 @@
             <li *ngFor="let child of section.sections">
               <div>
                 <chakra-button
-                  [qStyles]="{ color: 'fg-muted', _active: { color: 'accent' } }"
+                  [chakraStyles]="{ color: 'fg-muted', _active: { color: 'accent' } }"
                   [size]="'sm'"
                   [variant]="'link'"
                   [className]="{ 'active-section': section.id === activeId }"

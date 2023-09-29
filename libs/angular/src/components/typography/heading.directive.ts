@@ -1,10 +1,10 @@
 import { Directive, OnInit } from "@angular/core";
-import { BaseStyledComponentDirective, ChakraStyles } from "../../core";
+import { ChakraComponentDirective, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[heading]",
 })
-export class HeadingDirective extends BaseStyledComponentDirective implements OnInit {
+export class HeadingDirective extends ChakraComponentDirective<"Heading"> implements OnInit {
   override component(): string {
     return "Heading";
   }

@@ -7,7 +7,7 @@ import { BaseStyledComponent, ChakraStyles } from "../../core";
   selector: "chakra-button",
   templateUrl: "./button.component.html",
 })
-export class ButtonComponent extends BaseStyledComponent {
+export class ButtonComponent extends BaseStyledComponent<"Button"> {
   /**
    * If `true` the button will show a spinner
    */

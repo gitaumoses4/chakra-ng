@@ -20,10 +20,11 @@ async function imports() {
   };
 }
 
-async function generateSections(node: any, page: string, parentId = "") {
-  if (node?.type === "root") return generateSections(node.children[0], page);
+async function generateSections(node: any, category: string, page: string, parentId = "") {
+  if (!node) return null;
+  if (node?.type === "root") return generateSections(node.children[0], category, page);
 
-  let title = (node.children?.[0]?.children?.[0]?.value || "").replace(/ +$/g, "");
+  let title = (node?.children?.[0]?.children?.[0]?.value || "").replace(/ +$/g, "");
 
   const customId = title.match(/ {#([^]+?)}$/);
 
@@ -50,12 +51,15 @@ async function generateSections(node: any, page: string, parentId = "") {
     children: [],
   };
 
-  section.demo = getDemo(path.join(page, section.id));
+  section.demo = getDemo(path.join(category, page, section.id));
 
   if (node.children) {
     for (const child of node.children) {
       if (child.type === "section") {
-        section.sections.push(await generateSections(child, page, section.path));
+        const childSection = await generateSections(child, category, page, section.path);
+        if (childSection) {
+          section.sections.push(childSection);
+        }
       } else {
         if (child.type !== "heading") {
           content.children.push(child);
@@ -69,8 +73,8 @@ async function generateSections(node: any, page: string, parentId = "") {
   return section;
 }
 
-export async function parseDocs(page: string) {
-  const file = path.join(DOCS_FOLDER, page, page + "-usage.md");
+export async function parseDocs(category: string, page: string) {
+  const file = path.join(DOCS_FOLDER, category, page, page + "-usage.md");
 
   if (!fs.existsSync(file)) {
     return null;
@@ -85,5 +89,5 @@ export async function parseDocs(page: string) {
   normalize(tree);
   sectionize(tree);
 
-  return generateSections(tree, page);
+  return generateSections(tree, category, page, category);
 }

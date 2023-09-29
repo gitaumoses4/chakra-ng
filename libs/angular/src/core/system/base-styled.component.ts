@@ -1,6 +1,6 @@
 import { ThemeService } from "../theme";
 import { Component, inject, Input, OnChanges, OnInit } from "@angular/core";
-import { BehaviorSubject, combineLatest } from "rxjs";
+import { BehaviorSubject, combineLatest, of } from "rxjs";
 import { ResponsiveValue, ThemeTypings, ThemingProps } from "@chakra-ui/styled-system";
 import { Dict } from "@chakra-ui/utils";
 import { BaseComponent } from "./base.component";
@@ -8,12 +8,12 @@ import { assignAfter } from "@chakra-ui/object-utils";
 import { ChakraStyles } from "./types";
 
 @Component({ template: "", standalone: true })
-export abstract class BaseStyledComponent<ThemeComponent extends string = string> extends BaseComponent implements OnChanges, OnInit {
+export abstract class BaseStyledComponent<ThemeComponent extends string> extends BaseComponent implements OnChanges, OnInit {
   public override readonly $styles = new BehaviorSubject<ChakraStyles>({});
 
   private readonly themeService: ThemeService = inject(ThemeService);
   private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
-  private readonly $themeStyles = this.themeService.getStyleConfig(this.component(), this.$componentProps);
+  private readonly $themeStyles = this.themeService.getStyleConfig(of(this.component()), this.$componentProps);
 
   @Input() public variant?: ResponsiveValue<
     ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["variants"] : string
@@ -43,5 +43,5 @@ export abstract class BaseStyledComponent<ThemeComponent extends string = string
     this.$componentProps.next(this);
   }
 
-  public abstract component(): ThemeComponent;
+  public abstract component(): string;
 }

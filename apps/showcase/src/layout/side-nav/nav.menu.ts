@@ -1,38 +1,52 @@
 import { NavMenu } from "./types";
-import { ChakraIcons } from "@chakra-ng/icons";
 
 export const navMenu: NavMenu = [
   {
+    title: "Getting Started",
+    icon: "compass",
+    routerLink: "/getting-started",
+    subMenu: [],
+  },
+  {
     title: "Components",
-    icon: ChakraIcons.BOX,
-    children: [
+    icon: "palette",
+    routerLink: "/docs/components",
+    subMenu: [
       {
         title: "Layout",
-        children: [
+        items: [
           {
             title: "Aspect Ratio",
-            routerLink: "/docs/aspect-ratio",
+            routerLink: "/docs/components/aspect-ratio",
           },
           {
             title: "Center",
-            routerLink: "/docs/center",
+            routerLink: "/docs/components/center",
+          },
+          {
+            title: "Container",
+            routerLink: "/docs/components/container",
           },
           {
             title: "Flex",
-            routerLink: "/docs/flex",
+            routerLink: "/docs/components/flex",
+          },
+          {
+            title: "Grid",
+            routerLink: "/docs/components/grid",
           },
           {
             title: "Stack",
-            routerLink: "/docs/stack",
+            routerLink: "/docs/components/stack",
           },
         ],
       },
       {
         title: "Form",
-        children: [
+        items: [
           {
             title: "Button",
-            routerLink: "/docs/button",
+            routerLink: "/docs/components/button",
           },
         ],
       },

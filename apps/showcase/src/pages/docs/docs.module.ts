@@ -7,8 +7,14 @@ import { CommonModule } from "@angular/common";
 import { Route, RouterModule } from "@angular/router";
 
 const routes: Route[] = [
-  { path: "", redirectTo: "button", pathMatch: "full" },
-  { path: ":pageDocId", component: DocsPage },
+  { path: "", redirectTo: "components", pathMatch: "full" },
+  {
+    path: ":categoryId",
+    children: [
+      { path: "", redirectTo: "button", pathMatch: "full" },
+      { path: ":pageDocId", component: DocsPage },
+    ],
+  },
 ];
 
 @NgModule({

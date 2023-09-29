@@ -1,12 +1,10 @@
-<div [chakraStyles]="{ maxWidth: '6xl', m: 'auto', p: '4' }">
-  <div flex *ngIf="$page | async as page" [gap]="'4'">
-    <div [chakraStyles]="{ flex: 1 }">
-      <h1 heading [size]="'lg'">{{ page.title }}</h1>
-      <markdown [data]="page.content" *ngIf="page.content"></markdown>
-      <app-doc-sections [sections]="page.sections"></app-doc-sections>
-    </div>
-    <div [chakraStyles]="{ w: '40', position: 'sticky', top: '24', alignSelf: 'flex-start' }">
-      <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
-    </div>
+<div flex *ngIf="$page | async as page" [gap]="'4'">
+  <div container [chakraStyles]="{ flex: 1, maxWidth: '4xl' }">
+    <h1 heading [size]="'lg'">{{ page.title }}</h1>
+    <markdown [data]="page.content" *ngIf="page.content"></markdown>
+    <app-doc-sections [sections]="page.sections"></app-doc-sections>
+  </div>
+  <div [chakraStyles]="{ w: '40', position: 'sticky', top: '24', alignSelf: 'flex-start' }">
+    <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
   </div>
 </div>

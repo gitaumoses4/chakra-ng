@@ -12,12 +12,22 @@ function getDirectories(section: string) {
 }
 
 async function generateDocs() {
-  const pages = getDirectories("");
+  const categories = getDirectories("");
 
   const docs = {};
 
-  for (const page of pages) {
-    docs[page] = await parseDocs(page);
+  for (const category of categories) {
+    const pages = getDirectories(category);
+
+    docs[category] = {};
+
+    for (const page of pages) {
+      const pageDocs = await parseDocs(category, page);
+
+      if (pageDocs) {
+        docs[category][page] = pageDocs;
+      }
+    }
   }
 
   const generated = `import { Docs } from '../types';\nexport const docs: Docs = ${JSON.stringify(docs, null, 2)}`;

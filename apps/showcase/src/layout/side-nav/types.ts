@@ -1,10 +1,20 @@
 import { ChakraIcon } from "@chakra-ng/icons";
 
-export type NavMenuItem = {
+export type SubMenuItem = {
   title: string;
-  icon?: ChakraIcon;
-  routerLink?: string;
-  children?: NavMenuItem[];
+  routerLink: string;
 };
 
-export type NavMenu = NavMenuItem[];
+export type SubMenu = {
+  title: string;
+  items: SubMenuItem[];
+};
+
+export type MenuItem = {
+  title: string;
+  icon: string;
+  routerLink: string;
+  subMenu: SubMenu[];
+};
+
+export type NavMenu = MenuItem[];

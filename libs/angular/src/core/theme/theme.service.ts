@@ -31,12 +31,15 @@ export class ThemeService {
     return initialColorMode === "system" || !initialColorMode ? "light" : initialColorMode;
   }
 
-  public getStyleConfig(themeKey: string | null, $props: Observable<ThemingProps & Dict>): Observable<SystemStyleObject> {
-    return this.getStyleConfigImp(themeKey, $props);
+  public getStyleConfig($themeKey: Observable<string | null>, $props: Observable<ThemingProps & Dict>): Observable<SystemStyleObject> {
+    return this.getStyleConfigImp($themeKey, $props);
   }
 
-  public getMultiStyleConfig(themeKey: string | null, $props: Observable<ThemingProps & Dict>): Observable<Record<string, SystemStyleObject>> {
-    return this.getStyleConfigImp(themeKey, $props);
+  public getMultiStyleConfig(
+    $themeKey: Observable<string | null>,
+    $props: Observable<ThemingProps & Dict>,
+  ): Observable<Record<string, SystemStyleObject>> {
+    return this.getStyleConfigImp($themeKey, $props);
   }
 
   public getColorMode(): ColorMode {
@@ -61,22 +64,31 @@ export class ThemeService {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  private getStyleConfigImp(themeKey: string | null, $props: Observable<ThemingProps & Dict>): Observable<any> {
-    return combineLatest([this.$theme, this.$colorMode, $props]).pipe(
-      map(([theme, colorMode, props]) => {
+  private getStyleConfigImp($themeKey: Observable<string | null>, $props: Observable<ThemingProps & Dict>): Observable<any> {
+    return combineLatest([$themeKey, this.$theme, this.$colorMode, $props]).pipe(
+      map(([themeKey, theme, colorMode, props]) => {
         const { styleConfig: styleConfigProp, ...rest } = props;
 
-        const themeStyleConfig = themeKey ? get(theme, `components.${themeKey}`) : undefined;
+        const [component, part] = themeKey?.split(".") ?? [undefined, undefined];
+
+        const themeStyleConfig = component ? get(theme, `components.${component}`) : undefined;
 
         const styleConfig = styleConfigProp || themeStyleConfig;
 
         const mergedProps = mergeWith({ theme, colorMode }, styleConfig?.defaultProps ?? {}, filterUndefined(omit(rest)));
 
+        let resolvedStyles = {};
+
         if (styleConfig) {
           const getStyles = resolveStyleConfig(styleConfig);
-          return getStyles(mergedProps);
+          resolvedStyles = getStyles(mergedProps);
         }
-        return {};
+
+        if (part) {
+          resolvedStyles = (resolvedStyles as any)[part] || resolvedStyles;
+        }
+
+        return resolvedStyles;
       }),
     );
   }

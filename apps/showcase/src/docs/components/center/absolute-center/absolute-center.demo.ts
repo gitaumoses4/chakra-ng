@@ -5,6 +5,6 @@ import { ChakraSystemModule, IconModule, LayoutModule } from "@chakra-ng/angular
   standalone: true,
   selector: "absolute-center-demo",
   templateUrl: "./absolute-center.demo.html",
-  imports: [ChakraSystemModule, LayoutModule, IconModule],
+  imports: [LayoutModule, IconModule, ChakraSystemModule],
 })
 export class AbsoluteCenterDemo {}

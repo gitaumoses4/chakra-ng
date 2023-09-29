@@ -11,13 +11,14 @@ import { docs } from "../../docs";
 export class DocsPage implements OnInit {
   public $page = this.route.paramMap.pipe(
     map((params) => {
+      const categoryId = params.get("categoryId");
       const pageDocId = params.get("pageDocId");
 
-      if (!pageDocId) {
+      if (!categoryId || !pageDocId) {
         return null;
       }
 
-      return docs[pageDocId];
+      return docs[categoryId][pageDocId];
     }),
   );
 
@@ -26,7 +27,7 @@ export class DocsPage implements OnInit {
   ngOnInit() {
     this.$page.subscribe((page) => {
       if (page) {
-        this.titleService.setTitle(page.title + " - ChakraNg UI");
+        this.titleService.setTitle(page.title + " - ChakraNg");
       } else {
         this.router.navigate(["/docs"]).then();
       }
