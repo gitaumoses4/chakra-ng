@@ -3,8 +3,8 @@ import { LayoutModule } from "@chakra-ng/angular";
 
 @Component({
   standalone: true,
-  selector: "template-columns-demo",
-  templateUrl: "./template-columns.demo.html",
+  selector: "start-end-lines-demo",
+  templateUrl: "./start-end-lines.demo.html",
   imports: [LayoutModule],
 })
-export class TemplateColumnsDemo {}
+export class StartEndLinesDemo {}

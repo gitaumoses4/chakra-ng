@@ -509,7 +509,7 @@ export const docs: Docs = {
           "path": "grid/import",
           "title": "Import",
           "depth": 2,
-          "content": "```typescript\nimport { LayoutModule } from '@chakra-ng/angular';\n```\n",
+          "content": "```typescript\nimport {LayoutModule} from '@chakra-ng/angular';\n```\n",
           "sections": []
         },
         {
@@ -523,16 +523,85 @@ export const docs: Docs = {
               {
                 "fileName": "template-columns.demo.html",
                 "language": "html",
-                "content": ""
+                "content": "<div grid [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"6\">\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n</div>\n"
               },
               {
                 "fileName": "template-columns.demo.ts",
                 "language": "typescript",
-                "content": "import { Component } from \"@angular/core\";\n\n@Component({\n  standalone: true,\n  selector: \"template-columns-demo\",\n  templateUrl: \"./template-columns.demo.html\",\n})\nexport class TemplateColumnsDemo {}\n"
+                "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"template-columns-demo\",\n  templateUrl: \"./template-columns.demo.html\",\n  imports: [LayoutModule],\n})\nexport class TemplateColumnsDemo {}\n"
               }
             ]
           },
           "content": "Here's an example of using grid template columns and applying a gap or space between the grid items.\n",
+          "sections": []
+        },
+        {
+          "id": "spanning-columns",
+          "path": "grid/spanning-columns",
+          "title": "Spanning Columns",
+          "depth": 2,
+          "demo": {
+            "component": import("./components/grid/spanning-columns/spanning-columns.demo"),
+            "code": [
+              {
+                "fileName": "spanning-columns.demo.html",
+                "language": "html",
+                "content": "<div grid [chakraStyles]=\"{ h: '200px' }\" [templateRows]=\"'repeat(2, 1fr)'\" [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"4\">\n  <div gridItem [rowSpan]=\"2\" [colSpan]=\"1\" [chakraStyles]=\"{ bg: 'tomato'}\"></div>\n  <div gridItem [colSpan]=\"2\" [chakraStyles]=\"{ bg: 'papayawhip'}\"></div>\n  <div gridItem [colSpan]=\"2\" [chakraStyles]=\"{ bg: 'papayawhip'}\"></div>\n  <div gridItem [colSpan]=\"4\" [chakraStyles]=\"{ bg: 'tomato'}\"></div>\n</div>\n"
+              },
+              {
+                "fileName": "spanning-columns.demo.ts",
+                "language": "typescript",
+                "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"spanning-columns-demo\",\n  templateUrl: \"./spanning-columns.demo.html\",\n  imports: [LayoutModule],\n})\nexport class SpanningColumnsDemo {}\n"
+              }
+            ]
+          },
+          "content": "In some layouts, you may need certain grid items to span specific amount of columns or rows instead of an even\ndistribution.\nTo achieve this, you need to pas the `colSpan` property to the grid item and also the `rowSpan` property for row\nspanning.\nYou also need to specify the `templateColumns` and `templateRows` properties on the grid container.\n",
+          "sections": []
+        },
+        {
+          "id": "start-end-lines",
+          "path": "grid/start-end-lines",
+          "title": "Starting and ending lines",
+          "depth": 2,
+          "demo": {
+            "component": import("./components/grid/start-end-lines/start-end-lines.demo"),
+            "code": [
+              {
+                "fileName": "start-end-lines.demo.html",
+                "language": "html",
+                "content": "<div grid [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"4\">\n  <div gridItem [colSpan]=\"2\" [chakraStyles]=\"{ h: '10', bg: 'tomato'}\"></div>\n  <div gridItem [colStart]=\"4\" [colEnd]=\"6\" [chakraStyles]=\"{ h: '10', bg: 'papayawhip'}\"></div>\n</div>\n"
+              },
+              {
+                "fileName": "start-end-lines.demo.ts",
+                "language": "typescript",
+                "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"start-end-lines-demo\",\n  templateUrl: \"./start-end-lines.demo.html\",\n  imports: [LayoutModule],\n})\nexport class StartEndLinesDemo {}\n"
+              }
+            ]
+          },
+          "content": "Pass the `colStart` and `colEnd` prop to the grid item to specify where the item should start and end.\n",
+          "sections": []
+        },
+        {
+          "id": "template-areas",
+          "path": "grid/template-areas",
+          "title": "Template Areas",
+          "depth": 2,
+          "demo": {
+            "component": import("./components/grid/template-areas/template-areas.demo"),
+            "code": [
+              {
+                "fileName": "template-areas.demo.html",
+                "language": "html",
+                "content": "<div\n  grid\n  [templateAreas]=\"areas\"\n  [templateRows]=\"'50px 1fr 30px'\"\n  [templateColumns]=\"'150px 1fr'\"\n  [chakraStyles]=\"{ h: '200px', color: 'blackAlpha.700', fontWeight: 'bold'}\"\n  [gap]=\"1\"\n>\n  <div gridItem [area]=\"'header'\" [chakraStyles]=\"{ pl: '2', bg: 'orange.300'}\">Header</div>\n  <div gridItem [area]=\"'nav'\" [chakraStyles]=\"{ pl: '2', bg: 'pink.300'}\">Nav</div>\n  <div gridItem [area]=\"'main'\" [chakraStyles]=\"{ pl: '2', bg: 'green.300'}\">Main</div>\n  <div gridItem [area]=\"'footer'\" [chakraStyles]=\"{ pl: '2', bg: 'blue.300'}\">Footer</div>\n</div>\n"
+              },
+              {
+                "fileName": "template-areas.demo.ts",
+                "language": "typescript",
+                "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"template-areas-demo\",\n  templateUrl: \"./template-areas.demo.html\",\n  imports: [LayoutModule],\n})\nexport class TemplateAreasDemo {\n  areas = `\"header header\"\n                     \"nav main\"\n                     \"nav footer\"`;\n}\n"
+              }
+            ]
+          },
+          "content": "The `templateAreas` prop specifies areas within the grid layout. Use template literals to name the area. Now you can\nreference the area by passing `area` prop in the grid item.\n",
           "sections": []
         }
       ]

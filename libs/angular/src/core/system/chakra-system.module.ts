@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
-import { ChakraStylesDirective } from "./chakra-styles.directive";
 import { ChakraComponentDirective } from "./chakra-component.directive";
+import { ChakraDirective } from "./chakra.directive";
 
 @NgModule({
-  declarations: [ChakraStylesDirective, ChakraComponentDirective],
-  exports: [ChakraStylesDirective, ChakraComponentDirective],
+  declarations: [ChakraComponentDirective, ChakraDirective],
+  exports: [ChakraComponentDirective, ChakraDirective],
 })
 export class ChakraSystemModule {}

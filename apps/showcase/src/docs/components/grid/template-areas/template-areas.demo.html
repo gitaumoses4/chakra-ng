@@ -1,0 +1,13 @@
+<div
+  grid
+  [templateAreas]="areas"
+  [templateRows]="'50px 1fr 30px'"
+  [templateColumns]="'150px 1fr'"
+  [chakraStyles]="{ h: '200px', color: 'blackAlpha.700', fontWeight: 'bold'}"
+  [gap]="1"
+>
+  <div gridItem [area]="'header'" [chakraStyles]="{ pl: '2', bg: 'orange.300'}">Header</div>
+  <div gridItem [area]="'nav'" [chakraStyles]="{ pl: '2', bg: 'pink.300'}">Nav</div>
+  <div gridItem [area]="'main'" [chakraStyles]="{ pl: '2', bg: 'green.300'}">Main</div>
+  <div gridItem [area]="'footer'" [chakraStyles]="{ pl: '2', bg: 'blue.300'}">Footer</div>
+</div>

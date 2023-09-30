@@ -18,14 +18,14 @@ const $iconBg = cssVar("item-icon-bg", "transparent");
 const menu = defineStyle({
   display: "flex",
   flexDirection: "column",
-  gap: 2,
+  gap: 1,
 });
 
 const menuItem = defineStyle({
   display: "flex",
   alignItems: "center",
   gap: 2,
-  p: 2,
+  p: 1,
   fontSize: "sm",
   fontWeight: "bold",
   color: "fg-muted",
