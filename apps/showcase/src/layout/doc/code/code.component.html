@@ -10,7 +10,7 @@
   }"
   class="code-container"
 >
-  <div flex>
+  <div flexRow>
     <div *ngFor="let currentCode of code; let i = index">
       <chakra-button [size]="'sm'" [variant]="active === i ? 'solid' : 'ghost'" (click)="showCode(i)">{{
         currentCode.fileName || (currentCode.language | titlecase)

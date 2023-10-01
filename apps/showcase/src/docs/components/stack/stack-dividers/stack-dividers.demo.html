@@ -1,9 +1,9 @@
 <div vStack [spacing]="'2'" [align]="'stretch'" [divider]="divider">
-  <div [chakraStyles]="{ h: '40px', bg: 'yellow.200', color: 'black' }">1</div>
-  <div [chakraStyles]="{ h: '40px', bg: 'tomato' }">2</div>
-  <div [chakraStyles]="{ h: '40px', bg: 'pink.100', color: 'black' }">3</div>
+  <div chakra [h]="'40px'" [bg]="'yellow.200'" [color]="'black'">1</div>
+  <div chakra [h]="'40px'" [bg]="'tomato'">2</div>
+  <div chakra [h]="'40px'" [bg]="'pink.100'" [color]="'black'">3</div>
 </div>
 
 <ng-template #divider>
-  <chakra-stack-divider [chakraStyles]="{ borderColor: 'gray.200' }"></chakra-stack-divider>
+  <chakra-stack-divider [borderColor]="'gray.200'"></chakra-stack-divider>
 </ng-template>

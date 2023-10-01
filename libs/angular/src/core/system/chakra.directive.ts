@@ -1,15 +1,9 @@
-import { Directive, Input } from "@angular/core";
-import { BaseStyledDirective, ChakraStyles } from "@chakra-ng/angular";
-import { BehaviorSubject } from "rxjs";
+import { Directive } from "@angular/core";
+import { BaseChakraDirective } from "./core";
+import { BaseChakraStyles } from "./types";
+import { Observable } from "rxjs";
 
 @Directive({ selector: "[chakra]" })
-export class ChakraDirective extends BaseStyledDirective {
-  @Input() public chakra: ChakraStyles = {};
-
-  public override readonly $baseStyles = new BehaviorSubject<ChakraStyles>({});
-
-  public override ngOnChanges() {
-    super.ngOnChanges();
-    this.$baseStyles.next(this.chakra);
-  }
+export class ChakraDirective extends BaseChakraDirective {
+  public override getBaseStyles(): BaseChakraStyles | Observable<BaseChakraStyles> {}
 }

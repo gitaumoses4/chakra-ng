@@ -1,23 +1,23 @@
 import { Directive, Input } from "@angular/core";
-import { ChakraComponentDirective, ChakraStyles } from "@chakra-ng/angular";
+import { BaseChakraStyledComponentDirective, BaseChakraStyles } from "@chakra-ng/angular";
 
 @Directive({
   selector: "[container]",
 })
-export class ContainerDirective extends ChakraComponentDirective<"Container"> {
+export class ContainerDirective extends BaseChakraStyledComponentDirective<"Container"> {
   /**
    * If `true`, the children will be centered
    */
   @Input() public centerContent?: boolean;
 
-  override getStyles(): ChakraStyles {
-    return this.centerContent
-      ? {
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }
-      : {};
+  override getComponentBaseStyles(): BaseChakraStyles {
+    if (this.centerContent) {
+      return {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      };
+    }
   }
 
   override component(): string {

@@ -1,5 +1,5 @@
 import { Directive, Input } from "@angular/core";
-import { BaseStyledDirective, ChakraStyles } from "../../core";
+import { BaseChakraDirective, ChakraStyles } from "../../core";
 
 /**
  * A square is a div with equal width and height
@@ -7,7 +7,7 @@ import { BaseStyledDirective, ChakraStyles } from "../../core";
 @Directive({
   selector: "[square]",
 })
-export class SquareDirective extends BaseStyledDirective {
+export class SquareDirective extends BaseChakraDirective {
   /**
    * The size (width and height) of the square
    */
@@ -20,7 +20,7 @@ export class SquareDirective extends BaseStyledDirective {
    */
   @Input() centerContent = true;
 
-  getStyles(): ChakraStyles {
+  getBaseStyles(): ChakraStyles {
     const styles: ChakraStyles = {
       boxSize: this.size,
       flexShrink: 0,

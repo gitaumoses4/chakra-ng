@@ -1,9 +1,13 @@
 <div>
   <div flexColumn [gap]="4">
-    <h2 heading [size]="getHeadingSize()" class="group" [chakraStyles]="{ scrollMarginTop: 'nav-bar' }" #header>
+    <h2 heading [size]="getHeadingSize()" class="group" [scrollMarginTop]="'nav-bar'" #header>
       {{ section.title }}
       <a
-        [chakraStyles]="{ color: 'accent', cursor: 'pointer', visibility: 'hidden', _groupHover: { visibility: 'visible' } }"
+        chakra
+        [color]="'accent'"
+        [cursor]="'pointer'"
+        [visibility]="'hidden'"
+        [_groupHover]="{ visibility: 'visible' }"
         (click)="navigate($event, section)"
         [id]="section.id"
         >#</a
@@ -11,14 +15,13 @@
     </h2>
     <markdown *ngIf="section.content" [data]="section.content"></markdown>
     <div
-      [chakraStyles]="{
-          w: 'full',
-          p: '4',
-          borderWidth: '1px',
-          borderColor: 'blackAlpha.200',
-          borderRadius: 'lg',
-          _dark: { borderColor: 'whiteAlpha.200' },
-        }"
+      chakra
+      [w]="'full'"
+      [p]="'4'"
+      [borderWidth]="'1px'"
+      [borderColor]="'blackAlpha.200'"
+      [borderRadius]="'lg'"
+      [_dark]="{ borderColor: 'whiteAlpha.200' }"
       *ngIf="section.demo"
     >
       <ng-template #demoContainer></ng-template>

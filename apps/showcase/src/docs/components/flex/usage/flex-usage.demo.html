@@ -1,11 +1,11 @@
-<div flex [chakraStyles]="{ color: 'white' }">
-  <div center [chakraStyles]="{ w: '100px', bg: 'green.500' }">
+<div flexRow [color]="'white'">
+  <div center [w]="'100px'" [bg]="'green.500'">
     <span>Box 1</span>
   </div>
-  <div square [size]="'150px'" [chakraStyles]="{ bg: 'blue.500' }">
+  <div square [size]="'150px'" [bg]="'blue.500'">
     <span>Box 2</span>
   </div>
-  <div [chakraStyles]="{ flex: 1, bg: 'tomato' }">
+  <div flexRow [flex]="1" [bg]="'tomato'">
     <span>Box 3</span>
   </div>
 </div>

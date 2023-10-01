@@ -6,7 +6,7 @@ import { ChakraStyles } from "../../core";
   selector: "[circle]",
 })
 export class CircleDirective extends SquareDirective {
-  override getStyles(): ChakraStyles {
-    return { ...super.getStyles(), borderRadius: "9999px" };
+  override getBaseStyles(): ChakraStyles {
+    return { ...super.getBaseStyles(), borderRadius: "9999px" };
   }
 }

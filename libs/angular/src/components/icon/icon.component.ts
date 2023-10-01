@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, inject, Input } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { CHAKRA_ICONS_TOKEN, ChakraIcon } from "@chakra-ng/icons";
-import { BaseComponent, ChakraStyles, getStylesId, StylesService } from "../../core";
-import { ResponsiveValue } from "@chakra-ui/styled-system";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 const fallbackIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="stroke-width:var(--chakra-icon__stroke-width, 1.5)">
@@ -20,25 +19,21 @@ const fallbackIcon = `
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IconComponent extends BaseComponent {
+export class IconComponent extends BaseChakraComponent {
   private sanitizer = inject(DomSanitizer);
-  private elementRef = inject(ElementRef);
-  private stylesService = inject(StylesService);
 
   private readonly icons: Array<Record<string, string>> = inject(CHAKRA_ICONS_TOKEN);
-
-  @Input() public boxSize: ResponsiveValue<string | number> = "1em";
 
   @HostBinding("style.--chakra-icon__stroke-width")
   @Input()
   strokeWidth?: string | number;
 
-  @Input() public outline?: boolean;
+  @Input() public solid: boolean = true;
 
   @HostBinding("innerHTML") template?: SafeHtml;
 
   @Input() set name(name: ChakraIcon | string) {
-    name = this.outline ? `${name}Outline` : name;
+    name = !this.solid ? `${name}Outline` : name;
 
     for (const icons of [...this.icons].reverse()) {
       if (icons[name]) {
@@ -53,18 +48,12 @@ export class IconComponent extends BaseComponent {
     this.template = this.sanitizer.bypassSecurityTrustHtml(svgString);
   }
 
-  override ngOnInit() {
-    super.ngOnInit();
-
-    this.stylesService.applyChakraStyles(getStylesId(this.constructor.name), this.$styles, this.elementRef.nativeElement);
-  }
-
-  public override defaultStyles(): ChakraStyles {
+  public override getBaseStyles(): ChakraStyles {
     return {
-      w: this.boxSize,
-      h: this.boxSize,
+      w: this.boxSize || "1em",
+      h: this.boxSize || "1em",
       display: "inline-block",
-      lineHeight: this.boxSize,
+      lineHeight: this.boxSize || "1em",
       flexShrink: 0,
       color: "currentColor",
       verticalAlign: "middle",

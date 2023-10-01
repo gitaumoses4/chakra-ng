@@ -1,13 +1,13 @@
 import { Component, ContentChild, Input, TemplateRef } from "@angular/core";
 import { ChakraIcon } from "@chakra-ng/icons";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseStyledComponent, ChakraStyles } from "../../core";
+import { BaseChakraStyledComponent, ChakraStyles } from "../../core";
 
 @Component({
   selector: "chakra-button",
   templateUrl: "./button.component.html",
 })
-export class ButtonComponent extends BaseStyledComponent<"Button"> {
+export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
   /**
    * If `true` the button will show a spinner
    */
@@ -59,7 +59,7 @@ export class ButtonComponent extends BaseStyledComponent<"Button"> {
    */
   @Input() public spinnerPlacement: "start" | "end" = "start";
 
-  override defaultStyles(): ChakraStyles {
+  override getComponentBaseStyles(): ChakraStyles {
     return {
       display: "inline-flex",
       appearance: "none",
@@ -75,5 +75,9 @@ export class ButtonComponent extends BaseStyledComponent<"Button"> {
 
   override component(): string {
     return "Button";
+  }
+
+  override applyStylesOnHost(): boolean {
+    return false;
   }
 }

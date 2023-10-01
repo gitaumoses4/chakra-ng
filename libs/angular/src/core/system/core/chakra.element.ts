@@ -1,14 +1,14 @@
-import { Directive, Input, OnChanges, OnDestroy } from "@angular/core";
-import { ChakraStyles } from "@chakra-ng/angular";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { Directive, ElementRef, inject, Input, OnChanges, OnDestroy } from "@angular/core";
+import { ChakraStyles, getStylesId, StylesService } from "@chakra-ng/angular";
+import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 import { stylesKeys } from "../styles.keys";
 
 type Inputs = {
   [K in keyof Required<ChakraStyles>]: ChakraStyles[K] | undefined;
 };
 
-@Directive({})
-export abstract class BaseDirective implements Inputs, OnChanges, OnDestroy {
+@Directive()
+export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
   @Input() __css: ChakraStyles["__css"] | undefined;
   @Input() _active: ChakraStyles["_active"] | undefined;
   @Input() _activeLink: ChakraStyles["_activeLink"] | undefined;
@@ -428,7 +428,9 @@ export abstract class BaseDirective implements Inputs, OnChanges, OnDestroy {
   @Input() wordBreak: ChakraStyles["wordBreak"] | undefined;
   @Input() zIndex: ChakraStyles["zIndex"] | undefined;
 
-  public $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
+  public readonly $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
+  public readonly styleService = inject(StylesService);
+  public readonly elementRef = inject(ElementRef);
 
   private readonly subscriptions: Array<Subscription> = [];
 
@@ -444,6 +446,12 @@ export abstract class BaseDirective implements Inputs, OnChanges, OnDestroy {
 
   public addSubscription(subscription: Subscription) {
     this.subscriptions.push(subscription);
+    return subscription;
+  }
+
+  public applyChakraStyles(styles: ChakraStyles | Observable<ChakraStyles>, element: HTMLElement = this.elementRef.nativeElement) {
+    const $styles = styles instanceof Observable ? styles : of(styles);
+    return this.addSubscription(this.styleService.applyChakraStyles(getStylesId(this.constructor.name), $styles, element));
   }
 
   ngOnDestroy() {

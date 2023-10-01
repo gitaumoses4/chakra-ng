@@ -1,10 +1,10 @@
-<div flex *ngIf="$page | async as page" [gap]="'4'">
-  <div container [chakraStyles]="{ flex: 1, maxWidth: '4xl' }">
+<div flexRow *ngIf="$page | async as page" [gap]="'4'">
+  <div container [maxWidth]="'4xl'" [flex]="1">
     <h1 heading [size]="'lg'">{{ page.title }}</h1>
     <markdown [data]="page.content" *ngIf="page.content"></markdown>
     <app-doc-sections [sections]="page.sections"></app-doc-sections>
   </div>
-  <div [chakraStyles]="{ w: '40', position: 'sticky', top: '24', alignSelf: 'flex-start' }">
+  <div chakra [w]="'40'" [position]="'sticky'" [top]="'24'" [alignSelf]="'flex-start'">
     <app-doc-section-nav [sections]="page.sections"></app-doc-section-nav>
   </div>
 </div>

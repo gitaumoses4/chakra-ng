@@ -1,6 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseStyledDirective, ChakraStyles } from "../../core";
+import { BaseChakraDirective, ChakraStyles } from "../../core";
 
 const FLEX_DIRECTION = {
   flexRow: "row",
@@ -10,9 +10,9 @@ const FLEX_DIRECTION = {
 };
 
 @Directive({
-  selector: "[flex],[flexColumn],[flexRow],[flexRowReverse],[flexColumnReverse]",
+  selector: "[flexColumn],[flexRow],[flexRowReverse],[flexColumnReverse]",
 })
-export class FlexLayoutDirective extends BaseStyledDirective {
+export class FlexLayoutDirective extends BaseChakraDirective {
   /**
    * Shorthand for `alignItems` style prop
    */
@@ -43,21 +43,6 @@ export class FlexLayoutDirective extends BaseStyledDirective {
    */
   @Input() shrink?: SystemProps["flexShrink"];
 
-  /**
-   * It defines the gap between the flex items
-   */
-  @Input() gap?: SystemProps["gap"];
-
-  /**
-   * It defines the gap between the flex items along the main axis
-   */
-  @Input() rowGap?: SystemProps["rowGap"];
-
-  /**
-   * It defines the gap between the flex items along the cross axis
-   */
-  @Input() columnGap?: SystemProps["columnGap"];
-
   private getFlexDirection() {
     const element = this.elementRef.nativeElement as HTMLElement;
 
@@ -68,7 +53,7 @@ export class FlexLayoutDirective extends BaseStyledDirective {
     return direction ? (FLEX_DIRECTION as any)[direction] : "row";
   }
 
-  public override getStyles(): ChakraStyles {
+  public override getBaseStyles(): ChakraStyles {
     return {
       display: "flex",
       flexDirection: this.getFlexDirection(),

@@ -1,19 +1,26 @@
-<!--<div>-->
-<!--  <nav-->
-<!--    [chakraStyles]="{ p: '4', position: 'fixed', top: 0, left: 0, h: 'nav-bar', w: 'full', zIndex: 'docked', bg: 'chakra-body-bg', boxShadow: 'sm' }"-->
-<!--  >-->
-<!--    <div [chakraStyles]="{ maxW: '8xl', m: 'auto' }">-->
-<!--      <chakra-button (click)="toggleTheme()">Toggle Theme</chakra-button>-->
-<!--    </div>-->
-<!--  </nav>-->
-<!--  <div flex [chakraStyles]="{ flex: 1, maxW: '8xl', m: 'auto', position: 'relative' }">-->
-<!--    <div [chakraStyles]="{ w: '60', p: 4, overflowY: 'scroll', position: 'fixed', top: 'nav-bar', bottom: '0', alignSelf: 'start' }">-->
-<!--      <app-side-nav></app-side-nav>-->
-<!--    </div>-->
-<!--    <div style="flex: 1" [chakraStyles]="{ pt: 'nav-bar', ml: '60' }">-->
-<!--      <router-outlet></router-outlet>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<div chakra [bg]="'red.500'"></div>
+<div>
+  <nav
+    chakra
+    [p]="4"
+    [position]="'fixed'"
+    [top]="0"
+    [left]="0"
+    [h]="'nav-bar'"
+    [w]="'full'"
+    [zIndex]="'docked'"
+    [bg]="'chakra-body-bg'"
+    [boxShadow]="'sm'"
+  >
+    <div chakra [maxW]="'8xl'" [m]="'auto'">
+      <chakra-button (click)="toggleTheme()">Toggle Theme</chakra-button>
+    </div>
+  </nav>
+  <div flexRow [flex]="'1'" [maxW]="'8xl'" [m]="'auto'" [position]="'relative'">
+    <div chakra [w]="'60'" [p]="4" [overflowY]="'scroll'" [position]="'fixed'" [top]="'nav-bar'" [bottom]="0" [alignSelf]="'start'">
+      <app-side-nav></app-side-nav>
+    </div>
+    <div [flex]="1" chakra [pt]="'nav-bar'" [ml]="'60'">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

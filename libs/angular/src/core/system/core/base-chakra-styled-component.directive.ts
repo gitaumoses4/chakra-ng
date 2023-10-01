@@ -1,11 +1,12 @@
-import { inject, Input, OnChanges } from "@angular/core";
-import { ChakraStyles, ThemeService } from "@chakra-ng/angular";
-import { BehaviorSubject, combineLatest, map, Observable } from "rxjs";
+import { Directive, inject, Input, OnChanges } from "@angular/core";
+import { BaseChakraStyles, ChakraStyles, ThemeService } from "@chakra-ng/angular";
+import { BehaviorSubject, combineLatest, map, Observable, of } from "rxjs";
 import { ResponsiveValue, ThemeTypings, ThemingProps } from "@chakra-ui/styled-system";
 import { Dict } from "@chakra-ui/utils";
-import { BaseStyledDirective } from "./base-styled.directive";
+import { BaseChakraDirective } from "./base-chakra.directive";
 
-export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends string> extends BaseStyledDirective implements OnChanges {
+@Directive()
+export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends string> extends BaseChakraDirective implements OnChanges {
   private readonly themeService = inject(ThemeService);
   private readonly $chakraComponent = new BehaviorSubject(this.component());
   private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
@@ -31,12 +32,17 @@ export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends 
   }
 
   override getBaseStyles(): Observable<ChakraStyles> {
-    return combineLatest([this.$themeStyles, this.getComponentBaseStyles()]).pipe(
+    return combineLatest([this.$themeStyles, this.getComponentBaseStylesObservable()]).pipe(
       map(([themeStyles, componentStyles]) => ({ ...componentStyles, __css: themeStyles })),
     );
   }
 
-  public abstract getComponentBaseStyles(): Observable<ChakraStyles>;
+  private getComponentBaseStylesObservable(): Observable<ChakraStyles> {
+    const componentStyles = this.getComponentBaseStyles();
+    return (componentStyles instanceof Observable ? componentStyles : of(componentStyles)).pipe(map((styles) => styles || {}));
+  }
+
+  public abstract getComponentBaseStyles(): Observable<BaseChakraStyles> | BaseChakraStyles;
 
   public component(): string {
     return "";

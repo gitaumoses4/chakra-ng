@@ -21,3 +21,7 @@ export interface ChakraStyles extends SystemProps {
    */
   css?: CSSInterpolation;
 }
+
+export type BaseChakraStyles = ChakraStyles | void | null | undefined;
+
+export type BaseStyles = SystemStyleObject | void | null | undefined;

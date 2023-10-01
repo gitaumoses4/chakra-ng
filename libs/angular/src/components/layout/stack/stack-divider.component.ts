@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
-import { BaseComponent, ChakraStyles } from "@chakra-ng/angular";
+import { BaseChakraComponent, BaseChakraStyles } from "@chakra-ng/angular";
 
 @Component({
   selector: "chakra-stack-divider",
-  template: `<div [chakraStyles]="$styles | async"></div>`,
+  template: "",
 })
-export class StackDividerComponent extends BaseComponent {
-  override defaultStyles(): ChakraStyles {
+export class StackDividerComponent extends BaseChakraComponent {
+  override getBaseStyles(): BaseChakraStyles {
     return {
       borderWidth: 0,
       alignSelf: "stretch",

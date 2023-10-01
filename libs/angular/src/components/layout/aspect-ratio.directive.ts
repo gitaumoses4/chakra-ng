@@ -1,14 +1,11 @@
-import { Directive, Input } from "@angular/core";
-import { BaseStyledDirective, ChakraStyles } from "@chakra-ng/angular";
-import { ResponsiveValue } from "@chakra-ui/styled-system";
+import { Directive } from "@angular/core";
+import { BaseChakraDirective, ChakraStyles } from "@chakra-ng/angular";
 import { mapResponsive } from "@chakra-ui/utils";
 
 @Directive({
   selector: "[aspectRatio]",
 })
-export class AspectRatioDirective extends BaseStyledDirective {
-  @Input("aspectRatio") aspectRatio: ResponsiveValue<number> = 4 / 3;
-
+export class AspectRatioDirective extends BaseChakraDirective {
   override ngOnChanges() {
     super.ngOnChanges();
 
@@ -17,14 +14,14 @@ export class AspectRatioDirective extends BaseStyledDirective {
     }
   }
 
-  getStyles(): ChakraStyles {
+  getBaseStyles(): ChakraStyles {
     return {
       position: "relative",
       _before: {
         height: 0,
         content: `""`,
         display: "block",
-        paddingBottom: mapResponsive(this.aspectRatio, (value) => `${(1 / value) * 100}%`),
+        paddingBottom: mapResponsive(this.aspectRatio || 4 / 3, (value) => `${(1 / value) * 100}%`),
       },
       __css: {
         "& > *:not(style)": {

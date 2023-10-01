@@ -34,7 +34,7 @@ export const docs: Docs = {
                   {
                     "fileName": "embed-video.demo.html",
                     "language": "html",
-                    "content": "<div [aspectRatio]=\"1\" [chakraStyles]=\"{ maxW: '560px' }\">\n  <iframe title=\"naruto\" src=\"https://www.youtube.com/embed/QhBnZ6NPOY0\" allowfullscreen> </iframe>\n</div>\n"
+                    "content": "<div [aspectRatio]=\"1\" [maxW]=\"'560px'\">\n  <iframe title=\"naruto\" src=\"https://www.youtube.com/embed/QhBnZ6NPOY0\" allowfullscreen> </iframe>\n</div>\n"
                   },
                   {
                     "fileName": "embed-video.demo.ts",
@@ -57,7 +57,7 @@ export const docs: Docs = {
                   {
                     "fileName": "embed-image.demo.html",
                     "language": "html",
-                    "content": "<div [aspectRatio]=\"4/3\" [chakraStyles]=\"{ maxW: '400px'}\">\n  <img src=\"https://bit.ly/naruto-sage\" alt=\"naruto\" />\n</div>\n"
+                    "content": "<div [aspectRatio]=\"4/3\" [maxW]=\"'400px'\">\n  <img src=\"https://bit.ly/naruto-sage\" alt=\"naruto\" />\n</div>\n"
                   },
                   {
                     "fileName": "embed-image.demo.ts",
@@ -217,7 +217,7 @@ export const docs: Docs = {
               {
                 "fileName": "usage.demo.html",
                 "language": "html",
-                "content": "<div center [chakraStyles]=\"{ bg: 'tomato', h: '100px', color: 'white'}\">This is the Center.</div>\n"
+                "content": "<div center [bg]=\"'tomato'\" [h]=\"'100px'\" [color]=\"'white'\">This is the Center.</div>\n"
               },
               {
                 "fileName": "usage.demo.ts",
@@ -239,7 +239,7 @@ export const docs: Docs = {
                   {
                     "fileName": "with-icons.demo.html",
                     "language": "html",
-                    "content": "<div hStack>\n  <div center [chakraStyles]=\"{ w: '40px', h: '40px', bg: 'tomato', color: 'white'}\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n  <div center [chakraStyles]=\"{ w: '40px', h: '40px', bg: 'tomato', color: 'white'}\">\n    <span [chakraStyles]=\"{ fontWeight: 'bold', fontSize: 'lg'}\">1</span>\n  </div>\n</div>\n"
+                    "content": "<div hStack>\n  <div center [w]=\"'40px'\" [h]=\"'40px'\" [bg]=\"'tomato'\" [color]=\"'white'\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n  <div center [w]=\"'40px'\" [h]=\"'40px'\" [bg]=\"'tomato'\" [color]=\"'white'\">\n    <span chakra [fontWeight]=\"'bold'\" [fontSize]=\"'lg'\">1</span>\n  </div>\n</div>\n"
                   },
                   {
                     "fileName": "with-icons.demo.ts",
@@ -262,7 +262,7 @@ export const docs: Docs = {
                   {
                     "fileName": "square-and-circle.demo.html",
                     "language": "html",
-                    "content": "<div hStack>\n  <div circle [size]=\"'40px'\" [chakraStyles]=\"{ bg: 'tomato', color: 'white'}\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n  <div square [size]=\"'40px'\" [chakraStyles]=\"{ bg: 'purple.700', color: 'white'}\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n</div>\n"
+                    "content": "<div hStack>\n  <div circle [size]=\"'40px'\" [bg]=\"'tomato'\" [color]=\"'white'\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n  <div square [size]=\"'40px'\" [bg]=\"'purple.700'\" [color]=\"'white'\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n</div>\n"
                   },
                   {
                     "fileName": "square-and-circle.demo.ts",
@@ -285,7 +285,7 @@ export const docs: Docs = {
                   {
                     "fileName": "absolute-center.demo.html",
                     "language": "html",
-                    "content": "<div [chakraStyles]=\"{ position: 'relative', h: '100px'}\">\n  <div absoluteCenter [chakraStyles]=\"{ bg: 'tomato', p: '4', color: 'white'}\" [axis]=\"'both'\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n</div>\n"
+                    "content": "<div chakra [position]=\"'relative'\" [h]=\"'100px'\">\n  <div absoluteCenter [axis]=\"'both'\" [bg]=\"'tomato'\" [p]=\"4\" [color]=\"'white'\">\n    <chakra-icon name=\"phone\"></chakra-icon>\n  </div>\n</div>\n"
                   },
                   {
                     "fileName": "absolute-center.demo.ts",
@@ -350,7 +350,7 @@ export const docs: Docs = {
               {
                 "fileName": "container-size.demo.html",
                 "language": "html",
-                "content": "<div vStack>\n  <div container [chakraStyles]=\"{ maxW: 'md', bg: 'blue.600', color: 'white'}\">\"md\" Container</div>\n  <div container [chakraStyles]=\"{ maxW: '500px', bg: 'purple.600', color: 'white'}\">\"550px\" Container</div>\n  <div container [chakraStyles]=\"{ maxW: 'container.sm', bg: 'green.400', color: 'white'}\">\"container.sm\" Container</div>\n</div>\n"
+                "content": "<div vStack>\n  <div container [maxW]=\"'md'\" [bg]=\"'blue.600'\" [color]=\"'white'\">\"md\" Container</div>\n  <div container [maxW]=\"'500px'\" [bg]=\"'purple.600'\" [color]=\"'white'\">\"550px\" Container</div>\n  <div container [maxW]=\"'container.sm'\" [bg]=\"'green.400'\" [color]=\"'white'\">\"container.sm\" Container</div>\n</div>\n"
               },
               {
                 "fileName": "container-size.demo.ts",
@@ -373,7 +373,7 @@ export const docs: Docs = {
               {
                 "fileName": "centering.demo.html",
                 "language": "html",
-                "content": "<div container [chakraStyles]=\"{ maxW: '2xl', bg: 'blue.600'}\" [centerContent]=\"true\">\n  <div [chakraStyles]=\"{ padding: '4', bg: 'blue.400', color: 'black', maxW: 'md'}\">\n    There are many benefits to a joint design and development system. Not only does it bring benefits to the design team, but it also brings benefits\n    to engineering teams. It makes sure that our experiences have a consistent look and feel, not just in our design specs, but in production.\n  </div>\n</div>\n"
+                "content": "<div container [maxW]=\"'2xl'\" [bg]=\"'blue.600'\" [centerContent]=\"true\">\n  <div chakra [padding]=\"4\" [bg]=\"'blue.400'\" [color]=\"'black'\" [maxW]=\"'md'\">\n    There are many benefits to a joint design and development system. Not only does it bring benefits to the design team, but it also brings benefits\n    to engineering teams. It makes sure that our experiences have a consistent look and feel, not just in our design specs, but in production.\n  </div>\n</div>\n"
               },
               {
                 "fileName": "centering.demo.ts",
@@ -413,7 +413,7 @@ export const docs: Docs = {
               {
                 "fileName": "flex-usage.demo.html",
                 "language": "html",
-                "content": "<div flex [chakraStyles]=\"{ color: 'white' }\">\n  <div center [chakraStyles]=\"{ w: '100px', bg: 'green.500' }\">\n    <span>Box 1</span>\n  </div>\n  <div square [size]=\"'150px'\" [chakraStyles]=\"{ bg: 'blue.500' }\">\n    <span>Box 2</span>\n  </div>\n  <div [chakraStyles]=\"{ flex: 1, bg: 'tomato' }\">\n    <span>Box 3</span>\n  </div>\n</div>\n"
+                "content": "<div flexRow [color]=\"'white'\">\n  <div center [w]=\"'100px'\" [bg]=\"'green.500'\">\n    <span>Box 1</span>\n  </div>\n  <div square [size]=\"'150px'\" [bg]=\"'blue.500'\">\n    <span>Box 2</span>\n  </div>\n  <div flexRow [flex]=\"1\" [bg]=\"'tomato'\">\n    <span>Box 3</span>\n  </div>\n</div>\n"
               },
               {
                 "fileName": "flex-usage.demo.ts",
@@ -436,7 +436,7 @@ export const docs: Docs = {
               {
                 "fileName": "flex-spacer.demo.html",
                 "language": "html",
-                "content": "<div flex>\n  <div [chakraStyles]=\"{ p: '4', bg: 'red.400'}\">Box 1</div>\n  <div spacer></div>\n  <div [chakraStyles]=\"{ p: '4', bg: 'green.400'}\">Box 2</div>\n</div>\n"
+                "content": "<div flexRow>\n  <div chakra [p]=\"4\" [bg]=\"'red.400'\">Box 1</div>\n  <div spacer></div>\n  <div chakra [p]=\"4\" [bg]=\"'green.400'\">Box 2</div>\n</div>\n"
               },
               {
                 "fileName": "flex-spacer.demo.ts",
@@ -459,7 +459,7 @@ export const docs: Docs = {
               {
                 "fileName": "flex-grid-stack.demo.html",
                 "language": "html",
-                "content": "<div>\n  <p>Flex and Spacer: Full width, equal spacing</p>\n  <div flex>\n    <div [chakraStyles]=\"{ w: '70px', h: '10', bg: 'red.500'}\"></div>\n    <div spacer></div>\n    <div [chakraStyles]=\"{ w: '170px', h: '10', bg: 'red.500'}\"></div>\n    <div spacer></div>\n    <div [chakraStyles]=\"{ w: '180px', h: '10', bg: 'red.500'}\"></div>\n  </div>\n\n  <p>Grid: The children start at the beginning, the 1/3 mark and 2/3 mark</p>\n  <div grid [templateColumns]=\"'repeat(3, 1fr)'\" [gap]=\"6\">\n    <div [chakraStyles]=\"{ w: '70px', h: '10', bg: 'blue.500'}\"></div>\n    <div [chakraStyles]=\"{ w: '170px', h: '10', bg: 'blue.500'}\"></div>\n    <div [chakraStyles]=\"{ w: '180px', h: '10', bg: 'blue.500'}\"></div>\n  </div>\n\n  <p>HorizontalStack: The children have equal spacing but don't span the whole container</p>\n  <div hStack [spacing]=\"6\">\n    <div [chakraStyles]=\"{ w: '70px', h: '10', bg: 'green.500'}\"></div>\n    <div [chakraStyles]=\"{ w: '170px', h: '10', bg: 'green.500'}\"></div>\n    <div [chakraStyles]=\"{ w: '180px', h: '10', bg: 'green.500'}\"></div>\n  </div>\n</div>\n"
+                "content": "<div>\n  <p>Flex and Spacer: Full width, equal spacing</p>\n  <div flexRow>\n    <div chakra [w]=\"'70px'\" [h]=\"'10'\" [bg]=\"'red.500'\"></div>\n    <div spacer></div>\n    <div chakra [w]=\"'170px'\" [h]=\"10\" [bg]=\"'red.500'\"></div>\n    <div spacer></div>\n    <div chakra [w]=\"'180px'\" [h]=\"10\" [bg]=\"'red.500'\"></div>\n  </div>\n\n  <p>Grid: The children start at the beginning, the 1/3 mark and 2/3 mark</p>\n  <div grid [templateColumns]=\"'repeat(3, 1fr)'\" [gap]=\"6\">\n    <div chakra [w]=\"'70px'\" [h]=\"'10'\" [bg]=\"'blue.500'\"></div>\n    <div chakra [w]=\"'170px'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n    <div chakra [w]=\"'180px'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n  </div>\n\n  <p>HorizontalStack: The children have equal spacing but don't span the whole container</p>\n  <div hStack [spacing]=\"6\">\n    <div chakra [w]=\"'70px'\" [h]=\"'10'\" [bg]=\"'green.500'\"></div>\n    <div chakra [w]=\"'170px'\" [h]=\"10\" [bg]=\"'green.500'\"></div>\n    <div chakra [w]=\"'180px'\" [h]=\"10\" [bg]=\"'green.500'\"></div>\n  </div>\n</div>\n"
               },
               {
                 "fileName": "flex-grid-stack.demo.ts",
@@ -481,7 +481,7 @@ export const docs: Docs = {
                   {
                     "fileName": "spacer-usage.demo.html",
                     "language": "html",
-                    "content": "<div flex [chakraStyles]=\"{ minWidth: 'max-content', alignItems: 'center'}\" [gap]=\"2\">\n  <div [chakraStyles]=\"{ p: 2 }\">\n    <h2 heading [size]=\"'md'\">ChakraNg App</h2>\n  </div>\n  <div spacer></div>\n  <div flex [gap]=\"2\">\n    <chakra-button [colorScheme]=\"'teal'\">Sign Up</chakra-button>\n    <chakra-button [colorScheme]=\"'teal'\">Log In</chakra-button>\n  </div>\n</div>\n"
+                    "content": "<div flexRow [minWidth]=\"'max-content'\" [alignItems]=\"'center'\"  [gap]=\"2\">\n  <div chakra [padding]=\"2\">\n    <h2 heading [size]=\"'md'\">ChakraNg App</h2>\n  </div>\n  <div spacer></div>\n  <div flexRow [gap]=\"2\">\n    <chakra-button [colorScheme]=\"'teal'\">Sign Up</chakra-button>\n    <chakra-button [colorScheme]=\"'teal'\">Log In</chakra-button>\n  </div>\n</div>\n"
                   },
                   {
                     "fileName": "spacer-usage.demo.ts",
@@ -523,7 +523,7 @@ export const docs: Docs = {
               {
                 "fileName": "template-columns.demo.html",
                 "language": "html",
-                "content": "<div grid [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"6\">\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n  <div gridItem [chakraStyles]=\"{ w: '100%', h: '10', bg: 'blue.500'}\"></div>\n</div>\n"
+                "content": "<div grid [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"6\">\n  <div gridItem [width]=\"'100%'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n  <div gridItem [width]=\"'100%'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n  <div gridItem [width]=\"'100%'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n  <div gridItem [width]=\"'100%'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n  <div gridItem [width]=\"'100%'\" [h]=\"10\" [bg]=\"'blue.500'\"></div>\n</div>\n"
               },
               {
                 "fileName": "template-columns.demo.ts",
@@ -546,7 +546,7 @@ export const docs: Docs = {
               {
                 "fileName": "spanning-columns.demo.html",
                 "language": "html",
-                "content": "<div grid [chakraStyles]=\"{ h: '200px' }\" [templateRows]=\"'repeat(2, 1fr)'\" [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"4\">\n  <div gridItem [rowSpan]=\"2\" [colSpan]=\"1\" [chakraStyles]=\"{ bg: 'tomato'}\"></div>\n  <div gridItem [colSpan]=\"2\" [chakraStyles]=\"{ bg: 'papayawhip'}\"></div>\n  <div gridItem [colSpan]=\"2\" [chakraStyles]=\"{ bg: 'papayawhip'}\"></div>\n  <div gridItem [colSpan]=\"4\" [chakraStyles]=\"{ bg: 'tomato'}\"></div>\n</div>\n"
+                "content": "<div grid [h]=\"'200px'\" [templateRows]=\"'repeat(2, 1fr)'\" [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"4\">\n  <div gridItem [rowSpan]=\"2\" [colSpan]=\"1\" [bg]=\"'tomato'\"></div>\n  <div gridItem [colSpan]=\"2\" [bg]=\"'papayawhip'\"></div>\n  <div gridItem [colSpan]=\"2\" [bg]=\"'papayawhip'\"></div>\n  <div gridItem [colSpan]=\"4\" [bg]=\"'tomato'\"></div>\n</div>\n"
               },
               {
                 "fileName": "spanning-columns.demo.ts",
@@ -569,7 +569,7 @@ export const docs: Docs = {
               {
                 "fileName": "start-end-lines.demo.html",
                 "language": "html",
-                "content": "<div grid [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"4\">\n  <div gridItem [colSpan]=\"2\" [chakraStyles]=\"{ h: '10', bg: 'tomato'}\"></div>\n  <div gridItem [colStart]=\"4\" [colEnd]=\"6\" [chakraStyles]=\"{ h: '10', bg: 'papayawhip'}\"></div>\n</div>\n"
+                "content": "<div grid [templateColumns]=\"'repeat(5, 1fr)'\" [gap]=\"4\">\n  <div gridItem [colSpan]=\"2\" [bg]=\"'tomato'\" [h]=\"10\"></div>\n  <div gridItem [colStart]=\"4\" [colEnd]=\"6\" [bg]=\"'papayawhip'\" [h]=\"10\"></div>\n</div>\n"
               },
               {
                 "fileName": "start-end-lines.demo.ts",
@@ -592,7 +592,7 @@ export const docs: Docs = {
               {
                 "fileName": "template-areas.demo.html",
                 "language": "html",
-                "content": "<div\n  grid\n  [templateAreas]=\"areas\"\n  [templateRows]=\"'50px 1fr 30px'\"\n  [templateColumns]=\"'150px 1fr'\"\n  [chakraStyles]=\"{ h: '200px', color: 'blackAlpha.700', fontWeight: 'bold'}\"\n  [gap]=\"1\"\n>\n  <div gridItem [area]=\"'header'\" [chakraStyles]=\"{ pl: '2', bg: 'orange.300'}\">Header</div>\n  <div gridItem [area]=\"'nav'\" [chakraStyles]=\"{ pl: '2', bg: 'pink.300'}\">Nav</div>\n  <div gridItem [area]=\"'main'\" [chakraStyles]=\"{ pl: '2', bg: 'green.300'}\">Main</div>\n  <div gridItem [area]=\"'footer'\" [chakraStyles]=\"{ pl: '2', bg: 'blue.300'}\">Footer</div>\n</div>\n"
+                "content": "<div\n  grid\n  [templateAreas]=\"areas\"\n  [templateRows]=\"'50px 1fr 30px'\"\n  [templateColumns]=\"'150px 1fr'\"\n  [h]=\"'200px'\"\n  [color]=\"'blackAlpha.700'\"\n  [fontWeight]=\"'bold'\"\n  [gap]=\"1\"\n>\n  <div gridItem [area]=\"'header'\" [bg]=\"'orange.300'\" [pl]=\"2\">Header</div>\n  <div gridItem [area]=\"'nav'\" [bg]=\"'pink.300'\" [pl]=\"2\">Nav</div>\n  <div gridItem [area]=\"'main'\" [bg]=\"'green.300'\" [pl]=\"2\">Main</div>\n  <div gridItem [area]=\"'footer'\" [bg]=\"'blue.300'\" [pl]=\"2\">Footer</div>\n</div>\n"
               },
               {
                 "fileName": "template-areas.demo.ts",
@@ -632,7 +632,7 @@ export const docs: Docs = {
               {
                 "fileName": "stack-usage.demo.html",
                 "language": "html",
-                "content": "<div stack [spacing]=\"'24px'\">\n  <div square [chakraStyles]=\"{ bg: 'yellow.200', color: 'black'}\" [size]=\"'40px'\">1</div>\n  <div square [chakraStyles]=\"{ bg: 'tomato'}\" [size]=\"'40px'\">2</div>\n  <div square [chakraStyles]=\"{ bg: 'pink.100', color: 'black'}\" [size]=\"'40px'\">3</div>\n</div>\n"
+                "content": "<div stack [spacing]=\"'24px'\">\n  <div square [bg]=\"'yellow.200'\" [color]=\"'black'\" [size]=\"'40px'\">1</div>\n  <div square [bg]=\"'tomato'\" [size]=\"'40px'\">2</div>\n  <div square [bg]=\"'pink.100'\" [color]=\"'black'\" [size]=\"'40px'\">3</div>\n</div>\n"
               },
               {
                 "fileName": "stack-usage.demo.ts",
@@ -655,7 +655,7 @@ export const docs: Docs = {
               {
                 "fileName": "stack-responsive.demo.html",
                 "language": "html",
-                "content": "<div stack [direction]=\"['column', 'row']\" [spacing]=\"'24px'\">\n  <div square [chakraStyles]=\"{ bg: 'yellow.200', color: 'black'}\" [size]=\"'40px'\">1</div>\n  <div square [chakraStyles]=\"{ bg: 'tomato'}\" [size]=\"'40px'\">2</div>\n  <div square [chakraStyles]=\"{ bg: 'pink.100', color: 'black'}\" [size]=\"'40px'\">3</div>\n</div>\n"
+                "content": "<div stack [direction]=\"['column', 'row']\" [spacing]=\"'24px'\">\n  <div square [color]=\"'black'\" [bg]=\"'yellow.200'\" [size]=\"'40px'\">1</div>\n  <div square [bg]=\"'tomato'\" [size]=\"'40px'\">2</div>\n  <div square [bg]=\"'pink.100'\" [color]=\"'black'\" [size]=\"'40px'\">3</div>\n</div>\n"
               },
               {
                 "fileName": "stack-responsive.demo.ts",
@@ -678,7 +678,7 @@ export const docs: Docs = {
               {
                 "fileName": "stack-dividers.demo.html",
                 "language": "html",
-                "content": "<div vStack [spacing]=\"'2'\" [align]=\"'stretch'\" [divider]=\"divider\">\n  <div [chakraStyles]=\"{ h: '40px', bg: 'yellow.200', color: 'black' }\">1</div>\n  <div [chakraStyles]=\"{ h: '40px', bg: 'tomato' }\">2</div>\n  <div [chakraStyles]=\"{ h: '40px', bg: 'pink.100', color: 'black' }\">3</div>\n</div>\n\n<ng-template #divider>\n  <chakra-stack-divider [chakraStyles]=\"{ borderColor: 'gray.200' }\"></chakra-stack-divider>\n</ng-template>\n"
+                "content": "<div vStack [spacing]=\"'2'\" [align]=\"'stretch'\" [divider]=\"divider\">\n  <div chakra [h]=\"'40px'\" [bg]=\"'yellow.200'\" [color]=\"'black'\">1</div>\n  <div chakra [h]=\"'40px'\" [bg]=\"'tomato'\">2</div>\n  <div chakra [h]=\"'40px'\" [bg]=\"'pink.100'\" [color]=\"'black'\">3</div>\n</div>\n\n<ng-template #divider>\n  <chakra-stack-divider [borderColor]=\"'gray.200'\"></chakra-stack-divider>\n</ng-template>\n"
               },
               {
                 "fileName": "stack-dividers.demo.ts",
@@ -709,7 +709,7 @@ export const docs: Docs = {
               {
                 "fileName": "stack-component.demo.html",
                 "language": "html",
-                "content": "<div stack [spacing]=\"8\" [direction]=\"'row'\">\n  <ng-container *ngFor=\"let feature of features\">\n    <div [chakraStyles]=\"{ p: 5, shadow: 'md', borderWidth: '1px'}\">\n      <h1 heading [size]=\"'md'\">{{ feature.title }}</h1>\n      <p [chakraStyles]=\"{ mt: 4}\">{{ feature.description }}</p>\n    </div>\n  </ng-container>\n</div>\n"
+                "content": "<div stack [spacing]=\"8\" [direction]=\"'row'\">\n  <ng-container *ngFor=\"let feature of features\">\n    <div chakra [p]=\"5\" [shadow]=\"'md'\" [borderWidth]=\"'1px'\">\n      <h1 heading [size]=\"'md'\">{{ feature.title }}</h1>\n      <p chakra [mt]=\"4\">{{ feature.description }}</p>\n    </div>\n  </ng-container>\n</div>\n"
               },
               {
                 "fileName": "stack-component.demo.ts",
@@ -732,7 +732,7 @@ export const docs: Docs = {
               {
                 "fileName": "h-stack-component.demo.html",
                 "language": "html",
-                "content": "<div hStack [spacing]=\"8\">\n  <ng-container *ngFor=\"let feature of features\">\n    <div [chakraStyles]=\"{ p: 5, shadow: 'md', borderWidth: '1px'}\">\n      <h1 heading [size]=\"'md'\">{{ feature.title }}</h1>\n      <p [chakraStyles]=\"{ mt: 4}\">{{ feature.description }}</p>\n    </div>\n  </ng-container>\n</div>\n"
+                "content": "<div hStack [spacing]=\"8\">\n  <ng-container *ngFor=\"let feature of features\">\n    <div chakra [p]=\"5\" [shadow]=\"'md'\" [borderWidth]=\"'1px'\">\n      <h1 heading [size]=\"'md'\">{{ feature.title }}</h1>\n      <p chakra [mt]=\"4\">{{ feature.description }}</p>\n    </div>\n  </ng-container>\n</div>\n"
               },
               {
                 "fileName": "h-stack-component.demo.ts",

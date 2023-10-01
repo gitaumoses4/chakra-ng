@@ -1,27 +1,15 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseStyledDirective, ChakraStyles } from "@chakra-ng/angular";
+import { BaseChakraDirective, ChakraStyles } from "@chakra-ng/angular";
 
 @Directive({
   selector: "[grid]",
 })
-export class GridLayoutDirective extends BaseStyledDirective {
+export class GridLayoutDirective extends BaseChakraDirective {
   /**
    * Shorthand prop for `gridTemplateColumns`
    */
   @Input() templateColumns?: SystemProps["gridTemplateColumns"];
-  /**
-   * Shorthand prop for `gridGap`
-   */
-  @Input() gap?: SystemProps["gridGap"];
-  /**
-   * Shorthand prop for `gridRowGap`
-   */
-  @Input() rowGap?: SystemProps["gridRowGap"];
-  /**
-   * Shorthand prop for `gridColumnGap`
-   */
-  @Input() columnGap?: SystemProps["gridColumnGap"];
   /**
    * Shorthand prop for `gridAutoFlow`
    */
@@ -51,7 +39,7 @@ export class GridLayoutDirective extends BaseStyledDirective {
    */
   @Input() row?: SystemProps["gridRow"];
 
-  public override getStyles(): ChakraStyles {
+  public override getBaseStyles(): ChakraStyles {
     return {
       display: "grid",
       gridTemplateColumns: this.templateColumns,

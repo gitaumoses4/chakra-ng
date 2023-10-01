@@ -1,4 +1,4 @@
-import { BaseStyledDirective, ChakraStyles } from "@chakra-ng/angular";
+import { BaseChakraDirective, ChakraStyles } from "@chakra-ng/angular";
 import { Directive, Input } from "@angular/core";
 import { ResponsiveValue, SystemProps } from "@chakra-ui/styled-system";
 import { compact } from "@chakra-ui/object-utils";
@@ -11,7 +11,7 @@ function spanFn(span?: ResponsiveValue<number | "auto">) {
 @Directive({
   selector: "[gridItem]",
 })
-export class GridItemDirective extends BaseStyledDirective {
+export class GridItemDirective extends BaseChakraDirective {
   /**
    * Shorthand prop for `gridArea`
    * @type SystemProps["gridArea"]
@@ -44,7 +44,7 @@ export class GridItemDirective extends BaseStyledDirective {
    */
   @Input() rowSpan?: ResponsiveValue<number | "auto">;
 
-  override getStyles(): ChakraStyles {
+  override getBaseStyles(): ChakraStyles {
     return compact({
       gridArea: this.area,
       gridColumn: spanFn(this.colSpan),

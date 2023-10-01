@@ -1,24 +1,24 @@
 <div>
   <p>Flex and Spacer: Full width, equal spacing</p>
-  <div flex>
-    <div [chakraStyles]="{ w: '70px', h: '10', bg: 'red.500'}"></div>
+  <div flexRow>
+    <div chakra [w]="'70px'" [h]="'10'" [bg]="'red.500'"></div>
     <div spacer></div>
-    <div [chakraStyles]="{ w: '170px', h: '10', bg: 'red.500'}"></div>
+    <div chakra [w]="'170px'" [h]="10" [bg]="'red.500'"></div>
     <div spacer></div>
-    <div [chakraStyles]="{ w: '180px', h: '10', bg: 'red.500'}"></div>
+    <div chakra [w]="'180px'" [h]="10" [bg]="'red.500'"></div>
   </div>
 
   <p>Grid: The children start at the beginning, the 1/3 mark and 2/3 mark</p>
   <div grid [templateColumns]="'repeat(3, 1fr)'" [gap]="6">
-    <div [chakraStyles]="{ w: '70px', h: '10', bg: 'blue.500'}"></div>
-    <div [chakraStyles]="{ w: '170px', h: '10', bg: 'blue.500'}"></div>
-    <div [chakraStyles]="{ w: '180px', h: '10', bg: 'blue.500'}"></div>
+    <div chakra [w]="'70px'" [h]="'10'" [bg]="'blue.500'"></div>
+    <div chakra [w]="'170px'" [h]="10" [bg]="'blue.500'"></div>
+    <div chakra [w]="'180px'" [h]="10" [bg]="'blue.500'"></div>
   </div>
 
   <p>HorizontalStack: The children have equal spacing but don't span the whole container</p>
   <div hStack [spacing]="6">
-    <div [chakraStyles]="{ w: '70px', h: '10', bg: 'green.500'}"></div>
-    <div [chakraStyles]="{ w: '170px', h: '10', bg: 'green.500'}"></div>
-    <div [chakraStyles]="{ w: '180px', h: '10', bg: 'green.500'}"></div>
+    <div chakra [w]="'70px'" [h]="'10'" [bg]="'green.500'"></div>
+    <div chakra [w]="'170px'" [h]="10" [bg]="'green.500'"></div>
+    <div chakra [w]="'180px'" [h]="10" [bg]="'green.500'"></div>
   </div>
 </div>
