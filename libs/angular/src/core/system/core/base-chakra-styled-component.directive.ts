@@ -7,7 +7,6 @@ import { BaseChakraDirective } from "./base-chakra.directive";
 
 @Directive()
 export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends string> extends BaseChakraDirective implements OnChanges {
-  private readonly themeService = inject(ThemeService);
   private readonly $chakraComponent = new BehaviorSubject(this.component());
   private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
   public readonly $themeStyles = this.themeService.getStyleConfig(this.$chakraComponent, this.$componentProps);

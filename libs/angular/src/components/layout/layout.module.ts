@@ -15,6 +15,8 @@ import { StackDividerComponent } from "./stack/stack-divider.component";
 import { CommonModule } from "@angular/common";
 import { ChakraSystemModule } from "../../core";
 import { AspectRatioDirective } from "./aspect-ratio.directive";
+import { SimpleGridDirective } from "./simple-grid.directive";
+import { WrapLayoutDirective } from "./wrap-layout.directive";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AspectRatioDirective } from "./aspect-ratio.directive";
     AspectRatioDirective,
     ContainerDirective,
     GridItemDirective,
+    SimpleGridDirective,
+    WrapLayoutDirective,
   ],
   exports: [
     CenterLayoutDirective,
@@ -44,6 +48,8 @@ import { AspectRatioDirective } from "./aspect-ratio.directive";
     AspectRatioDirective,
     ContainerDirective,
     GridItemDirective,
+    SimpleGridDirective,
+    WrapLayoutDirective,
   ],
   imports: [ChakraSystemModule, CommonModule],
 })

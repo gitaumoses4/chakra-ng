@@ -202,6 +202,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.0
     version: 10.4.15(postcss@8.4.29)
+  csstype:
+    specifier: ^3.1.2
+    version: 3.1.2
   cypress:
     specifier: ^12.16.0
     version: 12.17.4
@@ -6953,7 +6956,6 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
-    dev: false
 
   /cuint@0.2.2:
     resolution: {integrity: sha512-d4ZVpCW31eWwCMe1YT3ur7mUDnTXbgwyzaL320DrcRT45rfjYxkt5QWLrmOJ+/UEAI2+fQgKe/fCjR8l4TpRgw==}

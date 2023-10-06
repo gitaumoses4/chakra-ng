@@ -1,7 +1,10 @@
 import { Directive, ElementRef, inject, Input, OnChanges, OnDestroy } from "@angular/core";
-import { ChakraStyles, getStylesId, StylesService } from "@chakra-ng/angular";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 import { stylesKeys } from "../styles.keys";
+import { ChakraStyles } from "../types";
+import { StylesService } from "../../styles";
+import { ThemeService } from "../../theme";
+import { getStylesId } from "../system";
 
 type Inputs = {
   [K in keyof Required<ChakraStyles>]: ChakraStyles[K] | undefined;
@@ -431,6 +434,7 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
   public readonly $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
   public readonly styleService = inject(StylesService);
   public readonly elementRef = inject(ElementRef);
+  public readonly themeService = inject(ThemeService);
 
   private readonly subscriptions: Array<Subscription> = [];
 

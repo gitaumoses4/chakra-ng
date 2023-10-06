@@ -8,10 +8,9 @@ import { BaseChakraStyles, ChakraStyles } from "../types";
 
 @Component({ template: "", standalone: true })
 export abstract class BaseChakraStyledComponent<ThemeComponent extends string> extends BaseChakraComponent {
-  private readonly themeService = inject(ThemeService);
   private readonly $chakraComponent = new BehaviorSubject(this.component());
   private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
-  public readonly $themeStyles = this.themeService.getStyleConfig(this.$chakraComponent, this.$componentProps);
+  public readonly $componentStyles = this.themeService.getStyleConfig(this.$chakraComponent, this.$componentProps);
 
   @Input() public variant?: ResponsiveValue<
     ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["variants"] : string
@@ -29,7 +28,7 @@ export abstract class BaseChakraStyledComponent<ThemeComponent extends string> e
   }
 
   override getBaseStyles(): Observable<ChakraStyles> {
-    return combineLatest([this.$themeStyles, this.getComponentBaseStylesObservable()]).pipe(
+    return combineLatest([this.$componentStyles, this.getComponentBaseStylesObservable()]).pipe(
       map(([themeStyles, componentStyles]) => ({ ...componentStyles, __css: themeStyles })),
     );
   }

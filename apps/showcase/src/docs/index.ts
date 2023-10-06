@@ -606,6 +606,116 @@ export const docs: Docs = {
         }
       ]
     },
+    "simple-grid": {
+      "id": "simple-grid",
+      "path": "simple-grid",
+      "title": "Simple Grid",
+      "depth": 1,
+      "content": "Simple Grid provides a friendly interface to create responsive grid layouts with ease.\n",
+      "sections": [
+        {
+          "id": "import",
+          "path": "simple-grid/import",
+          "title": "Import",
+          "depth": 2,
+          "content": "```typescript\nimport { LayoutModule } from \"@chakra-ng/angular\";\n```\n",
+          "sections": []
+        },
+        {
+          "id": "usage",
+          "path": "simple-grid/usage",
+          "title": "Usage",
+          "depth": 2,
+          "demo": {
+            "component": import("./components/simple-grid/usage/usage.demo"),
+            "code": [
+              {
+                "fileName": "usage.demo.html",
+                "language": "html",
+                "content": "<div simpleGrid [columns]=\"2\" [spacing]=\"10\">\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n</div>\n"
+              },
+              {
+                "fileName": "usage.demo.ts",
+                "language": "typescript",
+                "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"usage-demo\",\n  templateUrl: \"./usage.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class UsageDemo {}\n"
+              }
+            ]
+          },
+          "content": "Specifying the number of columns for the grid layout\n",
+          "sections": [
+            {
+              "id": "usage-responsive",
+              "path": "simple-grid/usage/usage-responsive",
+              "title": "Responsive",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/simple-grid/usage-responsive/usage-responsive.demo"),
+                "code": [
+                  {
+                    "fileName": "usage-responsive.demo.html",
+                    "language": "html",
+                    "content": "<div simpleGrid [columns]=\"[2, null , 3]\" [spacing]=\"'40px'\">\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n</div>\n"
+                  },
+                  {
+                    "fileName": "usage-responsive.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"usage-responsive-demo\",\n  templateUrl: \"./usage-responsive.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class UsageResponsiveDemo {}\n"
+                  }
+                ]
+              },
+              "content": "You can also make it responsive by passing array or object values into the `columns` property\n",
+              "sections": []
+            },
+            {
+              "id": "auto-responsive",
+              "path": "simple-grid/usage/auto-responsive",
+              "title": "Auto-responsive Grid",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/simple-grid/auto-responsive/auto-responsive.demo"),
+                "code": [
+                  {
+                    "fileName": "auto-responsive.demo.html",
+                    "language": "html",
+                    "content": "<div simpleGrid [minChildWidth]=\"'120px'\" [spacing]=\"'40px'\">\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n</div>\n"
+                  },
+                  {
+                    "fileName": "auto-responsive.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"auto-responsive-demo\",\n  templateUrl: \"./auto-responsive.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class AutoResponsiveDemo {}\n"
+                  }
+                ]
+              },
+              "content": "To make the grid responsive and adjust automatically without passing `columns`, simply pass the\n`minChildWidth` property to specify the `min-width` a child should have before adjusting the layout.\n\nThis uses css grid `auto-fit` and `minmax()` internally.\n",
+              "sections": []
+            },
+            {
+              "id": "change-spacing",
+              "path": "simple-grid/usage/change-spacing",
+              "title": "Changing the spacing for columns and rows.",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/simple-grid/change-spacing/change-spacing.demo"),
+                "code": [
+                  {
+                    "fileName": "change-spacing.demo.html",
+                    "language": "html",
+                    "content": "<div simpleGrid [columns]=\"2\" [spacingX]=\"'40px'\" [spacingY]=\"'20px'\">\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n  <div chakra [bg]=\"'tomato'\" [height]=\"'80px'\"></div>\n</div>\n"
+                  },
+                  {
+                    "fileName": "change-spacing.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"change-spacing-demo\",\n  templateUrl: \"./change-spacing.demo.html\",\n  imports: [LayoutModule, ChakraSystemModule],\n})\nexport class ChangeSpacingDemo {}\n"
+                  }
+                ]
+              },
+              "content": "Simply pass the `spacing` property to change the row and column spacing between the grid items.\n`SimpleGrid` also allows you to pass `spacingX` and `spacingY` properties to define the space between columns and rows respectively.\n",
+              "sections": []
+            }
+          ]
+        }
+      ]
+    },
     "stack": {
       "id": "stack",
       "path": "stack",
@@ -743,6 +853,124 @@ export const docs: Docs = {
           },
           "content": "",
           "sections": []
+        }
+      ]
+    },
+    "wrap": {
+      "id": "wrap",
+      "path": "wrap",
+      "title": "Wrap",
+      "depth": 1,
+      "content": "Wrap is a layout used to add space between elements and wraps automatically if there isn't enough space.\n",
+      "sections": [
+        {
+          "id": "import",
+          "path": "wrap/import",
+          "title": "Import",
+          "depth": 2,
+          "content": "```typescript\nimport {LayoutModule} from \"@chakra-ng/angular\";\n```\n",
+          "sections": []
+        },
+        {
+          "id": "usage",
+          "path": "wrap/usage",
+          "title": "Usage",
+          "depth": 2,
+          "demo": {
+            "component": import("./components/wrap/usage/usage.demo"),
+            "code": [
+              {
+                "fileName": "usage.demo.html",
+                "language": "html",
+                "content": "<div wrap>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'red.200'\">Box 1</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'green.200'\">Box 2</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'tomato'\">Box 3</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'blue.200'\">Box 4</div>\n</div>\n"
+              },
+              {
+                "fileName": "usage.demo.ts",
+                "language": "typescript",
+                "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"usage-demo\",\n  templateUrl: \"./usage.demo.html\",\n  imports: [LayoutModule],\n})\nexport class UsageDemo {}\n"
+              }
+            ]
+          },
+          "content": "Think of `wrap` as a flex box container with `flex-wrap` and `spacing` support. It works really well with things like\ndialog buttons, tags and chips.\n\nIn the example below, you see that the last `Box` is wrapped to the next line because there isn't enough space.\n",
+          "sections": []
+        },
+        {
+          "id": "change-the-spacing",
+          "path": "wrap/change-the-spacing",
+          "title": "Change the spacing",
+          "depth": 2,
+          "demo": {
+            "component": import("./components/wrap/change-the-spacing/change-the-spacing.demo"),
+            "code": [
+              {
+                "fileName": "change-the-spacing.demo.html",
+                "language": "html",
+                "content": "<div wrap [spacing]=\"'30px'\">\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'red.200'\">Box 1</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'green.200'\">Box 2</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'tomato'\">Box 3</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'blue.200'\">Box 4</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'blackAlpha.500'\">Box 5</div>\n</div>\n"
+              },
+              {
+                "fileName": "change-the-spacing.demo.ts",
+                "language": "typescript",
+                "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"change-the-spacing-demo\",\n  templateUrl: \"./change-the-spacing.demo.html\",\n  imports: [LayoutModule],\n})\nexport class ChangeTheSpacingDemo {}\n"
+              }
+            ]
+          },
+          "content": "Pass the `spacing` prop to apply consistent spacing between each child, even if it wraps\n\n> Pro Tip: You can pass responsive values for the `spacing`\n",
+          "sections": []
+        },
+        {
+          "id": "change-the-alignment",
+          "path": "wrap/change-the-alignment",
+          "title": "Change the alignment",
+          "depth": 2,
+          "content": "",
+          "sections": [
+            {
+              "id": "cross-axis",
+              "path": "wrap/change-the-alignment/cross-axis",
+              "title": "Cross Axis",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/wrap/cross-axis/cross-axis.demo"),
+                "code": [
+                  {
+                    "fileName": "cross-axis.demo.html",
+                    "language": "html",
+                    "content": "<div wrap [spacing]=\"'30px'\" [align]=\"'center'\">\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'red.200'\">Box 1</div>\n  <div center [w]=\"'180px'\" [h]=\"'40px'\" [bg]=\"'green.200'\">Box 2</div>\n  <div center [w]=\"'120px'\" [h]=\"'80px'\" [bg]=\"'tomato'\">Box 3</div>\n  <div center [w]=\"'180px'\" [h]=\"'40px'\" [bg]=\"'blue.200'\">Box 4</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'blackAlpha.500'\">Box 5</div>\n</div>\n"
+                  },
+                  {
+                    "fileName": "cross-axis.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"cross-axis-demo\",\n  templateUrl: \"./cross-axis.demo.html\",\n  imports: [LayoutModule],\n})\nexport class CrossAxisDemo {}\n"
+                  }
+                ]
+              },
+              "content": "Pass the `align` prop to change the alignment of the child along the cross axis.\n",
+              "sections": []
+            },
+            {
+              "id": "main-axis",
+              "path": "wrap/change-the-alignment/main-axis",
+              "title": "Main Axis",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/wrap/main-axis/main-axis.demo"),
+                "code": [
+                  {
+                    "fileName": "main-axis.demo.html",
+                    "language": "html",
+                    "content": "<div wrap [spacing]=\"'30px'\" [justify]=\"'center'\">\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'red.200'\">Box 1</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'green.200'\">Box 2</div>\n  <div center [w]=\"'120px'\" [h]=\"'80px'\" [bg]=\"'tomato'\">Box 3</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'blue.200'\">Box 4</div>\n  <div center [w]=\"'180px'\" [h]=\"'80px'\" [bg]=\"'blackAlpha.500'\">Box 5</div>\n</div>\n"
+                  },
+                  {
+                    "fileName": "main-axis.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"main-axis-demo\",\n  templateUrl: \"./main-axis.demo.html\",\n  imports: [LayoutModule],\n})\nexport class MainAxisDemo {}\n"
+                  }
+                ]
+              },
+              "content": "Pass the `justify` prop to change the alignment of the child along the main axis.\n",
+              "sections": []
+            }
+          ]
         }
       ]
     }

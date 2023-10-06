@@ -1,6 +1,6 @@
 import { Directive } from "@angular/core";
-import { BaseChakraDirective, ChakraStyles } from "@chakra-ng/angular";
 import { mapResponsive } from "@chakra-ui/utils";
+import { BaseChakraDirective, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[aspectRatio]",

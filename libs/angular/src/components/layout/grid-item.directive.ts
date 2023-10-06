@@ -1,8 +1,8 @@
-import { BaseChakraDirective, ChakraStyles } from "@chakra-ng/angular";
 import { Directive, Input } from "@angular/core";
 import { ResponsiveValue, SystemProps } from "@chakra-ui/styled-system";
 import { compact } from "@chakra-ui/object-utils";
 import { mapResponsive } from "@chakra-ui/utils";
+import { BaseChakraDirective, ChakraStyles } from "../../core";
 
 function spanFn(span?: ResponsiveValue<number | "auto">) {
   return mapResponsive(span, (value) => (value === "auto" ? "auto" : `span ${value}/span ${value}`));

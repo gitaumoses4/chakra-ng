@@ -8,3 +8,5 @@ export * from "./layout.module";
 export * from "./aspect-ratio.directive";
 export * from "./container.directive";
 export * from "./grid-item.directive";
+export * from "./simple-grid.directive";
+export * from "./wrap-layout.directive";

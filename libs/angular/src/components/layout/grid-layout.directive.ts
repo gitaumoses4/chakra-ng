@@ -1,6 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseChakraDirective, ChakraStyles } from "@chakra-ng/angular";
+import { BaseChakraDirective, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[grid]",

@@ -36,8 +36,16 @@ export const navMenu: NavMenu = [
             routerLink: "/docs/components/grid",
           },
           {
+            title: "SimpleGrid",
+            routerLink: "/docs/components/simple-grid",
+          },
+          {
             title: "Stack",
             routerLink: "/docs/components/stack",
+          },
+          {
+            title: "Wrap",
+            routerLink: "/docs/components/wrap",
           },
         ],
       },

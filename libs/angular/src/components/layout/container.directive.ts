@@ -1,5 +1,5 @@
 import { Directive, Input } from "@angular/core";
-import { BaseChakraStyledComponentDirective, BaseChakraStyles } from "@chakra-ng/angular";
+import { BaseChakraStyledComponentDirective, BaseChakraStyles } from "../../core";
 
 @Directive({
   selector: "[container]",
