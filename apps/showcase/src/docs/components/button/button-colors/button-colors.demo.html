@@ -1,20 +1,27 @@
 <div vStack>
-  <div
-    flexRow
-    [width]="'100%'"
-    [py]="12"
-    [bgImage]="'https://bit.ly/2Z4KKcF'"
-    [bgPosition]="'center'"
-    [alignItems]="'center'"
-    [justifyContent]="'center'"
-    [bgRepeat]="'repeat'"
-    [position]="'relative'"
-    [mb]="2"
-  >
+  <div flexRow [width]="'100%'" [py]="12" [alignItems]="'center'" [justifyContent]="'center'" [position]="'relative'" [mb]="2">
     <span chakra [bg]="'whiteAlpha.500'" [position]="'absolute'" [w]="'full'" [h]="'full'" [left]="0" [top]="0"></span>
-    <chakra-button-group [gap]="4" [variant]="'outline'">
-      <chakra-button>whiteAlpha</chakra-button>
-      <chakra-button>blackAlpha</chakra-button>
+    <chakra-button-group [gap]="4">
+      <chakra-button [colorScheme]="'whiteAlpha'">whiteAlpha</chakra-button>
+      <chakra-button [colorScheme]="'blackAlpha'">blackAlpha</chakra-button>
     </chakra-button-group>
+  </div>
+  <div wrap [spacing]="4">
+    <chakra-button [colorScheme]="'gray'">Gray</chakra-button>
+    <chakra-button [colorScheme]="'red'">Red</chakra-button>
+    <chakra-button [colorScheme]="'orange'">Orange</chakra-button>
+    <chakra-button [colorScheme]="'yellow'">Yellow</chakra-button>
+    <chakra-button [colorScheme]="'green'">Green</chakra-button>
+    <chakra-button [colorScheme]="'teal'">Teal</chakra-button>
+    <chakra-button [colorScheme]="'blue'">Blue</chakra-button>
+    <chakra-button [colorScheme]="'cyan'">Cyan</chakra-button>
+    <chakra-button [colorScheme]="'purple'">Purple</chakra-button>
+    <chakra-button [colorScheme]="'pink'">Pink</chakra-button>
+    <chakra-button [colorScheme]="'linkedin'">LinkedIn</chakra-button>
+    <chakra-button [colorScheme]="'facebook'">Facebook</chakra-button>
+    <chakra-button [colorScheme]="'messenger'">Messenger</chakra-button>
+    <chakra-button [colorScheme]="'whatsapp'">WhatsApp</chakra-button>
+    <chakra-button [colorScheme]="'twitter'">Twitter</chakra-button>
+    <chakra-button [colorScheme]="'telegram'">Telegram</chakra-button>
   </div>
 </div>

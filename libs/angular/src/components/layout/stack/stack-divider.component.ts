@@ -6,7 +6,7 @@ import { BaseChakraComponent, ChakraStyles } from "../../../core";
   template: "",
 })
 export class StackDividerComponent extends BaseChakraComponent {
-  override getBaseStyles(): ChakraStyles {
+  override getDefaultStyles(): ChakraStyles {
     return {
       borderWidth: 0,
       alignSelf: "stretch",

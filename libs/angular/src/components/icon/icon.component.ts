@@ -48,7 +48,7 @@ export class IconComponent extends BaseChakraComponent {
     this.template = this.sanitizer.bypassSecurityTrustHtml(svgString);
   }
 
-  public override getBaseStyles(): ChakraStyles {
+  public override getDefaultStyles(): ChakraStyles {
     return {
       w: this.boxSize || "1em",
       h: this.boxSize || "1em",

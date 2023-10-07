@@ -7,6 +7,7 @@ import { ChakraElement } from "./chakra.element";
 export abstract class BaseChakraDirective extends ChakraElement implements OnInit, OnDestroy, OnChanges {
   ngOnInit() {
     this.applyChakraStyles();
+    this.applyChakraClasses();
   }
 
   override getChakraStyles(): Observable<ChakraStyles> {

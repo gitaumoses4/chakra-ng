@@ -1,8 +1,10 @@
 import { ChangeDetectorRef, Component, ContentChild, Input, Optional, TemplateRef } from "@angular/core";
 import { ChakraIcon } from "@chakra-ng/icons";
-import { SystemProps } from "@chakra-ui/styled-system";
+import { SystemProps, ThemingProps } from "@chakra-ui/styled-system";
 import { BaseChakraStyledComponent, ChakraStyles } from "../../core";
 import { ButtonGroupComponent } from "./button-group.component";
+import { map, Observable } from "rxjs";
+import { Dict } from "@chakra-ui/utils";
 
 @Component({
   selector: "chakra-button",
@@ -64,7 +66,7 @@ export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
     super();
   }
 
-  override getBaseStyles(): ChakraStyles {
+  override getDefaultStyles(): ChakraStyles {
     return {
       display: "inline-flex",
       appearance: "none",
@@ -76,6 +78,18 @@ export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
       verticalAlign: "middle",
       outline: "none",
     };
+  }
+
+  override getComponentProps(): Observable<ThemingProps & Dict> {
+    return super.getComponentProps().pipe(
+      map((props) => ({
+        ...props,
+        isDisabled: this.buttonGroup?.isDisabled ?? this.isDisabled,
+        variant: this.buttonGroup?.variant ?? this.variant,
+        size: this.buttonGroup?.size ?? this.size,
+        colorScheme: this.buttonGroup?.colorScheme ?? this.colorScheme,
+      })),
+    );
   }
 
   override component(): string {

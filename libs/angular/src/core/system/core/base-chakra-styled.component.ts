@@ -28,7 +28,7 @@ export abstract class BaseChakraStyledComponent<ThemeComponent extends string> e
     const $themeStyles = this.themeService.getStyleConfig(of(this.component()), this.getComponentProps());
 
     return combineLatest([$themeStyles, super.getChakraStyles()]).pipe(
-      map(([themeStyles, chakraStyles]) => ({ ...this.getBaseStyles(), __css: themeStyles, ...chakraStyles })),
+      map(([themeStyles, chakraStyles]) => ({ ...this.getDefaultStyles(), __css: themeStyles, ...chakraStyles })),
     );
   }
 

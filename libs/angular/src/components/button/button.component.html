@@ -1,3 +1,19 @@
-<button [chakraStyles]="$styles | async" [type]="type" [ngClass]="className" [attr.data-active]="isActive ? true : undefined">
+<button
+  [chakraStyles]="$styles | async"
+  [type]="type ?? 'button'"
+  [ngClass]="$classes | async"
+  [attr.data-active]="isActive ?? undefined"
+  [attr.data-loading]="isLoading ?? undefined"
+  [disabled]="isDisabled || isLoading"
+>
+  <chakra-button-spinner
+    *ngIf="isLoading && spinnerPlacement === 'start'"
+    [className]="'chakra-button__spinner-start'"
+    [label]="loadingText"
+    [spacing]="iconSpacing"
+  ></chakra-button-spinner>
+
+  <chakra-icon *ngIf="leftIcon" [name]="leftIcon" [marginEnd]="iconSpacing"></chakra-icon>
   <ng-content></ng-content>
+  <chakra-icon *ngIf="rightIcon" [name]="rightIcon" [marginStart]="iconSpacing"></chakra-icon>
 </button>

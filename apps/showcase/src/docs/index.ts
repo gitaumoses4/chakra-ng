@@ -153,7 +153,7 @@ export const docs: Docs = {
                   }
                 ]
               },
-              "content": "Use the `size` property to change the size of the button. The default size is `md`. You can set the value to `xs`, `sm`, `md` or `lg`.\n",
+              "content": "Use the `size` property to change the size of the button. The default size is `md`. You can set the value\nto `xs`, `sm`, `md` or `lg`.\n",
               "sections": []
             },
             {
@@ -176,7 +176,7 @@ export const docs: Docs = {
                   }
                 ]
               },
-              "content": "Use the `variant` property to change the visual type of the button. You can set the value to `solid`, `outline`, `ghost` or `link`.\n",
+              "content": "Use the `variant` property to change the visual type of the button. You can set the value to `solid`, `outline`, `ghost`\nor `link`.\n",
               "sections": []
             },
             {
@@ -190,7 +190,7 @@ export const docs: Docs = {
                   {
                     "fileName": "button-colors.demo.html",
                     "language": "html",
-                    "content": "<div vStack>\n  <div\n    flexRow\n    [width]=\"'100%'\"\n    [py]=\"12\"\n    [bgImage]=\"'https://bit.ly/2Z4KKcF'\"\n    [bgPosition]=\"'center'\"\n    [alignItems]=\"'center'\"\n    [justifyContent]=\"'center'\"\n    [bgRepeat]=\"'repeat'\"\n    [position]=\"'relative'\"\n    [mb]=\"2\"\n  >\n    <span chakra [bg]=\"'whiteAlpha.500'\" [position]=\"'absolute'\" [w]=\"'full'\" [h]=\"'full'\" [left]=\"0\" [top]=\"0\"></span>\n    <chakra-button-group [gap]=\"4\" [variant]=\"'outline'\">\n      <chakra-button>whiteAlpha</chakra-button>\n      <chakra-button>blackAlpha</chakra-button>\n    </chakra-button-group>\n  </div>\n</div>\n"
+                    "content": "<div vStack>\n  <div flexRow [width]=\"'100%'\" [py]=\"12\" [alignItems]=\"'center'\" [justifyContent]=\"'center'\" [position]=\"'relative'\" [mb]=\"2\">\n    <span chakra [bg]=\"'whiteAlpha.500'\" [position]=\"'absolute'\" [w]=\"'full'\" [h]=\"'full'\" [left]=\"0\" [top]=\"0\"></span>\n    <chakra-button-group [gap]=\"4\">\n      <chakra-button [colorScheme]=\"'whiteAlpha'\">whiteAlpha</chakra-button>\n      <chakra-button [colorScheme]=\"'blackAlpha'\">blackAlpha</chakra-button>\n    </chakra-button-group>\n  </div>\n  <div wrap [spacing]=\"4\">\n    <chakra-button [colorScheme]=\"'gray'\">Gray</chakra-button>\n    <chakra-button [colorScheme]=\"'red'\">Red</chakra-button>\n    <chakra-button [colorScheme]=\"'orange'\">Orange</chakra-button>\n    <chakra-button [colorScheme]=\"'yellow'\">Yellow</chakra-button>\n    <chakra-button [colorScheme]=\"'green'\">Green</chakra-button>\n    <chakra-button [colorScheme]=\"'teal'\">Teal</chakra-button>\n    <chakra-button [colorScheme]=\"'blue'\">Blue</chakra-button>\n    <chakra-button [colorScheme]=\"'cyan'\">Cyan</chakra-button>\n    <chakra-button [colorScheme]=\"'purple'\">Purple</chakra-button>\n    <chakra-button [colorScheme]=\"'pink'\">Pink</chakra-button>\n    <chakra-button [colorScheme]=\"'linkedin'\">LinkedIn</chakra-button>\n    <chakra-button [colorScheme]=\"'facebook'\">Facebook</chakra-button>\n    <chakra-button [colorScheme]=\"'messenger'\">Messenger</chakra-button>\n    <chakra-button [colorScheme]=\"'whatsapp'\">WhatsApp</chakra-button>\n    <chakra-button [colorScheme]=\"'twitter'\">Twitter</chakra-button>\n    <chakra-button [colorScheme]=\"'telegram'\">Telegram</chakra-button>\n  </div>\n</div>\n"
                   },
                   {
                     "fileName": "button-colors.demo.ts",
@@ -199,7 +199,53 @@ export const docs: Docs = {
                   }
                 ]
               },
-              "content": "Use the `colorScheme` property to change the color of the button. You can set the value to any of the color scales from your design system,\nlike `whiteAlpha`, `blackAlpha`, `gray`, `red`, `orange`, `yellow`, `green`, `teal`, `blue`, `cyan`, `purple`, `pink` or your custom color scale.\n",
+              "content": "Use the `colorScheme` property to change the color of the button. You can set the value to any of the color scales from\nyour design system,\nlike `whiteAlpha`, `blackAlpha`, `gray`, `red`, `orange`, `yellow`, `green`, `teal`, `blue`, `cyan`, `purple`, `pink` or\nyour custom color scale.\n",
+              "sections": []
+            },
+            {
+              "id": "button-icon",
+              "path": "button/usage/button-icon",
+              "title": "Button with Icon",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/button/button-icon/button-icon.demo"),
+                "code": [
+                  {
+                    "fileName": "button-icon.demo.html",
+                    "language": "html",
+                    "content": "<div hStack [spacing]=\"4\">\n  <chakra-button [leftIcon]=\"'inbox'\" [colorScheme]=\"'teal'\" [variant]=\"'solid'\">Email</chakra-button>\n  <chakra-button [rightIcon]=\"'arrowRight'\" [colorScheme]=\"'teal'\" [variant]=\"'outline'\">Call us</chakra-button>\n</div>\n"
+                  },
+                  {
+                    "fileName": "button-icon.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"button-icon-demo\",\n  templateUrl: \"./button-icon.demo.html\",\n  imports: [LayoutModule, ButtonModule],\n})\nexport class ButtonIconDemo {}\n"
+                  }
+                ]
+              },
+              "content": "You can add left and right icons to the button using the `leftIcon` and `rightIcon` properties.\n",
+              "sections": []
+            },
+            {
+              "id": "button-loading",
+              "path": "button/usage/button-loading",
+              "title": "Button loading state",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/button/button-loading/button-loading.demo"),
+                "code": [
+                  {
+                    "fileName": "button-loading.demo.html",
+                    "language": "html",
+                    "content": "<div hStack [spacing]=\"4\">\n  <chakra-button [isLoading]=\"true\" [colorScheme]=\"'teal'\" [variant]=\"'solid'\"> Email </chakra-button>\n  <chakra-button [isLoading]=\"true\" [loadingText]=\"'Submitting'\" [colorScheme]=\"'teal'\" [variant]=\"'outline'\"> Submit </chakra-button>\n</div>\n"
+                  },
+                  {
+                    "fileName": "button-loading.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"button-loading-demo\",\n  templateUrl: \"./button-loading.demo.html\",\n  imports: [LayoutModule, ButtonModule],\n})\nexport class ButtonLoadingDemo {}\n"
+                  }
+                ]
+              },
+              "content": "Pass the `isLoading` property to show its loading state. By default, the button will show a spinner and leave the\nbutton's width unchanged.\n\nYou can also pass the `loadingText` property to show a spinner and the loading text.\n",
               "sections": []
             }
           ]
