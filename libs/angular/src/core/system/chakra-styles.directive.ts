@@ -1,17 +1,17 @@
-import { BaseChakraDirective, BaseChakraStyles, ChakraStyles } from "@chakra-ng/angular";
 import { Directive, Input, OnChanges } from "@angular/core";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
+import { BaseChakraDirective } from "./core";
+import { ChakraStyles } from "./types";
 
 @Directive({ selector: "[chakraStyles]" })
 export class ChakraStylesDirective extends BaseChakraDirective implements OnChanges {
   @Input() public chakraStyles: ChakraStyles | null = {};
 
-  public override ngOnChanges() {
-    super.ngOnChanges();
-    this.$chakraStyles.next(this.chakraStyles || {});
+  override getChakraStyles(): Observable<ChakraStyles> {
+    return super.getChakraStyles().pipe(map((chakraStyles) => ({ ...chakraStyles, ...(this.chakraStyles || {}) })));
   }
 
-  getBaseStyles(): BaseChakraStyles {
+  getBaseStyles(): ChakraStyles {
     return {};
   }
 }

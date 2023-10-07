@@ -1,15 +1,14 @@
-import { Directive, inject, Input, OnChanges } from "@angular/core";
-import { BaseChakraStyles, ChakraStyles, ThemeService } from "@chakra-ng/angular";
-import { BehaviorSubject, combineLatest, map, Observable, of } from "rxjs";
+import { Directive, Input, OnChanges } from "@angular/core";
+import { BehaviorSubject, combineLatest, map, Observable } from "rxjs";
 import { ResponsiveValue, ThemeTypings, ThemingProps } from "@chakra-ui/styled-system";
 import { Dict } from "@chakra-ui/utils";
 import { BaseChakraDirective } from "./base-chakra.directive";
+import { ChakraStyles } from "../types";
 
 @Directive()
 export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends string> extends BaseChakraDirective implements OnChanges {
   private readonly $chakraComponent = new BehaviorSubject(this.component());
   private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
-  public readonly $themeStyles = this.themeService.getStyleConfig(this.$chakraComponent, this.$componentProps);
 
   @Input() public variant?: ResponsiveValue<
     ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["variants"] : string
@@ -21,7 +20,8 @@ export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends 
   @Input() public orientation?: "vertical" | "horizontal";
   @Input() public styleConfig?: Record<string, any>;
 
-  @Input() public set chakraComponent(component: string) {
+  @Input()
+  public set chakraComponent(component: string) {
     this.$chakraComponent.next(component);
   }
 
@@ -30,18 +30,17 @@ export abstract class BaseChakraStyledComponentDirective<ThemeComponent extends 
     this.$componentProps.next(this);
   }
 
-  override getBaseStyles(): Observable<ChakraStyles> {
-    return combineLatest([this.$themeStyles, this.getComponentBaseStylesObservable()]).pipe(
-      map(([themeStyles, componentStyles]) => ({ ...componentStyles, __css: themeStyles })),
+  override getChakraStyles(): Observable<ChakraStyles> {
+    const $themeStyles = this.themeService.getStyleConfig(this.$chakraComponent, this.getComponentProps());
+
+    return combineLatest([$themeStyles, super.getChakraStyles()]).pipe(
+      map(([themeStyles, chakraStyles]) => ({ ...this.getBaseStyles(), __css: themeStyles, ...chakraStyles })),
     );
   }
 
-  private getComponentBaseStylesObservable(): Observable<ChakraStyles> {
-    const componentStyles = this.getComponentBaseStyles();
-    return (componentStyles instanceof Observable ? componentStyles : of(componentStyles)).pipe(map((styles) => styles || {}));
+  public getComponentProps(): Observable<ThemingProps & Dict> {
+    return this.$componentProps;
   }
-
-  public abstract getComponentBaseStyles(): Observable<BaseChakraStyles> | BaseChakraStyles;
 
   public component(): string {
     return "";

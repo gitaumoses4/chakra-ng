@@ -1,7 +1,8 @@
-import { Component, ContentChild, Input, TemplateRef } from "@angular/core";
+import { ChangeDetectorRef, Component, ContentChild, Input, Optional, TemplateRef } from "@angular/core";
 import { ChakraIcon } from "@chakra-ng/icons";
 import { SystemProps } from "@chakra-ui/styled-system";
 import { BaseChakraStyledComponent, ChakraStyles } from "../../core";
+import { ButtonGroupComponent } from "./button-group.component";
 
 @Component({
   selector: "chakra-button",
@@ -59,7 +60,11 @@ export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
    */
   @Input() public spinnerPlacement: "start" | "end" = "start";
 
-  override getComponentBaseStyles(): ChakraStyles {
+  constructor(private changeDetectorRef: ChangeDetectorRef, @Optional() private buttonGroup?: ButtonGroupComponent) {
+    super();
+  }
+
+  override getBaseStyles(): ChakraStyles {
     return {
       display: "inline-flex",
       appearance: "none",

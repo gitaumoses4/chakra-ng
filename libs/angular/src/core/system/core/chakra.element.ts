@@ -431,7 +431,7 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
   @Input() wordBreak: ChakraStyles["wordBreak"] | undefined;
   @Input() zIndex: ChakraStyles["zIndex"] | undefined;
 
-  public readonly $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
+  private readonly $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
   public readonly styleService = inject(StylesService);
   public readonly elementRef = inject(ElementRef);
   public readonly themeService = inject(ThemeService);
@@ -448,12 +448,23 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
     this.$chakraStyles.next(styles);
   }
 
+  public getChakraStyles(): Observable<ChakraStyles> {
+    return this.$chakraStyles;
+  }
+
+  public get $styles() {
+    return this.getChakraStyles();
+  }
+
   public addSubscription(subscription: Subscription) {
     this.subscriptions.push(subscription);
     return subscription;
   }
 
-  public applyChakraStyles(styles: ChakraStyles | Observable<ChakraStyles>, element: HTMLElement = this.elementRef.nativeElement) {
+  public applyChakraStyles(
+    styles: ChakraStyles | Observable<ChakraStyles> = this.getChakraStyles(),
+    element: HTMLElement = this.elementRef.nativeElement,
+  ) {
     const $styles = styles instanceof Observable ? styles : of(styles);
     return this.addSubscription(this.styleService.applyChakraStyles(getStylesId(this.constructor.name), $styles, element));
   }

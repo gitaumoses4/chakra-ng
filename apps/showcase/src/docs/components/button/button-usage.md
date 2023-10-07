@@ -5,7 +5,7 @@ The button component is a wrapper around the native element.
 ## Import
 
 ```javascript
-import { ButtonComponent } from "@chakra-ng/angular";
+import {ButtonComponent} from "@chakra-ng/angular";
 ```
 
 ## Usage
@@ -20,4 +20,7 @@ Use the `variant` property to change the visual type of the button. You can set 
 
 ### Button Colors
 
-Use the `colorScheme` property to change the color of the button. You can set the value to any color in the theme object.
+Use the `colorScheme` property to change the color of the button. You can set the value to any of the color scales from your design system,
+like `whiteAlpha`, `blackAlpha`, `gray`, `red`, `orange`, `yellow`, `green`, `teal`, `blue`, `cyan`, `purple`, `pink` or your custom color scale.
+
+

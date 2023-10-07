@@ -1,23 +1,17 @@
 import { Directive, OnChanges, OnDestroy, OnInit } from "@angular/core";
-import { combineLatest, map, mergeMap, Observable, of } from "rxjs";
-import { BaseChakraStyles, ChakraStyles } from "../types";
+import { map, Observable } from "rxjs";
+import { ChakraStyles } from "../types";
 import { ChakraElement } from "./chakra.element";
 
 @Directive()
 export abstract class BaseChakraDirective extends ChakraElement implements OnInit, OnDestroy, OnChanges {
   ngOnInit() {
-    const $styles = this.$chakraStyles.pipe(
-      mergeMap((chakraStyles) => combineLatest([this.getBaseStylesObservable(), of(chakraStyles)])),
-      map(([baseStyles, chakraStyles]) => ({ ...baseStyles, ...chakraStyles })),
-    );
-
-    this.applyChakraStyles($styles);
+    this.applyChakraStyles();
   }
 
-  private getBaseStylesObservable(): Observable<ChakraStyles> {
-    const baseStyles = this.getBaseStyles();
-    return (baseStyles instanceof Observable ? baseStyles : of(baseStyles)).pipe(map((styles) => styles || {}));
+  override getChakraStyles(): Observable<ChakraStyles> {
+    return super.getChakraStyles().pipe(map((chakraStyles) => ({ ...this.getBaseStyles(), ...chakraStyles })));
   }
 
-  public abstract getBaseStyles(): Observable<BaseChakraStyles> | BaseChakraStyles;
+  public abstract getBaseStyles(): ChakraStyles;
 }

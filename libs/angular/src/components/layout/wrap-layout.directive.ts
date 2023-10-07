@@ -1,7 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { Observable } from "rxjs";
-import { BaseChakraDirective, BaseChakraStyles } from "../../core";
+import { BaseChakraDirective, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[wrap]",
@@ -43,7 +42,7 @@ export class WrapLayoutDirective extends BaseChakraDirective {
    */
   @Input() shouldWrapChildren?: boolean;
 
-  getBaseStyles(): Observable<BaseChakraStyles> | BaseChakraStyles {
+  getBaseStyles(): ChakraStyles {
     return {
       display: "flex",
       flexWrap: "wrap",

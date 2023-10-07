@@ -108,7 +108,7 @@ export const docs: Docs = {
           "path": "button/import",
           "title": "Import",
           "depth": 2,
-          "content": "```javascript\nimport { ButtonComponent } from \"@chakra-ng/angular\";\n```\n",
+          "content": "```javascript\nimport {ButtonComponent} from \"@chakra-ng/angular\";\n```\n",
           "sections": []
         },
         {
@@ -184,7 +184,22 @@ export const docs: Docs = {
               "path": "button/usage/button-colors",
               "title": "Button Colors",
               "depth": 3,
-              "content": "Use the `colorScheme` property to change the color of the button. You can set the value to any color in the theme object.\n",
+              "demo": {
+                "component": import("./components/button/button-colors/button-colors.demo"),
+                "code": [
+                  {
+                    "fileName": "button-colors.demo.html",
+                    "language": "html",
+                    "content": "<div vStack>\n  <div\n    flexRow\n    [width]=\"'100%'\"\n    [py]=\"12\"\n    [bgImage]=\"'https://bit.ly/2Z4KKcF'\"\n    [bgPosition]=\"'center'\"\n    [alignItems]=\"'center'\"\n    [justifyContent]=\"'center'\"\n    [bgRepeat]=\"'repeat'\"\n    [position]=\"'relative'\"\n    [mb]=\"2\"\n  >\n    <span chakra [bg]=\"'whiteAlpha.500'\" [position]=\"'absolute'\" [w]=\"'full'\" [h]=\"'full'\" [left]=\"0\" [top]=\"0\"></span>\n    <chakra-button-group [gap]=\"4\" [variant]=\"'outline'\">\n      <chakra-button>whiteAlpha</chakra-button>\n      <chakra-button>blackAlpha</chakra-button>\n    </chakra-button-group>\n  </div>\n</div>\n"
+                  },
+                  {
+                    "fileName": "button-colors.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"button-colors-demo\",\n  templateUrl: \"./button-colors.demo.html\",\n  imports: [LayoutModule, ButtonModule, ChakraSystemModule],\n})\nexport class ButtonColorsDemo {}\n"
+                  }
+                ]
+              },
+              "content": "Use the `colorScheme` property to change the color of the button. You can set the value to any of the color scales from your design system,\nlike `whiteAlpha`, `blackAlpha`, `gray`, `red`, `orange`, `yellow`, `green`, `teal`, `blue`, `cyan`, `purple`, `pink` or your custom color scale.\n",
               "sections": []
             }
           ]

@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Directive, Input, OnChanges, TemplateRef } from "@an
 import { ResponsiveValue, SystemProps } from "@chakra-ui/styled-system";
 import { getDividerStyles } from "./stack-utils";
 import { BaseChakraDirective, ChakraStyles } from "../../../core";
-import { Observable, of } from "rxjs";
 
 export type StackDirection = ResponsiveValue<"row" | "column" | "row-reverse" | "column-reverse">;
 
@@ -84,14 +83,14 @@ export class StackLayoutDirective extends BaseChakraDirective implements OnChang
     return this.direction || "row";
   }
 
-  public override getBaseStyles(): Observable<ChakraStyles> {
-    return of({
+  public override getBaseStyles(): ChakraStyles {
+    return {
       display: "flex",
       alignItems: this.align || "center",
       justifyContent: this.justify,
       flexDirection: this.getDirection(),
       flexWrap: this.wrap,
       gap: this.divider ? undefined : this.spacing || "0.5rem",
-    });
+    };
   }
 }

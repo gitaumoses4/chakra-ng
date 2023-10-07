@@ -1,5 +1,5 @@
 import { Directive, Input } from "@angular/core";
-import { BaseChakraStyledComponentDirective, BaseChakraStyles } from "../../core";
+import { BaseChakraStyledComponentDirective, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[container]",
@@ -10,7 +10,7 @@ export class ContainerDirective extends BaseChakraStyledComponentDirective<"Cont
    */
   @Input() public centerContent?: boolean;
 
-  override getComponentBaseStyles(): BaseChakraStyles {
+  override getBaseStyles(): ChakraStyles {
     if (this.centerContent) {
       return {
         display: "flex",
@@ -18,6 +18,7 @@ export class ContainerDirective extends BaseChakraStyledComponentDirective<"Cont
         alignItems: "center",
       };
     }
+    return {};
   }
 
   override component(): string {
