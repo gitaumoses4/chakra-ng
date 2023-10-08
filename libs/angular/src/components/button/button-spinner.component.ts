@@ -5,7 +5,9 @@ import { BaseChakraComponent, ChakraStyles } from "../../core";
 @Component({
   selector: "chakra-button-spinner",
   template: `
-    <ng-container *ngIf="spinner; else defaultSpinner"></ng-container>
+    <ng-container *ngIf="spinner; else defaultSpinner">
+      <ng-container *ngTemplateOutlet="spinner"></ng-container>
+    </ng-container>
     <ng-template #defaultSpinner>
       <chakra-spinner [width]="'1em'" [height]="'1em'"></chakra-spinner>
     </ng-template>

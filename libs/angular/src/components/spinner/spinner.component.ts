@@ -13,10 +13,10 @@ const spin = keyframes({
 
 @Component({
   selector: "chakra-spinner",
-  templateUrl: "./spinner.component.html",
+  template: ` <span chakra *ngIf="label" [srOnly]="true">{{ label }}</span> `,
 })
 export class SpinnerComponent extends BaseChakraStyledComponent<"Spinner"> {
-  @Input() public emptyColor: string = "transparent";
+  @Input() public emptyColor?: string = "transparent";
 
   @Input() public thickness = "2px";
 
@@ -39,5 +39,9 @@ export class SpinnerComponent extends BaseChakraStyledComponent<"Spinner"> {
       borderLeftColor: this.emptyColor,
       animation: `${spin} ${this.speed} linear infinite`,
     };
+  }
+
+  override getDefaultClassName(): string {
+    return "chakra-spinner";
   }
 }

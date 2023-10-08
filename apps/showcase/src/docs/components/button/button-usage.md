@@ -37,3 +37,17 @@ Pass the `isLoading` property to show its loading state. By default, the button 
 button's width unchanged.
 
 You can also pass the `loadingText` property to show a spinner and the loading text.
+
+#### Customizing the spinner {#custom-spinner}
+
+You can customize the spinner by passing a `spinner` property. The value should be a template ref of the spinner.
+
+#### Spinner placement
+
+When a `loadingText` is present, you can change the placement of the spinner element to `start` or `end`. It's `start`
+by default.
+
+### Social Buttons
+
+We've included the colors for common social networks like Facebook, Twitter, WhatsApp, LinkedIn, and more. You can use
+the `colorScheme` property to change the color of the button.

@@ -190,12 +190,12 @@ export const docs: Docs = {
                   {
                     "fileName": "button-colors.demo.html",
                     "language": "html",
-                    "content": "<div vStack>\n  <div flexRow [width]=\"'100%'\" [py]=\"12\" [alignItems]=\"'center'\" [justifyContent]=\"'center'\" [position]=\"'relative'\" [mb]=\"2\">\n    <span chakra [bg]=\"'whiteAlpha.500'\" [position]=\"'absolute'\" [w]=\"'full'\" [h]=\"'full'\" [left]=\"0\" [top]=\"0\"></span>\n    <chakra-button-group [gap]=\"4\">\n      <chakra-button [colorScheme]=\"'whiteAlpha'\">whiteAlpha</chakra-button>\n      <chakra-button [colorScheme]=\"'blackAlpha'\">blackAlpha</chakra-button>\n    </chakra-button-group>\n  </div>\n  <div wrap [spacing]=\"4\">\n    <chakra-button [colorScheme]=\"'gray'\">Gray</chakra-button>\n    <chakra-button [colorScheme]=\"'red'\">Red</chakra-button>\n    <chakra-button [colorScheme]=\"'orange'\">Orange</chakra-button>\n    <chakra-button [colorScheme]=\"'yellow'\">Yellow</chakra-button>\n    <chakra-button [colorScheme]=\"'green'\">Green</chakra-button>\n    <chakra-button [colorScheme]=\"'teal'\">Teal</chakra-button>\n    <chakra-button [colorScheme]=\"'blue'\">Blue</chakra-button>\n    <chakra-button [colorScheme]=\"'cyan'\">Cyan</chakra-button>\n    <chakra-button [colorScheme]=\"'purple'\">Purple</chakra-button>\n    <chakra-button [colorScheme]=\"'pink'\">Pink</chakra-button>\n    <chakra-button [colorScheme]=\"'linkedin'\">LinkedIn</chakra-button>\n    <chakra-button [colorScheme]=\"'facebook'\">Facebook</chakra-button>\n    <chakra-button [colorScheme]=\"'messenger'\">Messenger</chakra-button>\n    <chakra-button [colorScheme]=\"'whatsapp'\">WhatsApp</chakra-button>\n    <chakra-button [colorScheme]=\"'twitter'\">Twitter</chakra-button>\n    <chakra-button [colorScheme]=\"'telegram'\">Telegram</chakra-button>\n  </div>\n</div>\n"
+                    "content": "<div vStack>\n  <div flexRow [width]=\"'100%'\" [py]=\"12\" [alignItems]=\"'center'\" [justifyContent]=\"'center'\" [position]=\"'relative'\" [mb]=\"2\">\n    <span\n      chakra\n      [bg]=\"'blackAlpha.500'\"\n      [_dark]=\"{ bg: 'whiteAlpha.500'}\"\n      [position]=\"'absolute'\"\n      [w]=\"'full'\"\n      [h]=\"'full'\"\n      [left]=\"0\"\n      [top]=\"0\"\n    ></span>\n    <chakra-button-group [gap]=\"4\">\n      <chakra-button [colorScheme]=\"'whiteAlpha'\">whiteAlpha</chakra-button>\n      <chakra-button [colorScheme]=\"'blackAlpha'\">blackAlpha</chakra-button>\n    </chakra-button-group>\n  </div>\n  <div wrap [spacing]=\"4\">\n    <chakra-button *ngFor=\"let colorScheme of colorSchemes\" [colorScheme]=\"colorScheme\">{{ colorScheme | titlecase }}</chakra-button>\n  </div>\n</div>\n"
                   },
                   {
                     "fileName": "button-colors.demo.ts",
                     "language": "typescript",
-                    "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"button-colors-demo\",\n  templateUrl: \"./button-colors.demo.html\",\n  imports: [LayoutModule, ButtonModule, ChakraSystemModule],\n})\nexport class ButtonColorsDemo {}\n"
+                    "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, ChakraSystemModule, LayoutModule } from \"@chakra-ng/angular\";\nimport { CommonModule } from \"@angular/common\";\n\n@Component({\n  standalone: true,\n  selector: \"button-colors-demo\",\n  templateUrl: \"./button-colors.demo.html\",\n  imports: [LayoutModule, ButtonModule, ChakraSystemModule, CommonModule],\n})\nexport class ButtonColorsDemo {\n  public colorSchemes = [\n    \"gray\",\n    \"red\",\n    \"orange\",\n    \"yellow\",\n    \"green\",\n    \"teal\",\n    \"blue\",\n    \"cyan\",\n    \"purple\",\n    \"pink\",\n    \"linkedin\",\n    \"facebook\",\n    \"messenger\",\n    \"whatsapp\",\n    \"twitter\",\n    \"telegram\",\n  ];\n}\n"
                   }
                 ]
               },
@@ -246,6 +246,91 @@ export const docs: Docs = {
                 ]
               },
               "content": "Pass the `isLoading` property to show its loading state. By default, the button will show a spinner and leave the\nbutton's width unchanged.\n\nYou can also pass the `loadingText` property to show a spinner and the loading text.\n",
+              "sections": [
+                {
+                  "id": "custom-spinner",
+                  "path": "button/usage/button-loading/custom-spinner",
+                  "title": "Customizing the spinner",
+                  "depth": 4,
+                  "demo": {
+                    "component": import("./components/button/custom-spinner/custom-spinner.demo"),
+                    "code": [
+                      {
+                        "fileName": "custom-spinner.demo.html",
+                        "language": "html",
+                        "content": "<chakra-button [isLoading]=\"true\" [spinner]=\"spinner\" [colorScheme]=\"'blue'\">Click me</chakra-button>\n\n<ng-template #spinner>\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path fill=\"currentColor\" d=\"M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z\" opacity=\".25\" />\n    <path\n      fill=\"currentColor\"\n      d=\"M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z\"\n      class=\"spinner_z9k8\"\n    />\n  </svg>\n</ng-template>\n"
+                      },
+                      {
+                        "fileName": "custom-spinner.demo.ts",
+                        "language": "typescript",
+                        "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"custom-spinner-demo\",\n  templateUrl: \"./custom-spinner.demo.html\",\n  styleUrls: [\"./custom-spinner.demo.scss\"],\n  imports: [ButtonModule],\n})\nexport class CustomSpinnerDemo {}\n"
+                      },
+                      {
+                        "fileName": "custom-spinner.demo.scss",
+                        "language": "css",
+                        "content": ".spinner_z9k8 {\n  transform-origin: center;\n  animation: spinner_StKS 0.75s infinite linear;\n}\n\n@keyframes spinner_StKS {\n  100% {\n    transform: rotate(360deg);\n  }\n}\n"
+                      }
+                    ]
+                  },
+                  "content": "You can customize the spinner by passing a `spinner` property. The value should be a template ref of the spinner.\n",
+                  "sections": []
+                },
+                {
+                  "id": "spinner-placement",
+                  "path": "button/usage/button-loading/spinner-placement",
+                  "title": "Spinner placement",
+                  "depth": 4,
+                  "demo": {
+                    "component": import("./components/button/spinner-placement/spinner-placement.demo"),
+                    "code": [
+                      {
+                        "fileName": "spinner-placement.demo.html",
+                        "language": "html",
+                        "content": "<div hStack [spacing]=\"4\" [align]=\"'center'\">\n  <chakra-button [isLoading]=\"true\" [loadingText]=\"'Submitting'\" [colorScheme]=\"'teal'\" [variant]=\"'outline'\" [spinnerPlacement]=\"'start'\">\n    Submit\n  </chakra-button>\n  <chakra-button [isLoading]=\"true\" [loadingText]=\"'Continuing'\" [colorScheme]=\"'teal'\" [variant]=\"'outline'\" [spinnerPlacement]=\"'end'\">\n    Continue\n  </chakra-button>\n</div>\n"
+                      },
+                      {
+                        "fileName": "spinner-placement.demo.ts",
+                        "language": "typescript",
+                        "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule } from \"@chakra-ng/angular\";\n\n@Component({\n  standalone: true,\n  selector: \"spinner-placement-demo\",\n  templateUrl: \"./spinner-placement.demo.html\",\n  imports: [LayoutModule, ButtonModule],\n})\nexport class SpinnerPlacementDemo {}\n"
+                      }
+                    ]
+                  },
+                  "content": "When a `loadingText` is present, you can change the placement of the spinner element to `start` or `end`. It's `start`\nby default.\n",
+                  "sections": []
+                }
+              ]
+            },
+            {
+              "id": "social-buttons",
+              "path": "button/usage/social-buttons",
+              "title": "Social Buttons",
+              "depth": 3,
+              "demo": {
+                "component": import("./components/button/social-buttons/social-buttons.demo"),
+                "code": [
+                  {
+                    "fileName": "social-buttons.demo.html",
+                    "language": "html",
+                    "content": "<div hStack>\n  <chakra-button [colorScheme]=\"'facebook'\" [leftIcon]=\"'facebook'\"> Facebook </chakra-button>\n  <chakra-button [colorScheme]=\"'twitter'\" [leftIcon]=\"'twitter'\"> Twitter </chakra-button>\n  <chakra-button [colorScheme]=\"'whatsapp'\" [leftIcon]=\"'whatsapp'\"> WhatsApp </chakra-button>\n</div>\n"
+                  },
+                  {
+                    "fileName": "icons.ts",
+                    "language": "typescript",
+                    "content": "export const facebook = `<svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" aria-hidden=\"true\" focusable=\"false\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z\"></path></svg>`;\nexport const twitter = `<svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" aria-hidden=\"true\" focusable=\"false\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z\"></path></svg>`;\nexport const whatsapp = `<svg stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"0\" viewBox=\"0 0 512 512\" aria-hidden=\"true\" focusable=\"false\" height=\"1em\" width=\"1em\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z\"></path></svg>`;\n"
+                  },
+                  {
+                    "fileName": "social-buttons-icon.module.ts",
+                    "language": "typescript",
+                    "content": "import { NgModule } from \"@angular/core\";\nimport { ChakraIconsModule } from \"@chakra-ng/icons\";\nimport * as icons from \"./icons\";\n\n@NgModule({\n  imports: [ChakraIconsModule.register(icons)],\n})\nexport class SocialButtonsIconModule {}\n"
+                  },
+                  {
+                    "fileName": "social-buttons.demo.ts",
+                    "language": "typescript",
+                    "content": "import { Component } from \"@angular/core\";\nimport { ButtonModule, LayoutModule } from \"@chakra-ng/angular\";\nimport { SocialButtonsIconModule } from \"./social-buttons-icon.module\";\n\n@Component({\n  standalone: true,\n  selector: \"social-buttons-demo\",\n  templateUrl: \"./social-buttons.demo.html\",\n  imports: [LayoutModule, ButtonModule, SocialButtonsIconModule],\n})\nexport class SocialButtonsDemo {}\n"
+                  }
+                ]
+              },
+              "content": "We've included the colors for common social networks like Facebook, Twitter, WhatsApp, LinkedIn, and more. You can use\nthe `colorScheme` property to change the color of the button.\n",
               "sections": []
             }
           ]

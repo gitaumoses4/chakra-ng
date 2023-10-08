@@ -25,8 +25,10 @@ export function getDemo(section: string): Demo | undefined {
   const allowedFiles = {
     html: "html",
     ts: "typescript",
-    scss: "scss",
+    scss: "css",
   };
+
+  const sortOrder = ["html", "typescript", "css"];
 
   const demo: Demo = {
     component: undefined,
@@ -46,6 +48,9 @@ export function getDemo(section: string): Demo | undefined {
         language: allowedFiles[path.extname(file).replace(".", "")],
         content,
       };
+    })
+    .sort((a, b) => {
+      return sortOrder.indexOf(a.language) - sortOrder.indexOf(b.language);
     });
 
   if (!demo.code.length) {

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ContentChild, Input, Optional, TemplateRef } from "@angular/core";
+import { ChangeDetectorRef, Component, Input, Optional, TemplateRef } from "@angular/core";
 import { ChakraIcon } from "@chakra-ng/icons";
 import { SystemProps, ThemingProps } from "@chakra-ui/styled-system";
 import { BaseChakraStyledComponent, ChakraStyles } from "../../core";
@@ -40,12 +40,12 @@ export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
   /**
    * If added, the button will show an icon before the button's label
    */
-  @Input() public leftIcon?: ChakraIcon;
+  @Input() public leftIcon?: ChakraIcon | string;
 
   /**
    * If added, the button will show an icon after the button's label
    */
-  @Input() public rightIcon?: ChakraIcon;
+  @Input() public rightIcon?: ChakraIcon | string;
 
   /**
    * The space between the button icon and label.
@@ -55,7 +55,7 @@ export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
   /**
    * Replace the spinner component when `isLoading` is set to `true`
    */
-  @ContentChild("spinner") public spinner?: TemplateRef<any>;
+  @Input() public spinner?: TemplateRef<any>;
 
   /**
    * The spinner placement when `isLoading` is set to `true`
@@ -99,4 +99,6 @@ export class ButtonComponent extends BaseChakraStyledComponent<"Button"> {
   override applyStylesOnHost(): boolean {
     return false;
   }
+
+  protected readonly undefined = undefined;
 }
