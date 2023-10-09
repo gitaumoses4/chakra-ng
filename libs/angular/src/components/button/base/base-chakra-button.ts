@@ -1,22 +1,46 @@
-import { BaseChakraStyledComponent } from "../../../core";
-import { Directive, Input, TemplateRef } from "@angular/core";
-import { ChakraIcon } from "@chakra-ng/icons";
-import { SystemProps } from "@chakra-ui/styled-system";
+import { BaseChakraStyledComponent, ChakraStyles } from "../../../core";
+import { Directive, Input, Optional } from "@angular/core";
+import { ThemingProps } from "@chakra-ui/styled-system";
+import { ButtonGroupComponent } from "../button-group.component";
+import { map, Observable } from "rxjs";
+import { Dict } from "@chakra-ui/utils";
 
 @Directive()
 export class BaseChakraButton extends BaseChakraStyledComponent<"Button"> {
-  @Input() public isLoading = false;
-  @Input() public isActive = false;
   @Input() public isDisabled = false;
-  @Input() public loadingText?: string = undefined;
-  @Input() public type: "button" | "submit" | "reset" = "button";
-  @Input() public leftIcon?: ChakraIcon | string;
-  @Input() public rightIcon?: ChakraIcon | string;
-  @Input() public iconSpacing: SystemProps["marginRight"] = "0.5rem";
-  @Input() public spinner?: TemplateRef<any>;
-  @Input() public spinnerPlacement: "start" | "end" = "start";
+  @Input() public isActive = false;
 
-  override getThemeKey(): string {
+  constructor(@Optional() private buttonGroup?: ButtonGroupComponent) {
+    super();
+  }
+
+  override getComponentProps(): Observable<ThemingProps & Dict> {
+    return super.getComponentProps().pipe(
+      map((props) => ({
+        ...props,
+        isDisabled: this.buttonGroup?.isDisabled ?? this.isDisabled,
+        variant: this.buttonGroup?.variant ?? this.variant,
+        size: this.buttonGroup?.size ?? this.size,
+        colorScheme: this.buttonGroup?.colorScheme ?? this.colorScheme,
+      })),
+    );
+  }
+
+  public override getDefaultStyles(): ChakraStyles {
+    return {
+      display: "inline-flex",
+      appearance: "none",
+      alignItems: "center",
+      justifyContent: "center",
+      userSelect: "none",
+      position: "relative",
+      whiteSpace: "nowrap",
+      verticalAlign: "middle",
+      outline: "none",
+    };
+  }
+
+  public override getThemeKey(): string {
     return "Button";
   }
 }

@@ -53,7 +53,7 @@ export class FlexLayoutDirective extends BaseChakraComponent {
     return direction ? (FLEX_DIRECTION as any)[direction] : "row";
   }
 
-  public override getBaseStyles(): ChakraStyles {
+  public override getDefaultStyles(): ChakraStyles {
     return {
       display: "flex",
       flexDirection: this.getFlexDirection(),

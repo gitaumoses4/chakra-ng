@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 @Directive({
   selector: "[chakraComponent]",
 })
-export class ChakraComponentDirective<ThemeComponent extends string> extends BaseChakraStyledComponent<ThemeComponent> {
+export class ChakraComponentDirective<ThemeKey extends string> extends BaseChakraStyledComponent<ThemeKey> {
   private readonly $chakraComponent = new BehaviorSubject<string>("");
 
   @Input()
@@ -14,7 +14,7 @@ export class ChakraComponentDirective<ThemeComponent extends string> extends Bas
     this.$chakraComponent.next(component);
   }
 
-  override getBaseStyles(): ChakraStyles {
+  override getDefaultStyles(): ChakraStyles {
     return {};
   }
 

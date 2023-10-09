@@ -44,7 +44,7 @@ export class GridItemDirective extends BaseChakraComponent {
    */
   @Input() rowSpan?: ResponsiveValue<number | "auto">;
 
-  override getBaseStyles(): ChakraStyles {
+  override getDefaultStyles(): ChakraStyles {
     return compact({
       gridArea: this.area,
       gridColumn: spanFn(this.colSpan),

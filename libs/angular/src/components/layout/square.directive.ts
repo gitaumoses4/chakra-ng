@@ -20,7 +20,7 @@ export class SquareDirective extends BaseChakraComponent {
    */
   @Input() centerContent = true;
 
-  getBaseStyles(): ChakraStyles {
+  getDefaultStyles(): ChakraStyles {
     const styles: ChakraStyles = {
       boxSize: this.size,
       flexShrink: 0,

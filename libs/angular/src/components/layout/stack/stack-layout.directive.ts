@@ -83,7 +83,7 @@ export class StackLayoutDirective extends BaseChakraComponent implements OnChang
     return this.direction || "row";
   }
 
-  public override getBaseStyles(): ChakraStyles {
+  public override getDefaultStyles(): ChakraStyles {
     return {
       display: "flex",
       alignItems: this.align || "center",

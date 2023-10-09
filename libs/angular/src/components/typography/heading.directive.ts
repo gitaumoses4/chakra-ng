@@ -9,7 +9,7 @@ export class HeadingDirective extends BaseChakraStyledComponent<"Heading"> imple
     return "Heading";
   }
 
-  getBaseStyles(): ChakraStyles {
+  public override getDefaultStyles(): ChakraStyles {
     return {};
   }
 }

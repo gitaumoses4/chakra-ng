@@ -5,7 +5,7 @@ import { BaseChakraComponent, ChakraStyles } from "../../core";
   selector: "[center]",
 })
 export class CenterLayoutDirective extends BaseChakraComponent {
-  getBaseStyles(): ChakraStyles {
+  getDefaultStyles(): ChakraStyles {
     return {
       display: "flex",
       alignItems: "center",
@@ -36,7 +36,7 @@ const centerStyles = {
 export class AbsoluteCenterLayoutDirective extends BaseChakraComponent {
   @Input() axis: "horizontal" | "vertical" | "both" = "both";
 
-  getBaseStyles(): ChakraStyles {
+  getDefaultStyles(): ChakraStyles {
     return {
       ...centerStyles[this.axis],
       position: "absolute",

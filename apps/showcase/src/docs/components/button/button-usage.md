@@ -63,7 +63,15 @@ component, it allows you to:
 * Set the `spacing` between buttons
 * Flush the buttons together by removing the border radius of their children as needed.
 
-
 #### Flushing the buttons {#flushing-buttons}
 
 To flush the buttons together, you can pass the `isAttached` property to the `chakra-button-group` component.
+
+## Accessibility
+
+* Button has `role="button"` by default.
+* When Button has focus, `Space` or `Enter` keypress triggers `click` event.
+
+## Composition
+
+All properties passed can be overridden through the button properties.

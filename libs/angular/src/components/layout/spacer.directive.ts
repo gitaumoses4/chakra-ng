@@ -5,7 +5,7 @@ import { BaseChakraComponent, ChakraStyles } from "../../core";
   selector: "[spacer]",
 })
 export class SpacerDirective extends BaseChakraComponent {
-  getBaseStyles(): ChakraStyles {
+  getDefaultStyles(): ChakraStyles {
     return {
       flex: 1,
       justifySelf: "stretch",

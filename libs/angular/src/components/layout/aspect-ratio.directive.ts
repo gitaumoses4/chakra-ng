@@ -14,7 +14,7 @@ export class AspectRatioDirective extends BaseChakraComponent {
     }
   }
 
-  getBaseStyles(): ChakraStyles {
+  getDefaultStyles(): ChakraStyles {
     return {
       position: "relative",
       _before: {

@@ -39,7 +39,7 @@ export class GridLayoutDirective extends BaseChakraComponent {
    */
   @Input() row?: SystemProps["gridRow"];
 
-  public override getBaseStyles(): ChakraStyles {
+  public override getDefaultStyles(): ChakraStyles {
     return {
       display: "grid",
       gridTemplateColumns: this.templateColumns,

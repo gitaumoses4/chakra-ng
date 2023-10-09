@@ -42,7 +42,7 @@ export class WrapLayoutDirective extends BaseChakraComponent {
    */
   @Input() shouldWrapChildren?: boolean;
 
-  getBaseStyles(): ChakraStyles {
+  getDefaultStyles(): ChakraStyles {
     return {
       display: "flex",
       flexWrap: "wrap",

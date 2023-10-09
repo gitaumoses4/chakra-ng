@@ -33,8 +33,8 @@ export class SimpleGridDirective extends GridLayoutDirective {
 
   @Input() spacingY?: SystemProps["gridGap"];
 
-  override getBaseStyles(): ChakraStyles {
-    const styles = super.getBaseStyles();
+  override getDefaultStyles(): ChakraStyles {
+    const styles = super.getDefaultStyles();
 
     const templateColumns = this.minChildWidth ? widthToColumns(this.minChildWidth, this.themeService.getTheme()) : countToColumns(this.columns);
 

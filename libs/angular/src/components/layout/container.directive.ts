@@ -10,7 +10,7 @@ export class ContainerDirective extends BaseChakraStyledComponent<"Container"> {
    */
   @Input() public centerContent?: boolean;
 
-  override getBaseStyles(): ChakraStyles {
+  override getDefaultStyles(): ChakraStyles {
     if (this.centerContent) {
       return {
         display: "flex",
