@@ -1,14 +1,14 @@
 import { ChangeDetectorRef, Directive, Input, OnChanges, TemplateRef } from "@angular/core";
 import { ResponsiveValue, SystemProps } from "@chakra-ui/styled-system";
 import { getDividerStyles } from "./stack-utils";
-import { BaseChakraDirective, ChakraStyles } from "../../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../../core";
 
 export type StackDirection = ResponsiveValue<"row" | "column" | "row-reverse" | "column-reverse">;
 
 @Directive({
   selector: "[stack],[hStack],[vStack]",
 })
-export class StackLayoutDirective extends BaseChakraDirective implements OnChanges {
+export class StackLayoutDirective extends BaseChakraComponent implements OnChanges {
   @Input() align?: SystemProps["alignItems"];
 
   @Input() justify?: SystemProps["justifyContent"];

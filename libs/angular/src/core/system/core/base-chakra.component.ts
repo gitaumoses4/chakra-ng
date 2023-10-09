@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Directive, OnInit } from "@angular/core";
 import { map, Observable } from "rxjs";
 import { ChakraStyles } from "../types";
 import { ChakraElement } from "./chakra.element";
 
-@Component({ template: "", standalone: true })
+@Directive()
 export abstract class BaseChakraComponent extends ChakraElement implements OnInit {
   ngOnInit() {
     if (this.applyStylesOnHost()) {

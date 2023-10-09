@@ -6,10 +6,11 @@ import { ButtonGroupComponent } from "./button-group.component";
 import { IconModule } from "../icon";
 import { SpinnerModule } from "../spinner/spinner.module";
 import { ButtonSpinnerComponent } from "./button-spinner.component";
+import { ButtonDirective } from "./button.directive";
 
 @NgModule({
-  declarations: [ButtonComponent, ButtonGroupComponent, ButtonSpinnerComponent],
+  declarations: [ButtonComponent, ButtonGroupComponent, ButtonSpinnerComponent, ButtonDirective],
   imports: [CommonModule, ChakraSystemModule, IconModule, SpinnerModule],
-  exports: [ButtonComponent, ButtonGroupComponent, ButtonSpinnerComponent],
+  exports: [ButtonComponent, ButtonGroupComponent, ButtonSpinnerComponent, ButtonDirective],
 })
 export class ButtonModule {}

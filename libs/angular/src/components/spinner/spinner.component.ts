@@ -24,7 +24,7 @@ export class SpinnerComponent extends BaseChakraStyledComponent<"Spinner"> {
 
   @Input() public label: string | undefined = "Loading...";
 
-  component(): string {
+  getThemeKey(): string {
     return "Spinner";
   }
 

@@ -1,11 +1,11 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[grid]",
 })
-export class GridLayoutDirective extends BaseChakraDirective {
+export class GridLayoutDirective extends BaseChakraComponent {
   /**
    * Shorthand prop for `gridTemplateColumns`
    */

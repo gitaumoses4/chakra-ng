@@ -4,14 +4,14 @@ import { ResponsiveValue, SystemProps, SystemStyleObject, ThemeTypings } from "@
 
 const attachedStyles: Record<string, SystemStyleObject> = {
   horizontal: {
-    "> *:first-of-type:not(:last-of-type)": { borderEndRadius: 0 },
-    "> *:not(:first-of-type):not(:last-of-type)": { borderRadius: 0 },
-    "> *:not(:first-of-type):last-of-type": { borderStartRadius: 0 },
+    "> *:first-of-type:not(:last-of-type) > button": { borderEndRadius: 0 },
+    "> *:not(:first-of-type):not(:last-of-type) > button": { borderRadius: 0, borderStartWidth: 0 },
+    "> *:not(:first-of-type):last-of-type > button": { borderStartRadius: 0, borderStartWidth: 0 },
   },
   vertical: {
-    "> *:first-of-type:not(:last-of-type)": { borderBottomRadius: 0 },
-    "> *:not(:first-of-type):not(:last-of-type)": { borderRadius: 0 },
-    "> *:not(:first-of-type):last-of-type": { borderTopRadius: 0 },
+    "> *:first-of-type:not(:last-of-type) > button": { borderBottomRadius: 0 },
+    "> *:not(:first-of-type):not(:last-of-type) > button": { borderRadius: 0, borderTopWidth: 0 },
+    "> *:not(:first-of-type):last-of-type > button": { borderTopRadius: 0, borderTopWidth: 0 },
   },
 };
 

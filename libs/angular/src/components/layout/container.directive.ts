@@ -1,10 +1,10 @@
 import { Directive, Input } from "@angular/core";
-import { BaseChakraStyledComponentDirective, ChakraStyles } from "../../core";
+import { BaseChakraStyledComponent, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[container]",
 })
-export class ContainerDirective extends BaseChakraStyledComponentDirective<"Container"> {
+export class ContainerDirective extends BaseChakraStyledComponent<"Container"> {
   /**
    * If `true`, the children will be centered
    */
@@ -21,7 +21,7 @@ export class ContainerDirective extends BaseChakraStyledComponentDirective<"Cont
     return {};
   }
 
-  override component(): string {
+  override getThemeKey(): string {
     return "Container";
   }
 }

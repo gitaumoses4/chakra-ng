@@ -1,9 +1,9 @@
 import { Directive } from "@angular/core";
-import { BaseChakraDirective } from "./core";
+import { BaseChakraComponent } from "./core";
 import { ChakraStyles } from "./types";
 
 @Directive({ selector: "[chakra]" })
-export class ChakraDirective extends BaseChakraDirective {
+export class ChakraDirective extends BaseChakraComponent {
   public override getBaseStyles(): ChakraStyles {
     return {};
   }

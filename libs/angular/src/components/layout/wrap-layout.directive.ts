@@ -1,11 +1,11 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[wrap]",
 })
-export class WrapLayoutDirective extends BaseChakraDirective {
+export class WrapLayoutDirective extends BaseChakraComponent {
   /**
    * The space between each child (even if it wraps)
    * @type SystemProps["margin"]

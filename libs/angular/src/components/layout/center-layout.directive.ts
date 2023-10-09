@@ -1,10 +1,10 @@
 import { Directive, Input } from "@angular/core";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[center]",
 })
-export class CenterLayoutDirective extends BaseChakraDirective {
+export class CenterLayoutDirective extends BaseChakraComponent {
   getBaseStyles(): ChakraStyles {
     return {
       display: "flex",
@@ -33,7 +33,7 @@ const centerStyles = {
 @Directive({
   selector: "[absoluteCenter]",
 })
-export class AbsoluteCenterLayoutDirective extends BaseChakraDirective {
+export class AbsoluteCenterLayoutDirective extends BaseChakraComponent {
   @Input() axis: "horizontal" | "vertical" | "both" = "both";
 
   getBaseStyles(): ChakraStyles {

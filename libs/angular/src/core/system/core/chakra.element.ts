@@ -4,7 +4,6 @@ import { stylesKeys } from "../styles.keys";
 import { ChakraStyles } from "../types";
 import { StylesService } from "../../styles";
 import { ThemeService } from "../../theme";
-import { getStylesId } from "../system";
 
 type Inputs = {
   [K in keyof Required<ChakraStyles>]: ChakraStyles[K] | undefined;
@@ -430,25 +429,15 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
   @Input() willChange: ChakraStyles["willChange"] | undefined;
   @Input() wordBreak: ChakraStyles["wordBreak"] | undefined;
   @Input() zIndex: ChakraStyles["zIndex"] | undefined;
-
-  private readonly $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
-  private readonly $chakraClasses = new BehaviorSubject<Set<string>>(new Set());
+  @Input() public chakraStyles: ChakraStyles | null = {};
 
   public readonly styleService = inject(StylesService);
   public readonly elementRef = inject(ElementRef);
   public readonly themeService = inject(ThemeService);
 
+  private readonly $chakraStyles = new BehaviorSubject<ChakraStyles>({} as ChakraStyles);
+  private readonly $chakraClasses = new BehaviorSubject<Set<string>>(new Set());
   private readonly subscriptions: Array<Subscription> = [];
-
-  ngOnChanges() {
-    const styles = stylesKeys
-      .filter((key) => Boolean(this[key]))
-      .reduce((acc, cur) => {
-        return { ...acc, [cur]: this[cur] };
-      }, {});
-
-    this.$chakraStyles.next(styles);
-  }
 
   @Input()
   public set className(className: string | string[] | Set<string> | { [klass: string]: any }) {
@@ -471,6 +460,24 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
     this.$chakraClasses.next(classList);
   }
 
+  public get $styles() {
+    return this.getChakraStyles();
+  }
+
+  public get $classes(): Observable<string> {
+    return this.getChakraClasses().pipe(map((classList) => Array.from(classList).join(" ")));
+  }
+
+  ngOnChanges() {
+    const styles = stylesKeys
+      .filter((key) => Boolean(this[key]))
+      .reduce((acc, cur) => {
+        return { ...acc, [cur]: this[cur] };
+      }, {});
+
+    this.$chakraStyles.next({ ...styles, ...(this.chakraStyles || {}) });
+  }
+
   public getChakraStyles(): Observable<ChakraStyles> {
     return this.$chakraStyles;
   }
@@ -487,14 +494,6 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
     );
   }
 
-  public get $styles() {
-    return this.getChakraStyles();
-  }
-
-  public get $classes(): Observable<string> {
-    return this.getChakraClasses().pipe(map((classList) => Array.from(classList).join(" ")));
-  }
-
   public addSubscription(subscription: Subscription) {
     this.subscriptions.push(subscription);
     return subscription;
@@ -505,7 +504,7 @@ export abstract class ChakraElement implements Inputs, OnChanges, OnDestroy {
     element: HTMLElement = this.elementRef.nativeElement,
   ) {
     const $styles = styles instanceof Observable ? styles : of(styles);
-    return this.addSubscription(this.styleService.applyChakraStyles(getStylesId(this.constructor.name), $styles, element));
+    return this.addSubscription(this.styleService.applyChakraStyles($styles, element));
   }
 
   public applyChakraClasses(classes: Observable<Set<string>> = this.getChakraClasses(), element: HTMLElement = this.elementRef.nativeElement) {

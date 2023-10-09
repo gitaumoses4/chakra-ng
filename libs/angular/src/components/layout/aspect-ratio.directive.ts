@@ -1,11 +1,11 @@
 import { Directive } from "@angular/core";
 import { mapResponsive } from "@chakra-ui/utils";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[aspectRatio]",
 })
-export class AspectRatioDirective extends BaseChakraDirective {
+export class AspectRatioDirective extends BaseChakraComponent {
   override ngOnChanges() {
     super.ngOnChanges();
 

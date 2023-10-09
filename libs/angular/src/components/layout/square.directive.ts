@@ -1,5 +1,5 @@
 import { Directive, Input } from "@angular/core";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 /**
  * A square is a div with equal width and height
@@ -7,7 +7,7 @@ import { BaseChakraDirective, ChakraStyles } from "../../core";
 @Directive({
   selector: "[square]",
 })
-export class SquareDirective extends BaseChakraDirective {
+export class SquareDirective extends BaseChakraComponent {
   /**
    * The size (width and height) of the square
    */

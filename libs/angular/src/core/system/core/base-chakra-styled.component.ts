@@ -1,23 +1,20 @@
-import { Component, Input } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 import { BaseChakraComponent } from "./base-chakra.component";
 import { BehaviorSubject, combineLatest, map, Observable, of } from "rxjs";
 import { ResponsiveValue, ThemeTypings, ThemingProps } from "@chakra-ui/styled-system";
 import { Dict } from "@chakra-ui/utils";
 import { ChakraStyles } from "../types";
 
-@Component({ template: "", standalone: true })
-export abstract class BaseChakraStyledComponent<ThemeComponent extends string> extends BaseChakraComponent {
-  private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
-
+@Directive()
+export abstract class BaseChakraStyledComponent<ThemeKey extends string> extends BaseChakraComponent {
   @Input() public variant?: ResponsiveValue<
-    ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["variants"] : string
+    ThemeKey extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeKey]["variants"] : string
   >;
-  @Input() public size?: ResponsiveValue<
-    ThemeComponent extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeComponent]["sizes"] : string
-  >;
+  @Input() public size?: ResponsiveValue<ThemeKey extends keyof ThemeTypings["components"] ? ThemeTypings["components"][ThemeKey]["sizes"] : string>;
   @Input() public colorScheme?: ThemeTypings["colorSchemes"];
   @Input() public orientation?: "vertical" | "horizontal";
   @Input() public styleConfig?: Record<string, any>;
+  private readonly $componentProps = new BehaviorSubject<ThemingProps & Dict>({});
 
   override ngOnChanges() {
     super.ngOnChanges();
@@ -25,7 +22,7 @@ export abstract class BaseChakraStyledComponent<ThemeComponent extends string> e
   }
 
   override getChakraStyles(): Observable<ChakraStyles> {
-    const $themeStyles = this.themeService.getStyleConfig(of(this.component()), this.getComponentProps());
+    const $themeStyles = this.themeService.getStyleConfig(this.getThemeKeyObservable(), this.getComponentProps());
 
     return combineLatest([$themeStyles, super.getChakraStyles()]).pipe(
       map(([themeStyles, chakraStyles]) => ({ ...this.getDefaultStyles(), __css: themeStyles, ...chakraStyles })),
@@ -36,5 +33,9 @@ export abstract class BaseChakraStyledComponent<ThemeComponent extends string> e
     return this.$componentProps;
   }
 
-  public abstract component(): string;
+  public getThemeKeyObservable(): Observable<string> {
+    return of(this.getThemeKey());
+  }
+
+  public abstract getThemeKey(): string;
 }

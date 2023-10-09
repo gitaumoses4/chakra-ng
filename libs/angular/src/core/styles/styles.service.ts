@@ -44,41 +44,30 @@ export class StylesService {
     }
   }
 
-  public attachStyles(styles: Array<Interpolation<any> | TemplateStringsArray>, element: HTMLElement, stylesId: string) {
+  public attachStyles(styles: Array<Interpolation<any> | TemplateStringsArray>, element: HTMLElement) {
     const cache = this.emotion.cache;
     const serialized = serializeStyles(styles, cache.registered, this.themeService.getTheme());
 
-    const current: SerializedStyles | undefined = serialized;
-
-    const key = `${cache.key}-${stylesId}`;
-
-    const sheet = new (cache.sheet.constructor as any)({
-      key,
-      nonce: cache.sheet.nonce,
-      container: cache.sheet.container,
-      speedy: (cache.sheet as any).isSpeedy,
-    });
-
     registerStyles(cache, serialized, false);
 
+    const className = `${cache.key}-${serialized.name}`;
+
     Array.from(element.classList).forEach((eClassName) => {
-      if (eClassName.split("-")[1] === stylesId) {
+      if (eClassName.split("-")[0] === cache.key) {
         element.classList.remove(eClassName);
       }
     });
 
-    const className = `${key}-${serialized.name}`;
-
     if (cache.inserted[serialized.name] === undefined) {
-      cache.insert(`.${className}`, serialized, sheet, true);
+      cache.insert(`.${className}`, serialized, cache.sheet, true);
     }
 
     this.renderer.addClass(element, className);
   }
 
-  public applyChakraStyles(id: string, $styles: Observable<ChakraStyles>, element: HTMLElement) {
+  public applyChakraStyles($styles: Observable<ChakraStyles>, element: HTMLElement) {
     return combineLatest([this.themeService.$theme, $styles]).subscribe(([theme, styles]) => {
-      this.attachStyles([toCSSObject(theme)(styles)], element, id);
+      this.attachStyles([toCSSObject(theme)(styles)], element);
     });
   }
 }

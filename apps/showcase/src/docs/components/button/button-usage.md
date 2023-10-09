@@ -10,6 +10,8 @@ import {ButtonComponent} from "@chakra-ng/angular";
 
 ## Usage
 
+Use the `chakra-button` component or the `chakraButton` directive to create a button.
+
 ### Button Sizes
 
 Use the `size` property to change the size of the button. The default size is `md`. You can set the value
@@ -51,3 +53,17 @@ by default.
 
 We've included the colors for common social networks like Facebook, Twitter, WhatsApp, LinkedIn, and more. You can use
 the `colorScheme` property to change the color of the button.
+
+### Grouping Buttons
+
+You can use the `stack` or `chakra-button-group` component to group buttons. When you use the `chakra-button-group`
+component, it allows you to:
+
+* Set the `size` and `variant` of all buttons within it
+* Set the `spacing` between buttons
+* Flush the buttons together by removing the border radius of their children as needed.
+
+
+#### Flushing the buttons {#flushing-buttons}
+
+To flush the buttons together, you can pass the `isAttached` property to the `chakra-button-group` component.

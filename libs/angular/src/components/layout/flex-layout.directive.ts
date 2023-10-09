@@ -1,6 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { SystemProps } from "@chakra-ui/styled-system";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 const FLEX_DIRECTION = {
   flexRow: "row",
@@ -12,7 +12,7 @@ const FLEX_DIRECTION = {
 @Directive({
   selector: "[flexColumn],[flexRow],[flexRowReverse],[flexColumnReverse]",
 })
-export class FlexLayoutDirective extends BaseChakraDirective {
+export class FlexLayoutDirective extends BaseChakraComponent {
   /**
    * Shorthand for `alignItems` style prop
    */

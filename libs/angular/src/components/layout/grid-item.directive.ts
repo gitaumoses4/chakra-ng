@@ -2,7 +2,7 @@ import { Directive, Input } from "@angular/core";
 import { ResponsiveValue, SystemProps } from "@chakra-ui/styled-system";
 import { compact } from "@chakra-ui/object-utils";
 import { mapResponsive } from "@chakra-ui/utils";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 function spanFn(span?: ResponsiveValue<number | "auto">) {
   return mapResponsive(span, (value) => (value === "auto" ? "auto" : `span ${value}/span ${value}`));
@@ -11,7 +11,7 @@ function spanFn(span?: ResponsiveValue<number | "auto">) {
 @Directive({
   selector: "[gridItem]",
 })
-export class GridItemDirective extends BaseChakraDirective {
+export class GridItemDirective extends BaseChakraComponent {
   /**
    * Shorthand prop for `gridArea`
    * @type SystemProps["gridArea"]

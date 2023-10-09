@@ -1,10 +1,10 @@
 import { Directive } from "@angular/core";
-import { BaseChakraDirective, ChakraStyles } from "../../core";
+import { BaseChakraComponent, ChakraStyles } from "../../core";
 
 @Directive({
   selector: "[spacer]",
 })
-export class SpacerDirective extends BaseChakraDirective {
+export class SpacerDirective extends BaseChakraComponent {
   getBaseStyles(): ChakraStyles {
     return {
       flex: 1,

@@ -5,42 +5,4 @@
   [dataAttr]="{ active: isActive, loading: isLoading }"
   [disabled]="isDisabled || isLoading"
 >
-  <ng-container *ngIf="isLoading && spinnerPlacement === 'start'">
-    <ng-container *ngTemplateOutlet="buttonSpinner"></ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="isLoading">
-    <ng-container *ngIf="loadingText">
-      <span>{{ loadingText }}</span>
-    </ng-container>
-    <ng-container *ngIf="!loadingText">
-      <span [chakraStyles]="{ opacity: 0 }">
-        <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-      </span>
-    </ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="!isLoading">
-    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="isLoading && spinnerPlacement === 'end'">
-    <ng-container *ngTemplateOutlet="buttonSpinner"></ng-container>
-  </ng-container>
-
-  <ng-template #buttonSpinner>
-    <chakra-button-spinner
-      [className]="'chakra-button__spinner--' + spinnerPlacement"
-      [label]="loadingText"
-      [spacing]="iconSpacing"
-      [placement]="spinnerPlacement"
-      [spinner]="spinner"
-    ></chakra-button-spinner>
-  </ng-template>
-
-  <ng-template #buttonContent>
-    <chakra-icon *ngIf="leftIcon" [name]="leftIcon" [marginEnd]="iconSpacing"></chakra-icon>
-    <ng-content></ng-content>
-    <chakra-icon *ngIf="rightIcon" [name]="rightIcon" [marginStart]="iconSpacing"></chakra-icon>
-  </ng-template>
 </button>
