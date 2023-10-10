@@ -525,6 +525,23 @@ export const docs: Docs = {
         }
       ]
     },
+    "checkbox": {
+      "id": "checkbox",
+      "path": "checkbox",
+      "title": "Checkbox",
+      "depth": 1,
+      "content": "Checkbox component is used in forms when a user needs to select multiple values from several options.\n",
+      "sections": [
+        {
+          "id": "import",
+          "path": "checkbox/import",
+          "title": "Import",
+          "depth": 2,
+          "content": "```typescript\nimport { CheckboxModule } from \"@chakra-ng/angular\";\n```\n",
+          "sections": []
+        }
+      ]
+    },
     "container": {
       "id": "container",
       "path": "container",

@@ -56,6 +56,10 @@ export const navMenu: NavMenu = [
             title: "Button",
             routerLink: "/docs/components/button",
           },
+          {
+            title: "Checkbox",
+            routerLink: "/docs/components/checkbox",
+          },
         ],
       },
     ],
